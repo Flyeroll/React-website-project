@@ -1,0 +1,200 @@
+.nav {
+    position: relative;
+    background-color: rgb(255, 140, 0);
+    height: 100px;
+}
+
+
+.navIcon {
+    width: 50px;
+    height: 50px;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav > * {
+    padding: 10px;
+    user-select: none;
+    cursor:pointer;
+}
+
+.buttons {
+    display: flex;
+    font-size: 40px;
+}
+
+.buttons > * {
+    position: relative;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.navBtn::before {
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    border-bottom: 2px solid black;
+    width: calc(0%);
+    transition: 0.7s ease-in-out;
+}
+
+.navBtn:hover::before {
+    content: "";
+    width: calc(100%);
+}
+.navBtn::after {
+    content: '';
+    position: absolute;
+    right: 0px;
+    bottom: -4px;
+    border-bottom: 2px solid black;
+    width: calc(0%);
+    transition: 1s ease-in-out;
+}
+
+.navBtn:hover::after {
+    content: "";
+    width: calc(100%);
+}
+
+
+@media screen and (min-width: 1000px) {
+    .buttons > * {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+}
+
+.navLogo {
+    width: 80px;
+    height: 80px;
+    animation-name: logoAnimation;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* animation */
+
+@keyframes logoAnimation {
+    0% {transform: rotate(-20deg)}
+    50% {transform: rotate(0deg)}
+    100% {transform: rotate(20deg)}
+}
+@keyframes navMapAnimation {
+    0% {transform: scale(0.97)}
+    50% {transform: scale(1.1)}
+    100% {transform: scale(1)}
+  }
+  
+  
+  .navMap {
+      transition: 1s all ease-in-out;
+      position: fixed;
+      right: -420px;
+      top: 0px;
+      background-color: coral;
+      width: 400px;
+      height: 100vh;
+      cursor: default;
+    }
+    
+    
+    .navIcon:hover {
+        animation-name: navMapAnimation;
+        animation-iteration-count: 1;
+        animation-duration: 1s;
+        animation-delay: 0.1s;
+    }
+    
+    .trueShow {
+    right: 0px;
+}
+
+
+
+.xMarkNav {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    transition: 1s all ease-in-out;
+}
+
+.xMarkNav:hover {
+    transform: scale(1.2);
+    transform: rotate(270deg);
+}
+
+.contentNav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+
+.menuBtn {
+    position: relative;
+}
+
+
+.menuBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    left: -50%;
+    top: 60px;
+    width: 200%;
+    background-color: chartreuse;
+    transition: 0.3s all ease-in-out;
+    
+}
+
+.showMenuFalse {
+    height: 0px;
+    opacity: 0;
+}
+
+.showMenuTrue {
+    height: 250px;
+    opacity: 1;
+}
+
+
+
+.menuBar {
+    cursor: default;
+}
+.navMenuBtn {
+    cursor: pointer;
+    color: black;
+}
+
+.navMenuBtn:hover {
+    animation-name: navMapAnimation;
+    animation-iteration-count: 1;
+    animation-duration: 0.3s;
+}
+
+.link{
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
