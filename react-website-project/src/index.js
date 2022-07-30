@@ -5,9 +5,6 @@ import './index.css';
 
 
 
-htfut
-
-
 
 ReactDOM.render(
   <App />
