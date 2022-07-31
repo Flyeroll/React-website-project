@@ -4,7 +4,7 @@ export default function Third(){
 
     return (
         <div>
-            "THIRD" PAGE
+            About Us
         </div>
     )
 }

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapLocation } from '@fortawesome/free-solid-svg-icons'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
-
+import { Outlet } from "react-router-dom";
 
 
 
@@ -43,12 +43,12 @@ export default function Nav() {
                     <div className="menuBtn navBtn" onClick={() => openMenu()}>
                         <div className="menuBar showMenuFalse" id="menuBtn">
       
-                                <h6 className="navMenuBtn">First</h6>
+                                <h6 className="navMenuBtn">Dishes</h6>
    
          
                                 <h6 className="navMenuBtn">Second</h6>
   
-                                <h6 className="navMenuBtn">Third</h6>
+                                <h6 className="navMenuBtn">About Us</h6>
 
                         </div>
                         Menu
@@ -65,7 +65,7 @@ export default function Nav() {
                 </div>
             </div>
 
-  
+        <Outlet/>
         </div>
     )
 }
