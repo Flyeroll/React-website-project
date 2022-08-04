@@ -14,25 +14,25 @@ export default function First(){
 
 
     function filterArray(element) {
-            console.log(input);
             let elementVar = element
             setInput((prev) => {
                 return element.target.value
             })
-
     }
 
     useEffect(() => {
+        //making copy of original data
         let copyArr = initialArray
-
+        //sorting all dishes throuhg input Field
         copyArr = copyArr.map((elem) => {
             if(elem.name.toLowerCase().includes(input)){
                 return elem
             } 
         })
         
+        //making new array to filter UNDEFINED elements
         let noUndefinedArray = []
-        
+        //filtering 'dirty array (heres array is clear)'
         copyArr.forEach((elem) => {
             if(elem !== undefined) {
                 noUndefinedArray.push(elem)
@@ -42,10 +42,6 @@ export default function First(){
     setFilteredArray((prev) => {
         return noUndefinedArray
     })
-        console.log(noUndefinedArray);
-        // setFilteredArray((prev) => {
-        //     return copyArr
-        // })
     }, [input])
 
     
@@ -63,9 +59,6 @@ export default function First(){
                     <h6>{prev.description}</h6>
                 </ div>
                 ))}
-                    {/* <div >
-                        {input}
-                    </div> */}
         </div>
     )
 }
