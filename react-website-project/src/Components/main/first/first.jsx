@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useEffect, useState } from "react";
-
+import "./first.css"
 
 import Data from '../../API/api.json'
 
@@ -50,21 +50,25 @@ export default function First(){
     
 
     return (
-        <div>
-            <input type="text"  id="dishesInput" onChange={(element) => filterArray(element) }/>
+        <div className="componentFirst">
+            <input type="text" className="firstInput"  id="dishesInput" onChange={(element) => filterArray(element) }/>
              {/* <img src={require("../../../../public/images/fotos/1.1.jpg")} alt="" /> */}
-            {filteredArray.map((prev) => (
-                <div key={prev.id} className="dishForm">
-                    <div key={prev.id} className="dishName">{prev.name}</div>
-                    <h6 className="dishFoto">{prev.description}</h6>
-                    <div className="dishBtnForm">
-                        <button className="dishBtnMinus">-</button>
-                        <div className="dishFormCount">0</div>
-                        <button className="dishBtnPlus">+</button>
+             <div className="allDishes">
+                {filteredArray.map((prev) => (
+                    <div className="dishFormMain">
+                        <div key={prev.id} className="dishForm">
+                            <div key={prev.id} className="dishName">{prev.name}</div>
+                            <h6 className="dishFoto">{prev.description}</h6>
+                            <div className="dishBtnForm">
+                                <button className="dishBtnMinus">-</button>
+                            <div className="dishFormCount">0</div>
+                                <button className="dishBtnPlus">+</button>
+                            </div>
+                        </ div>
+                        <img src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" />
                     </div>
-                    <img src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" />
-                </ div>
-                ))}
+                    ))}
+             </div>
         </div>
     )
 }
