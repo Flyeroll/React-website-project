@@ -54,9 +54,15 @@ export default function First(){
             <input type="text"  id="dishesInput" onChange={(element) => filterArray(element) }/>
              {/* <img src={require("../../../../public/images/fotos/1.1.jpg")} alt="" /> */}
             {filteredArray.map((prev) => (
-                <div key={prev.id}>
-                    <div key={prev.id}>{prev.name}</div>
-                    <h6>{prev.description}</h6>
+                <div key={prev.id} className="dishForm">
+                    <div key={prev.id} className="dishName">{prev.name}</div>
+                    <h6 className="dishFoto">{prev.description}</h6>
+                    <div className="dishBtnForm">
+                        <button className="dishBtnMinus">-</button>
+                        <div className="dishFormCount">0</div>
+                        <button className="dishBtnPlus">+</button>
+                    </div>
+                    <img src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" />
                 </ div>
                 ))}
         </div>
