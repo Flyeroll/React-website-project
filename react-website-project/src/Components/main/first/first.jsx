@@ -95,9 +95,14 @@ export default function First(){
     return (
         <div className="componentFirst">
             <input type="text" className="firstInput"  id="dishesInput" onChange={(element) => filterArray(element) }/>
-             {/* <img src={require("../../../../public/images/fotos/1.1.jpg")} alt="" /> */}
-             <div className="allDishes">
-                {filteredArray.map((prev) => (
+            {/* all Breakfasts */}
+            
+
+
+                <h1 className="categoryTitle">Breakfast</h1>
+                <div className="allDishes">
+
+                {filteredArrayBreakfast.map((prev) => (
                     <div className="dishFormMain">
                         <div key={prev.id} className="dishForm">
                             <div key={prev.id} className="dishName">{prev.name}</div>
@@ -112,7 +117,138 @@ export default function First(){
                         <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" />
                     </div>
                     ))}
-             </div>
+                    </div>
+
+
+            {/* all Lunchs */}
+            
+       
+
+                <h1 className="categoryTitle">Lunch</h1>
+                <div className="allDishes">
+
+                {filteredArrayLunch.map((prev) => (
+                    <div className="dishFormMain">
+                        <div key={prev.id} className="dishForm">
+                            <div key={prev.id} className="dishName">{prev.name}</div>
+                            <h6 className="dishDescription">{prev.description}</h6>
+                            <div className="dishBtnForm">
+                                <button className="dishBtnMinus dishBtn">-</button>
+                            <div className="dishFormCount">0</div>
+                                <button className="dishBtnPlus dishBtn">+</button>
+                            </div>
+                            <div className="dishPrice">{prev.price} <span>$</span></div>
+                        </ div>
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" />
+                    </div>
+                    ))}
+                    </div>
+
+
+
+            {/* all Pizzas */}
+            
+     
+
+                <h1 className="categoryTitle">Pizza</h1>
+                <div className="allDishes">
+
+                {filteredArrayPizza.map((prev) => (
+                    <div className="dishFormMain">
+                        <div key={prev.id} className="dishForm">
+                            <div key={prev.id} className="dishName">{prev.name}</div>
+                            <h6 className="dishDescription">{prev.description}</h6>
+                            <div className="dishBtnForm">
+                                <button className="dishBtnMinus dishBtn">-</button>
+                            <div className="dishFormCount">0</div>
+                                <button className="dishBtnPlus dishBtn">+</button>
+                            </div>
+                            <div className="dishPrice">{prev.price} <span>$</span></div>
+                        </ div>
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" />
+                    </div>
+                    ))}
+                    </div>
+
+
+
+            {/* all Dinners */}
+            
+
+
+                <h1 className="categoryTitle">Dinner</h1>
+                <div className="allDishes">
+
+                {filteredArrayDinner.map((prev) => (
+                    <div className="dishFormMain">
+                        <div key={prev.id} className="dishForm">
+                            <div key={prev.id} className="dishName">{prev.name}</div>
+                            <h6 className="dishDescription">{prev.description}</h6>
+                            <div className="dishBtnForm">
+                                <button className="dishBtnMinus dishBtn">-</button>
+                            <div className="dishFormCount">0</div>
+                                <button className="dishBtnPlus dishBtn">+</button>
+                            </div>
+                            <div className="dishPrice">{prev.price} <span>$</span></div>
+                        </ div>
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" />
+                    </div>
+                    ))}
+                    </div>
+
+
+
+            {/* all Desserts */}
+            
+
+
+                <h1 className="categoryTitle">Dessert</h1>
+                <div className="allDishes">
+
+                {filteredArrayDessert.map((prev) => (
+                    <div className="dishFormMain">
+                        <div key={prev.id} className="dishForm">
+                            <div key={prev.id} className="dishName">{prev.name}</div>
+                            <h6 className="dishDescription">{prev.description}</h6>
+                            <div className="dishBtnForm">
+                                <button className="dishBtnMinus dishBtn">-</button>
+                            <div className="dishFormCount">0</div>
+                                <button className="dishBtnPlus dishBtn">+</button>
+                            </div>
+                            <div className="dishPrice">{prev.price} <span>$</span></div>
+                        </ div>
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" />
+                    </div>
+                    ))}
+                    </div>
+
+
+
+            {/* all ColdDrinkss */}
+            
+
+
+                <h1 className="categoryTitle">ColdDrinks</h1>
+                <div className="allDishes">
+
+                {filteredArrayColdDrinks.map((prev) => (
+                    <div className="dishFormMain">
+                        <div key={prev.id} className="dishForm">
+                            <div key={prev.id} className="dishName">{prev.name}</div>
+                            <h6 className="dishDescription">{prev.description}</h6>
+                            <div className="dishBtnForm">
+                                <button className="dishBtnMinus dishBtn">-</button>
+                            <div className="dishFormCount">0</div>
+                                <button className="dishBtnPlus dishBtn">+</button>
+                            </div>
+                            <div className="dishPrice">{prev.price} <span>$</span></div>
+                        </ div>
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" />
+                    </div>
+                    ))}
+                    </div>
+
+
         </div>
     )
 }

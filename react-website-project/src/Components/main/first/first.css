@@ -114,3 +114,7 @@ img {
     bottom: 5px;
     position: absolute;
 }
+
+.categoryTitle {
+    display: block;
+}
