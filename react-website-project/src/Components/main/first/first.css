@@ -12,23 +12,49 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr; 
     row-gap: 20px;
+    column-gap: 15px;
     justify-items: center;
 }
 
 img {
-    width: 200px;
+
+    height: 170px;
     border-radius: 20px;
 }
 
 .dishFormMain{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     width: 500px;
+}
+
+.dishForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.dishName {
+    margin: 5px;
 }
 
 .dishBtnForm {
     display: flex;
     flex-direction: row;
+    bottom: 5px;
+    left: 130px;
+    padding-left: 130px;
+    padding-bottom: 10px;
+}
+.dishBtnForm  > button {
+    width: 25px;
+    height: 25px;
+    background-color: coral;
+}
+.dishBtnForm  > * {
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
 @media screen and (max-width: 1550px) {
@@ -44,6 +70,7 @@ img {
 }
 
 .dishFormMain{
+    width: 650px;
     background-color: yellow;
 }
 
@@ -51,5 +78,16 @@ img {
     width: 200px;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.dishDescription {
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+}
+
+.dishName {
+    font-weight: 700;
+    text-align: center;
 }
 

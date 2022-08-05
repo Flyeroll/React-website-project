@@ -58,7 +58,7 @@ export default function First(){
                     <div className="dishFormMain">
                         <div key={prev.id} className="dishForm">
                             <div key={prev.id} className="dishName">{prev.name}</div>
-                            <h6 className="dishFoto">{prev.description}</h6>
+                            <h6 className="dishDescription">{prev.description}</h6>
                             <div className="dishBtnForm">
                                 <button className="dishBtnMinus">-</button>
                             <div className="dishFormCount">0</div>
