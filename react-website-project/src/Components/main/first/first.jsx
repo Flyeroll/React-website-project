@@ -9,6 +9,13 @@ export default function First(){
 
     const [initialArray, setinitialArray] = useState(Data)
     const [filteredArray, setFilteredArray] = useState(Data)
+
+    const [filteredArrayBreakfast, setFilteredArrayBreakfast] = useState(Data)
+    const [filteredArrayLunch, setFilteredArrayLunch] = useState(Data)
+    const [filteredArrayPizza, setFilteredArrayPizza] = useState(Data)
+    const [filteredArrayDinner, setFilteredArrayDinner] = useState(Data)
+    const [filteredArrayDessert, setFilteredArrayDessert] = useState(Data)
+    const [filteredArrayColdDrinks, setFilteredArrayColdDrinks] = useState(Data)
     
     const [input, setInput] = useState('')
 
@@ -45,26 +52,32 @@ export default function First(){
     let categBreakfast = noUndefinedArray.filter((elem) => {
         return elem.category === "Breakfast"
     })
-
+    setFilteredArrayBreakfast((prev) => categBreakfast)
+    
     let categLunch = noUndefinedArray.filter((elem) => {
         return elem.category === "Lunch"
     })
-
+    setFilteredArrayLunch((prev) => categLunch)
+    
     let categPizza = noUndefinedArray.filter((elem) => {
         return elem.category === "Pizza"
     })
-
+    setFilteredArrayPizza((prev) => categPizza)
+    
     let categDinner = noUndefinedArray.filter((elem) => {
         return elem.category === "Dinner"
     })
-
+    setFilteredArrayDinner((prev) => categDinner)
+    
     let categDessert = noUndefinedArray.filter((elem) => {
         return elem.category === "Dessert"
     })
-
+    setFilteredArrayDessert((prev) => categDessert)
+    
     let categColdDrinks = noUndefinedArray.filter((elem) => {
         return elem.category === "Cold drinks"
     })
+    setFilteredArrayColdDrinks((prev) => categColdDrinks)
 
 
     console.log(categBreakfast);
