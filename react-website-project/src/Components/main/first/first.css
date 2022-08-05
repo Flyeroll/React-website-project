@@ -34,8 +34,10 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 }
 .dishName {
+    cursor: default;
     margin: 5px;
 }
 
@@ -73,6 +75,7 @@ img {
 .dishFormMain{
     width: 650px;
     background-color: yellow;
+    padding-right: 5px;
 }
 
 .firstInput {
@@ -85,6 +88,7 @@ img {
     font-weight: 500;
     font-size: 15px;
     text-align: center;
+    cursor: default;
 }
 
 .dishName {
@@ -92,3 +96,21 @@ img {
     text-align: center;
 }
 
+.dishFormCount {
+    cursor: default;
+}
+
+.dishBtn {
+    cursor: pointer;
+}
+
+.dishImg {
+    cursor: zoom-in;
+}
+
+.dishPrice {
+    cursor: default;
+    right: 30px;
+    bottom: 5px;
+    position: absolute;
+}

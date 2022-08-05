@@ -39,6 +39,36 @@ export default function First(){
             }
     })
 
+
+
+
+    let categBreakfast = noUndefinedArray.filter((elem) => {
+        return elem.category === "Breakfast"
+    })
+
+    let categLunch = noUndefinedArray.filter((elem) => {
+        return elem.category === "Lunch"
+    })
+
+    let categPizza = noUndefinedArray.filter((elem) => {
+        return elem.category === "Pizza"
+    })
+
+    let categDinner = noUndefinedArray.filter((elem) => {
+        return elem.category === "Dinner"
+    })
+
+    let categDessert = noUndefinedArray.filter((elem) => {
+        return elem.category === "Dessert"
+    })
+
+    let categColdDrinks = noUndefinedArray.filter((elem) => {
+        return elem.category === "Cold drinks"
+    })
+
+
+    console.log(categBreakfast);
+
     setFilteredArray((prev) => {
         return noUndefinedArray
     })
@@ -60,12 +90,13 @@ export default function First(){
                             <div key={prev.id} className="dishName">{prev.name}</div>
                             <h6 className="dishDescription">{prev.description}</h6>
                             <div className="dishBtnForm">
-                                <button className="dishBtnMinus">-</button>
+                                <button className="dishBtnMinus dishBtn">-</button>
                             <div className="dishFormCount">0</div>
-                                <button className="dishBtnPlus">+</button>
+                                <button className="dishBtnPlus dishBtn">+</button>
                             </div>
+                            <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
-                        <img src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" />
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" />
                     </div>
                     ))}
              </div>
