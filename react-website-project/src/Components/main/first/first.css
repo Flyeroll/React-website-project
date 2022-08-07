@@ -113,8 +113,13 @@ img {
     right: 30px;
     bottom: 5px;
     position: absolute;
+    user-select: none;
 }
 
 .categoryTitle {
     display: block;
+}
+
+.dishPrice span {
+    user-select: none;
 }
