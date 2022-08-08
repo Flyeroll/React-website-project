@@ -58,6 +58,7 @@ img {
     padding-left: 130px;
     padding-bottom: 5px;
     padding-top: 15px;
+    user-select: none;
 }
 .dishBtnForm  > button {
     width: 25px;

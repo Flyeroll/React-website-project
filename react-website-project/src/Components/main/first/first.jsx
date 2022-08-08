@@ -10,6 +10,7 @@ export default function First(){
     const [initialArray, setinitialArray] = useState(Data)
     const [filteredArray, setFilteredArray] = useState(Data)
 
+    // Categories
     const [filteredArrayBreakfast, setFilteredArrayBreakfast] = useState(Data)
     const [filteredArrayLunch, setFilteredArrayLunch] = useState(Data)
     const [filteredArrayPizza, setFilteredArrayPizza] = useState(Data)
@@ -19,6 +20,8 @@ export default function First(){
     
     const [input, setInput] = useState('')
 
+    // Counter
+    const [counter, setCounter] = useState(Data)
 
     function filterArray(element) {
             let elementVar = element
@@ -84,9 +87,12 @@ export default function First(){
     })
     }, [input])
 
-    
+    function plusDish(element){
+        console.log(element);
+        console.log(counter);
+    }
 
-    
+
     
     
     return (
@@ -104,9 +110,9 @@ export default function First(){
                             <div key={prev.id} className="dishName">{prev.name}</div>
                             <h6 className="dishDescription">{prev.description}</h6>
                             <div className="dishBtnForm">
-                                <button className="dishBtnMinus dishBtn">-</button>
+                                <div className="dishBtnMinus dishBtn">-</div>
                             <div className="dishFormCount">0</div>
-                                <button className="dishBtnPlus dishBtn">+</button>
+                                <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
@@ -129,9 +135,9 @@ export default function First(){
                             <div key={prev.id} className="dishName">{prev.name}</div>
                             <h6 className="dishDescription">{prev.description}</h6>
                             <div className="dishBtnForm">
-                                <button className="dishBtnMinus dishBtn">-</button>
+                                <div className="dishBtnMinus dishBtn">-</div>
                             <div className="dishFormCount">0</div>
-                                <button className="dishBtnPlus dishBtn">+</button>
+                                <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
@@ -156,9 +162,9 @@ export default function First(){
                             <div key={prev.id} className="dishName">{prev.name}</div>
                             <h6 className="dishDescription">{prev.description}</h6>
                             <div className="dishBtnForm">
-                                <button className="dishBtnMinus dishBtn">-</button>
+                                <div className="dishBtnMinus dishBtn">-</div>
                             <div className="dishFormCount">0</div>
-                                <button className="dishBtnPlus dishBtn">+</button>
+                                <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
@@ -182,9 +188,9 @@ export default function First(){
                             <div key={prev.id} className="dishName">{prev.name}</div>
                             <h6 className="dishDescription">{prev.description}</h6>
                             <div className="dishBtnForm">
-                                <button className="dishBtnMinus dishBtn">-</button>
+                                <div className="dishBtnMinus dishBtn">-</div>
                             <div className="dishFormCount">0</div>
-                                <button className="dishBtnPlus dishBtn">+</button>
+                                <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
@@ -206,9 +212,9 @@ export default function First(){
                             <div key={prev.id} className="dishName">{prev.name}</div>
                             <h6 className="dishDescription">{prev.description}</h6>
                             <div className="dishBtnForm">
-                                <button className="dishBtnMinus dishBtn">-</button>
+                                <div className="dishBtnMinus dishBtn">-</div>
                             <div className="dishFormCount">0</div>
-                                <button className="dishBtnPlus dishBtn">+</button>
+                                <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
@@ -234,9 +240,9 @@ export default function First(){
                             <div key={prev.id} className="dishName">{prev.name}</div>
                             <h6 className="dishDescription">{prev.description}</h6>
                             <div className="dishBtnForm">
-                                <button className="dishBtnMinus dishBtn">-</button>
+                                <div className="dishBtnMinus dishBtn">-</div>
                             <div className="dishFormCount">0</div>
-                                <button className="dishBtnPlus dishBtn">+</button>
+                                <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
