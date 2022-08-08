@@ -1,3 +1,5 @@
+
+
 .componentFirst {
     display: flex;
     flex-direction: column;
@@ -7,13 +9,19 @@
     height: 100%;
 }
 
+.categoryTitle {
+    font-size: 45px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
 .allDishes {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr; 
     row-gap: 20px;
     column-gap: 15px;
     justify-items: center;
+    padding-bottom: -100px;
 }
 
 img {
@@ -37,6 +45,7 @@ img {
     position: relative;
 }
 .dishName {
+    padding-top: 7px;
     cursor: default;
     margin: 5px;
 }
@@ -61,6 +70,11 @@ img {
 }
 
 @media screen and (max-width: 2000px) {
+    .categoryTitle {
+        font-size: 40px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
     .allDishes{
         grid-template-columns: 1fr 1fr;
     }
@@ -69,6 +83,11 @@ img {
 @media screen and (max-width: 1500px) {
     .allDishes{
         grid-template-columns: 1fr;
+    }
+    .categoryTitle {
+        font-size: 30px;
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
 }
 
@@ -116,9 +135,6 @@ img {
     user-select: none;
 }
 
-.categoryTitle {
-    display: block;
-}
 
 .dishPrice span {
     user-select: none;

@@ -79,9 +79,6 @@ export default function First(){
     })
     setFilteredArrayColdDrinks((prev) => categColdDrinks)
 
-
-    console.log(categBreakfast);
-
     setFilteredArray((prev) => {
         return noUndefinedArray
     })
@@ -89,17 +86,16 @@ export default function First(){
 
     
 
-
     
-
+    
+    
     return (
         <div className="componentFirst">
             <input type="text" className="firstInput"  id="dishesInput" onChange={(element) => filterArray(element) }/>
             {/* all Breakfasts */}
             
 
-
-                <h1 className="categoryTitle">Breakfast</h1>
+                {filteredArrayBreakfast.length !== 0 ? <h1 className="categoryTitle">Breakfast</h1> : null  }
                 <div className="allDishes">
 
                 {filteredArrayBreakfast.map((prev) => (
@@ -124,7 +120,7 @@ export default function First(){
             
        
 
-                <h1 className="categoryTitle">Lunch</h1>
+                {filteredArrayLunch.length !== 0 ? <h1 className="categoryTitle">Lunch</h1> : null  }
                 <div className="allDishes">
 
                 {filteredArrayLunch.map((prev) => (
@@ -150,10 +146,11 @@ export default function First(){
             
      
 
-                <h1 className="categoryTitle">Pizza</h1>
+
+                {filteredArrayDinner.length !== 0 ? <h1 className="categoryTitle">Dinner</h1> : null  }
                 <div className="allDishes">
 
-                {filteredArrayPizza.map((prev) => (
+                {filteredArrayDinner.map((prev) => (
                     <div className="dishFormMain">
                         <div key={prev.id} className="dishForm">
                             <div key={prev.id} className="dishName">{prev.name}</div>
@@ -176,10 +173,10 @@ export default function First(){
             
 
 
-                <h1 className="categoryTitle">Dinner</h1>
+                {filteredArrayPizza.length !== 0 ? <h1 className="categoryTitle">Pizza</h1> : null  }
                 <div className="allDishes">
 
-                {filteredArrayDinner.map((prev) => (
+                {filteredArrayPizza.map((prev) => (
                     <div className="dishFormMain">
                         <div key={prev.id} className="dishForm">
                             <div key={prev.id} className="dishName">{prev.name}</div>
@@ -200,9 +197,7 @@ export default function First(){
 
             {/* all Desserts */}
             
-
-
-                <h1 className="categoryTitle">Dessert</h1>
+                {filteredArrayDessert.length !== 0 ? <h1 className="categoryTitle">Desserts</h1> : null  }
                 <div className="allDishes">
 
                 {filteredArrayDessert.map((prev) => (
@@ -224,11 +219,13 @@ export default function First(){
 
 
 
+
+
             {/* all ColdDrinkss */}
             
 
 
-                <h1 className="categoryTitle">ColdDrinks</h1>
+                {filteredArrayColdDrinks.length !== 0 ? <h1 className="categoryTitle">Cold Drinks</h1> : null  }
                 <div className="allDishes">
 
                 {filteredArrayColdDrinks.map((prev) => (
