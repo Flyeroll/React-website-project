@@ -90,7 +90,7 @@ export default function First(){
 
     function plusDish(element){
         let elementName = element.target.parentElement.parentElement.firstElementChild.innerHTML
-        let correctElement;
+
         setCounter((prev) => {
             let newObj = prev.map((elem) => {
                 let newCount = elem.counter
@@ -102,20 +102,37 @@ export default function First(){
             return newObj
         })
     }
+
+    function minusDish(element){
+        let elementName = element.target.parentElement.parentElement.firstElementChild.innerHTML
+
+        setCounter((prev) => {
+            let newObj = prev.map((elem) => {
+                let newCount = elem.counter
+                if(elem.name === elementName & newCount > 0){
+                    newCount--
+                }
+                return {...elem, counter:newCount}
+            })
+            return newObj
+        })
+    }
     
     useEffect(() => {
         console.log(counter);
     },[counter])
     
-    function printCount(prevEl){
-        let newCounter = counter
-        newCounter.filter((elem) => {
-            let newCount
-            if(prevEl.id == elem.id){
-                newCount = elem.counter
+    function printCountPlus(prevEl){
+        let number = 0;
+
+        let newCount = counter
+        newCount.forEach((elem) => {
+            if(elem.id === prevEl.id){
+                number = elem.counter
             }
-            return newCount
         })
+        return number
+
     }
     
     return (
@@ -133,8 +150,8 @@ export default function First(){
                             <div key={prev.id} className="dishName">{prev.name}</div>
                             <h6 className="dishDescription">{prev.description}</h6>
                             <div className="dishBtnForm">
-                                <div className="dishBtnMinus dishBtn">-</div>
-                            <div className="dishFormCount">{prev.counter}</div>
+                                <div className="dishBtnMinus dishBtn" onClick={(element) => minusDish(element)}>-</div>
+                            <div className="dishFormCount">{printCountPlus(prev)}</div>
                                 <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
