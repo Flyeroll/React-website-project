@@ -87,13 +87,36 @@ export default function First(){
     })
     }, [input])
 
+
     function plusDish(element){
-        console.log(element);
-        console.log(counter);
+        let elementName = element.target.parentElement.parentElement.firstElementChild.innerHTML
+        let correctElement;
+        setCounter((prev) => {
+            let newObj = prev.map((elem) => {
+                let newCount = elem.counter
+                if(elem.name === elementName) {
+                    newCount++
+                }
+                return {...elem, counter:newCount}
+            })
+            return newObj
+        })
     }
-
-
     
+    useEffect(() => {
+        console.log(counter);
+    },[counter])
+    
+    function printCount(prevEl){
+        let newCounter = counter
+        newCounter.filter((elem) => {
+            let newCount
+            if(prevEl.id == elem.id){
+                newCount = elem.counter
+            }
+            return newCount
+        })
+    }
     
     return (
         <div className="componentFirst">
@@ -111,7 +134,7 @@ export default function First(){
                             <h6 className="dishDescription">{prev.description}</h6>
                             <div className="dishBtnForm">
                                 <div className="dishBtnMinus dishBtn">-</div>
-                            <div className="dishFormCount">0</div>
+                            <div className="dishFormCount">{prev.counter}</div>
                                 <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
@@ -136,7 +159,7 @@ export default function First(){
                             <h6 className="dishDescription">{prev.description}</h6>
                             <div className="dishBtnForm">
                                 <div className="dishBtnMinus dishBtn">-</div>
-                            <div className="dishFormCount">0</div>
+                            <div className="dishFormCount">{prev.counter}</div>
                                 <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
@@ -163,7 +186,7 @@ export default function First(){
                             <h6 className="dishDescription">{prev.description}</h6>
                             <div className="dishBtnForm">
                                 <div className="dishBtnMinus dishBtn">-</div>
-                            <div className="dishFormCount">0</div>
+                            <div className="dishFormCount">{prev.counter}</div>
                                 <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
@@ -189,7 +212,7 @@ export default function First(){
                             <h6 className="dishDescription">{prev.description}</h6>
                             <div className="dishBtnForm">
                                 <div className="dishBtnMinus dishBtn">-</div>
-                            <div className="dishFormCount">0</div>
+                            <div className="dishFormCount">{prev.counter}</div>
                                 <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
@@ -213,7 +236,7 @@ export default function First(){
                             <h6 className="dishDescription">{prev.description}</h6>
                             <div className="dishBtnForm">
                                 <div className="dishBtnMinus dishBtn">-</div>
-                            <div className="dishFormCount">0</div>
+                            <div className="dishFormCount">{prev.counter}</div>
                                 <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
@@ -241,7 +264,7 @@ export default function First(){
                             <h6 className="dishDescription">{prev.description}</h6>
                             <div className="dishBtnForm">
                                 <div className="dishBtnMinus dishBtn">-</div>
-                            <div className="dishFormCount">0</div>
+                            <div className="dishFormCount">{prev.counter}</div>
                                 <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
