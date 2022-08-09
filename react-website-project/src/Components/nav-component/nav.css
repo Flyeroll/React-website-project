@@ -195,6 +195,7 @@
     color: green;
     user-select: none;
     pointer-events: none;
+    cursor: default;
 }
 
 

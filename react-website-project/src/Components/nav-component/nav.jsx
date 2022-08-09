@@ -39,11 +39,11 @@ export default function Nav() {
             })
         } else {
             menu[0].classList.add('showMenuFalse')
-            menu[0].classList.remove('showMenuTrue')
             let itemsToHideShow = document.querySelectorAll('.linkToHide')
             itemsToHideShow.forEach((link) => {
-                link.style.pointerEvents = 'all'
+                link.style.pointerEvents = 'none'
             })
+            menu[0].classList.remove('showMenuTrue')
         }
 
     }
