@@ -7,6 +7,10 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 import { Outlet } from "react-router-dom";
 
+import { Link } from "react-router-dom";
+
+
+
 
 
 export default function Nav() {
@@ -29,29 +33,37 @@ export default function Nav() {
         if(menu[0].classList.contains('showMenuFalse')) {
             menu[0].classList.remove('showMenuFalse')
             menu[0].classList.add('showMenuTrue')
+            let itemsToHideShow = document.querySelectorAll('.linkToHide')
+            itemsToHideShow.forEach((link) => {
+                link.style.pointerEvents = 'all'
+            })
         } else {
             menu[0].classList.add('showMenuFalse')
             menu[0].classList.remove('showMenuTrue')
+            let itemsToHideShow = document.querySelectorAll('.linkToHide')
+            itemsToHideShow.forEach((link) => {
+                link.style.pointerEvents = 'all'
+            })
         }
+
     }
     return(
         <div>
 
-            <div className="nav">
+            <div className="nav" onClick={(elem) => {
+                console.log(elem.target)
+            }}>
                 <img src="/images/logo.png" alt="" className="navLogo"/>
                 <div className="buttons">
                     <div className="menuBtn navBtn" onClick={() => openMenu()}>
+                        Menu
                         <div className="menuBar showMenuFalse" id="menuBtn">
       
-                                <h6 className="navMenuBtn">Dishes</h6>
-   
-         
-                                <h6 className="navMenuBtn">Second</h6>
-  
+                                <h6 className="navMenuBtn"><Link to="/default" className="linkToHide">Second</Link></h6>
+                                <h6 className="navMenuBtn"><Link to="/first" className="linkToHide">Dishes</ Link></h6>
                                 <h6 className="navMenuBtn">About Us</h6>
-
+                                
                         </div>
-                        Menu
                         </div>
                     <div className="reserveBtn navBtn">Reservation</div>
                 </div>

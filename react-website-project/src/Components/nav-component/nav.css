@@ -157,6 +157,7 @@
     width: 200%;
     background-color: chartreuse;
     transition: 0.3s all ease-in-out;
+    z-index: 10;
     
 }
 
@@ -190,6 +191,11 @@
     text-decoration: none;
 }
 
+.linkToHide {
+    color: green;
+    user-select: none;
+    pointer-events: none;
+}
 
 
 
