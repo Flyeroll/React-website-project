@@ -1,3 +1,4 @@
+// ABOUT US
 import React from "react";
 
 export default function Second(){

@@ -4,7 +4,7 @@ export default function Default(){
 
     return (
         <div>
-            "DEFAULT" PAGE
+            About Us
         </div>
     )
 }

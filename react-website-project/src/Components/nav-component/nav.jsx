@@ -59,13 +59,13 @@ export default function Nav() {
                         Menu
                         <div className="menuBar showMenuFalse" id="menuBtn">
       
-                                <h6 className="navMenuBtn"><Link to="/default" className="linkToHide">Second</Link></h6>
-                                <h6 className="navMenuBtn"><Link to="/first" className="linkToHide">Dishes</ Link></h6>
-                                <h6 className="navMenuBtn">About Us</h6>
+                                <h6 className="navMenuBtn"><Link to="/dishes" className="linkToHide">Dishes</ Link></h6>
+                                <h6 className="navMenuBtn"><Link to="/about" className="linkToHide">About Us</Link></h6>
+                                <h6 className="navMenuBtn"><Link to="/contacts" className="linkToHide">Contacts</Link></h6>
                                 
                         </div>
                         </div>
-                    <div className="reserveBtn navBtn">Reservation</div>
+                    <div className="reserveBtn navBtn"><Link to="reservation" className="link">Reservation</Link></div>
                 </div>
                 <FontAwesomeIcon icon={ faMapLocation } className="navIcon" onClick={() => showOrHideMap()}/>
                 <div className="navMap falseShow" id="xMarkNav">
