@@ -1,0 +1,13 @@
+canvas {
+    width: 600px;
+    height: 400px;
+    background-color: blue;
+}
+
+.mainDiv {
+    width: 100%;
+    height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
