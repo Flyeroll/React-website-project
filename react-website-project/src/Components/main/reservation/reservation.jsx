@@ -17,11 +17,11 @@ export default function Reservation () {
         10:false
     })
 
-    const [reservedTablesClear, setReservedTablesClear] = useState('')
+    const [clearReservedTables,setClearReservedTables] = useState('')
 
     function changeTableStatus(table) {
-        console.log(content);
         let content = table.target.innerHTML
+        console.log(content);
         
         if(table.target.classList.contains('tableFree')) {
             let classes = table.target.classList
@@ -44,11 +44,25 @@ export default function Reservation () {
         }
     }
 
+
+
     useEffect(() => {
-        setReservedTablesClear((prev) => {
-            
-        })
+        let newRawObjTables = reservedTables
+        let newRawArrayTables = Object.values(newRawObjTables)
+        let newClearArrayTables = []
+        for(let i = 0; i < newRawArrayTables.length;i++){
+            if(newRawArrayTables[i] === true) {
+                newClearArrayTables.push(i+1)
+            }
+        }
+
+        setClearReservedTables((prev) => newClearArrayTables)
+        
     },[reservedTables])
+    
+    useEffect(() => {
+        console.log(clearReservedTables);
+    }, [clearReservedTables])
     
     
 
