@@ -16,7 +16,7 @@ export default function Reservation () {
         9:false,
         10:false
     })
-
+    // clear Tables data to display user
     const [clearReservedTables,setClearReservedTables] = useState('')
 
     function changeTableStatus(table) {
