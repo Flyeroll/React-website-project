@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "../reservation/style.css"
 
+import { Outlet } from "react-router-dom";
+
 
 export default function Reservation () {
 
@@ -68,25 +70,38 @@ export default function Reservation () {
 
     return(
         <div className="mainDiv">
-            <div className="myCanvas">
-                <div className="firstRow row">
-                    <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>1</div>
-                    <div className="welcome">Welcome !</div>
-                    <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>2</div>
+            <div>
+                <Outlet />
+                <div className="reserveBtnSection">
+                    <div className="reserveBtn reservBtnBack"></div>
+                    <div className="reserveBtn reservBtnForwar"></div>
                 </div>
-                <div className="secondRow row">
-                    <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>3</div>
-                    <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>4</div>
-                    <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>5</div>
-                    <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>6</div>
+                <div className="reserveShape">
+                    
                 </div>
-                <div className="thirdRow row">
-                    <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>7</div>
-                    <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>8</div>
-                    <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>9</div>
-                    <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>10</div>
-                </div>
+
             </div>
         </div>
     )
 }
+
+
+            // <div className="myCanvas">
+            //     <div className="firstRow row">
+            //         <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>1</div>
+            //         <div className="welcome">Welcome !</div>
+            //         <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>2</div>
+            //     </div>
+            //     <div className="secondRow row">
+            //         <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>3</div>
+            //         <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>4</div>
+            //         <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>5</div>
+            //         <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>6</div>
+            //     </div>
+            //     <div className="thirdRow row">
+            //         <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>7</div>
+            //         <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>8</div>
+            //         <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>9</div>
+            //         <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>10</div>
+            //     </div>
+            // </div>
