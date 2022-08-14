@@ -18,7 +18,11 @@
     background-color: brown;
 }
 
-
+.reserveMainWindow {
+    width: 600px;
+    height: 600px;
+    background-color: chartreuse;
+}
 
 
 

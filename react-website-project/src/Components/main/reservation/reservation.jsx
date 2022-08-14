@@ -70,14 +70,14 @@ export default function Reservation () {
 
     return(
         <div className="mainDiv">
-            <div>
+            <div className="reserveMainWindow">
                 <Outlet />
                 <div className="reserveBtnSection">
-                    <div className="reserveBtn reservBtnBack"></div>
-                    <div className="reserveBtn reservBtnForwar"></div>
+                    <div className="reserveBtn reservBtnBack">back</div>
+                    <div className="reserveBtn reservBtnForwar">continue</div>
                 </div>
                 <div className="reserveShape">
-                    
+
                 </div>
 
             </div>

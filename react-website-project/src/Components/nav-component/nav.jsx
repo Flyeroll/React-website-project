@@ -1,5 +1,5 @@
 import React from "react";
-import "./nav.css"
+import "./nav.scoped.css"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapLocation } from '@fortawesome/free-solid-svg-icons'
@@ -65,7 +65,7 @@ export default function Nav() {
                                 
                         </div>
                         </div>
-                    <div className="reserveBtn navBtn"><Link to="reservation" className="link">Reservation</Link></div>
+                    <div className="reserveMenuBtn navBtn"><Link to="reservation" className="link">Reservation</Link></div>
                 </div>
                 <FontAwesomeIcon icon={ faMapLocation } className="navIcon" onClick={() => showOrHideMap()}/>
                 <div className="navMap falseShow" id="xMarkNav">
