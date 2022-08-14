@@ -2,6 +2,7 @@
 // DISHES
 import React, { useEffect, useState } from "react";
 import "./first.css"
+import { Outlet } from "react-router-dom";
 
 import Data from '../../API/api.json'
 
@@ -292,7 +293,7 @@ export default function First(){
                     ))}
                     </div>
 
-
+        <Outlet />
         </div>
     )
 }
