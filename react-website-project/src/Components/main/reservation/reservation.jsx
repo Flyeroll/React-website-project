@@ -7,13 +7,57 @@ import { faLineChart } from "@fortawesome/free-solid-svg-icons";
 
 export default function Reservation () {
 
+    const [statusLine, setStatusLine] = useState(1)
+
+    useEffect(() => {
+        if (statusLine === 1){
+            moveToFirstStep();
+        } else if(statusLine === 2) {
+            moveToSecondStep();
+        } else if(statusLine === 3) {
+            moveToThirdStep();
+        }
+    },[statusLine])
+
+
+    function changeStatus(btn){
+        if(statusLine === 1){
+            setStatusLine((prev) => 2)
+        } else if(statusLine === 2 & btn.target.classList.contains('reservBtnForward')) {
+            setStatusLine((prev) => 3)
+        } else if(statusLine === 2 & btn.target.classList.contains('reservBtnBack')) {
+            setStatusLine((prev) => 1)
+        } else if(statusLine === 3) {
+            setStatusLine((prev) => 2)
+            let thirdBtn = document.querySelector('.reserveThirdBall')
+            setTimeout(() => {
+                thirdBtn.classList.remove('black')
+            }, 200);
+        } 
+    }
 
     function moveToFirstStep() {
         let secondBtn = document.querySelector('.reserveSecondBall')
-        let reserveLine = document.querySelector('.reserveLine')
-        let before = window.getComputedStyle(reserveLine,'::before')
-        console.log(before.width);
+        let reserveLineBlack = document.getElementById('reserveLineBlack')
+        console.log(reserveLineBlack.style.width);
+        reserveLineBlack.style = "width:0px;"
         secondBtn.classList.remove('black')
+    }
+    function moveToSecondStep() {
+        let secondBtn = document.querySelector('.reserveSecondBall')
+        let reserveLineBlack = document.getElementById('reserveLineBlack')
+        reserveLineBlack.style = "width:140px;"
+        setTimeout(() => {
+            secondBtn.classList.add('black')
+        }, 550);
+    }
+    function moveToThirdStep() {
+        let thirdBtn = document.querySelector('.reserveThirdBall')
+        let reserveLineBlack = document.getElementById('reserveLineBlack')
+        reserveLineBlack.style = "width:280px;"
+        setTimeout(() => {
+            thirdBtn.classList.add('black')
+        }, 475);
     }
 
 
@@ -22,13 +66,14 @@ export default function Reservation () {
             <div className="reserveMainWindow">
                 <Outlet />
                 <div className="reserveBtnSection">
-                    <div className="reserveBtn reservBtnBack" onClick={() => moveToFirstStep()}>back</div>
-                    <div className="reserveBtn reservBtnForwar">continue</div>
+                    <div className="reserveBtn reservBtnBack" onClick={(btn) => changeStatus(btn)}>back</div>
+                    <div className="reserveBtn reservBtnForward" onClick={(btn) => changeStatus(btn)}>continue</div>
                 </div>
                 <div className="reserveShape">
                     <div className="reserveLine">
+                        <div className="reserveLineBlack" id="reserveLineBlack"></div>
                         <div className="reserveFirstBall reserveBall"></div>
-                        <div className="reserveSecondBall reserveBall black"></div>
+                        <div className="reserveSecondBall reserveBall"></div>
                         <div className="reserveThirdBall reserveBall"></div>
                     </div>
                 </div>
