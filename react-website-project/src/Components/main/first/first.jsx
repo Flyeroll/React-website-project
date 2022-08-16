@@ -294,7 +294,7 @@ export default function First(){
                     </div>
                     ))}
                     </div>
-        {showReserve ? <Outlet suka='suuu4kaaa'/> : null}
+        {showReserve ? <Outlet/> : null}
 
         </div>
     )
