@@ -15,7 +15,9 @@ class App extends Component {
           <Route path='/' element={<NavRoute />}>
             <Route path='about' element={<AboutRoute/>}></Route>
             <Route path='dishes' element={<FirstRoute/>}>
-              <Route path='reservation' element={<ReservationRoute/>}></Route>
+              <Route path='reservation' element={<ReservationRoute/>}>
+                <Route path='firstStep'></Route>
+              </Route>
             </Route>
             <Route path='contacts' element={<ThirdRoute/>}></Route>
             

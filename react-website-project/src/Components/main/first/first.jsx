@@ -12,6 +12,8 @@ export default function First(){
     const [initialArray, setinitialArray] = useState(Data)
     const [filteredArray, setFilteredArray] = useState(Data)
 
+    const [showReserve, setShowReserve] = useState(true)
+
     // Categories
     const [filteredArrayBreakfast, setFilteredArrayBreakfast] = useState(Data)
     const [filteredArrayLunch, setFilteredArrayLunch] = useState(Data)
@@ -292,8 +294,8 @@ export default function First(){
                     </div>
                     ))}
                     </div>
+        {showReserve ? <Outlet suka='suuu4kaaa'/> : null}
 
-        <Outlet />
         </div>
     )
 }

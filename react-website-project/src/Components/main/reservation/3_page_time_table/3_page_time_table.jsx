@@ -5,7 +5,7 @@ export default function thirdPageReserv() {
 
     return (
         <div>
-            
+            THIRD PAGE STEP
         </div>
     )
 }

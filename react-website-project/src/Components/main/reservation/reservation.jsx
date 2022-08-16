@@ -4,8 +4,15 @@ import "../reservation/style.css"
 import { Outlet } from "react-router-dom";
 import { faLineChart } from "@fortawesome/free-solid-svg-icons";
 
+import FirstPage from "./1_page_info/1_page_info"
+import SecondPage from "./2_page_client_info/2_page_client_info"
+import ThirdPage from "./3_page_time_table/3_page_time_table"
 
-export default function Reservation () {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
+
+
+export default function Reservation (props) {
 
     const [statusLine, setStatusLine] = useState(1)
 
@@ -64,10 +71,16 @@ export default function Reservation () {
     return(
         <div className="mainDiv">
             <div className="reserveMainWindow">
-                <Outlet />
+                <FontAwesomeIcon icon={ faXmark } className="xMarkNav"/>
+                {props.suka}
+                {statusLine === 1 ? <FirstPage /> : null}
+                {statusLine === 2 ? <SecondPage /> : null}
+                {statusLine === 3 ? <ThirdPage /> : null}
+
                 <div className="reserveBtnSection">
-                    <div className="reserveBtn reservBtnBack" onClick={(btn) => changeStatus(btn)}>back</div>
-                    <div className="reserveBtn reservBtnForward" onClick={(btn) => changeStatus(btn)}>continue</div>
+                    {statusLine === 1 ? null : <div className="reserveBtn reservBtnBack" onClick={(btn) => changeStatus(btn)}>back</div>}
+                    {statusLine === 3 ? null : <div className="reserveBtn reservBtnForward" onClick={(btn) => changeStatus(btn)}>continue</div>}
+                    
                 </div>
                 <div className="reserveShape">
                     <div className="reserveLine">

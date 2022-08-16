@@ -5,7 +5,7 @@ export default function firstPageReserv() {
 
     return (
         <div>
-            
+            FIRST PAGE STEP
         </div>
     )
 }
