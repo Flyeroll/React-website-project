@@ -1,0 +1,18 @@
+.dateMain {
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    height: 250px;
+    background-color: azure;
+}
+
+.dateLeft {
+    width: 300px;
+    height: 100%;
+    background-color: burlywood;
+}
+
+.dateRight {
+    overflow: hidden;
+    overflow-y: scroll;
+}
