@@ -13,12 +13,15 @@ import {ThemeContext} from '../reservation/Context'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
+import { createContext } from "react";
 
 
+
+export const showWindow = createContext() 
 
 export default function Reservation (props) {
 
-    const [statusLine, setStatusLine] = useState(1) 
+    const [statusLine, setStatusLine] = useState(1)
     
 
     useEffect(() => {
@@ -58,7 +61,7 @@ export default function Reservation (props) {
     function moveToSecondStep() {
         let secondBtn = document.querySelector('.reserveSecondBall')
         let reserveLineBlack = document.getElementById('reserveLineBlack')
-        reserveLineBlack.style = "width:140px;"
+        reserveLineBlack.style = "width:160px;"
         setTimeout(() => {
             secondBtn.classList.add('black')
         }, 550);
@@ -66,18 +69,21 @@ export default function Reservation (props) {
     function moveToThirdStep() {
         let thirdBtn = document.querySelector('.reserveThirdBall')
         let reserveLineBlack = document.getElementById('reserveLineBlack')
-        reserveLineBlack.style = "width:280px;"
+        reserveLineBlack.style = "width:310px;"
         setTimeout(() => {
             thirdBtn.classList.add('black')
         }, 475);
     }
 
+    function crossFunc() {
+        console.log("CROSS ");
 
+    }
     return(
         <ThemeContext.Provider value={false}>
             <div className="mainDiv">
                 <div className="reserveMainWindow">
-                    <FontAwesomeIcon icon={ faXmark } className="xMarkNav"/>
+                    <FontAwesomeIcon icon={ faXmark } className="xMarkNav" onClick={() => crossFunc()}/>
                     {statusLine === 1 ? <FirstPage /> : null}
                     {statusLine === 2 ? <SecondPage /> : null}
                     {statusLine === 3 ? <ThirdPage /> : null}

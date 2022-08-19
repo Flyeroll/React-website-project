@@ -1,0 +1,69 @@
+.myCanvas {
+    width: 600px;
+    height: 400px;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tableNumber {
+    font-size: 30px;
+    user-select: none;
+}
+
+.welcome {
+    user-select: none;
+    padding-top: 20px;
+    font-size: 40px;
+}
+
+.table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 75px;
+    background-color: green;
+    margin: 10px;
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+.tableFree {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 75px;
+    margin: 10px;
+    border-radius: 20%;
+}
+
+.tableSelected {
+    background-color: yellow;
+}
+
+.tableOccupied {
+    background-color: grey;
+}
+
+.allComponent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+    background-color: coral;
+}
+
+.allComponentTitle {
+    margin-top: 20px;
+}
