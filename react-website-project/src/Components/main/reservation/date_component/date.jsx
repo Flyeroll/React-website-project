@@ -25,15 +25,12 @@ export default function DateWindow(){
     ])
 
     function changeTimeStatus(elem) {
-        setTimeArray((prev) => {
-            let newArr = prev.map(())
-        })
         if(!elem.target.classList.contains('selectedSingleTime')) {
             elem.target.classList.add('selectedSingleTime')
         } else {
             elem.target.classList.remove('selectedSingleTime')
         }
-        console.log(elem.target);
+        console.log(timeArray);
     }
 
     function printTime() {
