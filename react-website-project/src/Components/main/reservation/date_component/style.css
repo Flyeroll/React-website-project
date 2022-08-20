@@ -1,9 +1,16 @@
 .dateMain {
+    margin-top: 50px;
+    margin-left: 150px;
     display: flex;
     flex-direction: row;
     width: 400px;
     height: 250px;
     background-color: azure;
+}
+
+.dateArrow {
+    user-select: none;
+    cursor: pointer;
 }
 
 .dateLeft {
@@ -13,6 +20,37 @@
 }
 
 .dateRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+    overflow: hidden;
+    user-select: none;
+}
+
+.dateTime {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
     overflow: hidden;
     overflow-y: scroll;
+    height: 200px;
+    background-color: darkkhaki;
+}
+
+.singleTime {
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    transition: 0.3s all ease-in-out;
+    cursor: pointer;
+}
+
+.singleTime.selectedSingleTime {
+    background-color: chartreuse;
+}
+
+.dateTime {
+    
 }
