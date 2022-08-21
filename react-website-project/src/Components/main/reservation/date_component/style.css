@@ -9,6 +9,7 @@
 }
 
 .dateArrow {
+    color: rgb(90, 90, 90);
     user-select: none;
     cursor: pointer;
 }
@@ -51,6 +52,40 @@
     background-color: chartreuse;
 }
 
-.dateTime {
-    
+.dateLeftTop {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
 }
+
+.dateLeftTopBtn {
+    color: rgb(90, 90, 90);
+    user-select: none;
+    cursor: pointer;
+}
+
+.dateLeftTopBtn:hover {
+    color: rgb(0, 0, 0);
+}
+
+.dateLeftBottom {
+    display: flex;
+    flex-direction: column;
+}
+
+.dateDaysTable {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag {
+    user-select: none;
+    width: 40px;
+    height: 35px;
+    border: 1px solid black;
+}
+
+.dateLeftWeek {
+    display: flex;
+}
+
