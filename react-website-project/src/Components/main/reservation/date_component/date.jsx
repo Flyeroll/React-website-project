@@ -28,16 +28,36 @@ export default function DateWindow(){
 
     const [daysArray, setDaysArray] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31])
     const [monthArray, setMonthArray] = useState("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
-     const [yearArray, setYearArray] = useState(2022, 2023, 2024)
+    const [yearArray, setYearArray] = useState(2022, 2023, 2024)
+    const [selectedDay, setSelectedDay] = useState({daySelected:false, day:"", month:"", year:"", time:""})
 
     useEffect(() => {
         console.log(timeArray);
     },[timeArray])
     
-
+    useEffect(() => {
+        console.log(selectedDay);
+    },[selectedDay])
 
     function selectDate(elem) {
-        console.log(elem);
+        if(!selectedDay.daySelected) {
+            if(!elem.target.classList.contains('dateDaySelected')){
+                elem.target.classList.add('dateDaySelected')
+                setSelectedDay((prev) => {
+                    return {...prev, day:elem.target.innerHTML,daySelected:true}
+                })
+            } 
+        }
+
+        if(selectedDay.daySelected) {
+            if(elem.target.classList.contains('dateDaySelected')){
+                elem.target.classList.remove('dateDaySelected')
+                setSelectedDay((prev) => {
+                    return {...prev, daySelected:false}
+                })
+            } 
+        }
+         console.log(elem.target);
     }
 
     function changeTimeStatus(elem) {
@@ -168,10 +188,10 @@ export default function DateWindow(){
                         <div className="tag" onClick={(elem) => selectDate(elem)}>29</div>
                         <div className="tag" onClick={(elem) => selectDate(elem)}>30</div>
                         <div className="tag" onClick={(elem) => selectDate(elem)}>31</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}></div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}></div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}></div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}></div>
+                        <div className="tag"></div>
+                        <div className="tag"></div>
+                        <div className="tag"></div>
+                        <div className="tag"></div>
                     </div>
                 </div>
             </div>

@@ -84,6 +84,7 @@
     width: 40px;
     height: 35px;
     border: 1px solid black;
+    z-index: 10;
 }
 
 .dateLeftWeek {
@@ -100,6 +101,7 @@
     background-color: rgb(0, 0, 255);
     position: absolute;
     height: auto;
+    opacity: 0;
 }
 
 .dateYearList {
@@ -112,4 +114,13 @@
     background-color: rgb(0, 255, 68);
     position: absolute;
     height: auto;
+    opacity: 0;
+}
+
+.dateDaySelected{
+    background-color: rgb(64, 171, 64);
+}
+
+.dateGrey{
+    background-color: grey;
 }
