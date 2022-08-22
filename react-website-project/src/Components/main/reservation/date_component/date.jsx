@@ -26,6 +26,10 @@ export default function DateWindow(){
         {time:'20:00', selected:false},
     ])
 
+    const [daysArray, setDaysArray] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31])
+    const [monthArray, setMonthArray] = useState("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+     const [yearArray, setYearArray] = useState(2022, 2023, 2024)
+
     useEffect(() => {
         console.log(timeArray);
     },[timeArray])
@@ -78,8 +82,43 @@ export default function DateWindow(){
         }
         console.log(timeArray);
     }
+
+
+
+    const d = new Date();
+    
+    let day = d.getDate(); // ДАТА СЕГОДНЯ "22"
+    console.log(day);
+    
+    let month = d.getMonth(); //возвращает месяц  '0-11'
+    console.log(month);
+
+    let year = d.getFullYear(); // ГОД СЕГОДНЯ "2022"
+    console.log(year);
+    
+    
     return (
         <div className="dateMain">
+            <div className="dateMonthList">
+                <div>January</div>
+                <div>February</div>
+                <div>March</div>
+                <div>April</div>
+                <div>May</div>
+                <div>June</div>
+                <div>July</div>
+                <div>August</div>
+                <div>September</div>
+                <div>October</div>
+                <div>November</div>
+                <div>December</div>
+            </div>
+            <div className="dateYearList">
+                <div>2022</div>
+                <div>2023</div>
+                <div>2024</div>
+            </div>
+            <div className="dateYearList"></div>
             <div className="dateLeft">
                 <div className="dateLeftTop">
                     <FontAwesomeIcon icon={faAngleLeft} className='dateLeftTopBtn'/>
