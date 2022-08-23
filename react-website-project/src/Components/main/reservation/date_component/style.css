@@ -87,6 +87,14 @@
     z-index: 10;
 }
 
+.tag:hover{
+    background-color: rgba(64, 171, 64, 0.431);
+}
+
+.tag.dateDaySelected:hover {
+    background-color: rgb(64, 171, 64);
+}
+
 .dateLeftWeek {
     display: flex;
 }
@@ -102,6 +110,7 @@
     position: absolute;
     height: auto;
     opacity: 0;
+    z-index: 11;
 }
 
 .dateYearList {
@@ -115,6 +124,7 @@
     position: absolute;
     height: auto;
     opacity: 0;
+    z-index: 11;
 }
 
 .dateDaySelected{

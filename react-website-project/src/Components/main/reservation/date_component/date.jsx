@@ -29,35 +29,45 @@ export default function DateWindow(){
     const [daysArray, setDaysArray] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31])
     const [monthArray, setMonthArray] = useState("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
     const [yearArray, setYearArray] = useState(2022, 2023, 2024)
-    const [selectedDay, setSelectedDay] = useState({daySelected:false, day:"", month:"", year:"", time:""})
+    const [selectedDay, setSelectedDay] = useState({daySelected:false, day:"", month:"", year:"", time:"", object:""})
+
+
+
 
     useEffect(() => {
         console.log(timeArray);
     },[timeArray])
     
+
+    
     useEffect(() => {
         console.log(selectedDay);
     },[selectedDay])
 
+
+
+
     function selectDate(elem) {
         if(!selectedDay.daySelected) {
-            if(!elem.target.classList.contains('dateDaySelected')){
-                elem.target.classList.add('dateDaySelected')
-                setSelectedDay((prev) => {
-                    return {...prev, day:elem.target.innerHTML,daySelected:true}
-                })
-            } 
+            console.log('1 ветвь!');
+            elem.target.classList.add('dateDaySelected')
+            setSelectedDay((prev) => {
+                return {...prev, object:elem.target, daySelected:true, day:elem.target.innerHTML}
+            })
+        } else if(selectedDay.daySelected & elem.target.classList.contains('dateDaySelected')){
+            console.log('2 ветвь!');
+            selectedDay.object.classList.remove('dateDaySelected')
+            setSelectedDay((prev) => {
+                return {...prev, object:'', daySelected:false, day:''}
+            })
+        } else if(selectedDay.daySelected & !elem.target.classList.contains('dateDaySelected')){
+            console.log('3 ветвь!');
+            selectedDay.object.classList.remove('dateDaySelected')
+            elem.target.classList.add('dateDaySelected')
+            setSelectedDay((prev) => {
+                return {...prev, object:elem.target, daySelected:true, day:elem.target.innerHTML}
+            })
         }
-
-        if(selectedDay.daySelected) {
-            if(elem.target.classList.contains('dateDaySelected')){
-                elem.target.classList.remove('dateDaySelected')
-                setSelectedDay((prev) => {
-                    return {...prev, daySelected:false}
-                })
-            } 
-        }
-         console.log(elem.target);
     }
 
     function changeTimeStatus(elem) {
@@ -116,7 +126,16 @@ export default function DateWindow(){
     let year = d.getFullYear(); // ГОД СЕГОДНЯ "2022"
     console.log(year);
     
-    
+    function showList(elem) {
+        if(elem.target.classList.contains('dateLeftTopMonth')) {
+            let listToShow = document.querySelector('.dateMonthList')
+            if(listToShow.style.opacity = '0'){
+                listToShow.style.opacity = '1'
+                console.log(listToShow);
+            } 
+        }
+    }
+
     return (
         <div className="dateMain">
             <div className="dateMonthList">
@@ -142,8 +161,8 @@ export default function DateWindow(){
             <div className="dateLeft">
                 <div className="dateLeftTop">
                     <FontAwesomeIcon icon={faAngleLeft} className='dateLeftTopBtn'/>
-                    <div className="dateLeftTopMobth dateLeftTopBtn">August</div>
-                    <div className="dateLeftTopYear dateLeftTopBtn">2022</div>
+                    <div className="dateLeftTopMonth dateLeftTopBtn" onClick={(elem) => showList(elem)}>August</div>
+                    <div className="dateLeftTopYear dateLeftTopBtn" onClick={(elem) => showList(elem)}>2022</div>
                     <FontAwesomeIcon icon={faAngleRight} className='dateLeftTopBtn'/>
                 </div>
                 <div className="dateLeftBottom">
