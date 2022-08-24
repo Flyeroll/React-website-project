@@ -52,6 +52,7 @@ export default function DateWindow(){
     const [selectedYear, setSelectedYear] = useState([2022, 2023, 2024])
     
     const [monthIndex, setMonthIndex] = useState(0)
+    const [yearIndex, setYearIndex] = useState(2022)
     
     useEffect(() => {
         console.log(timeArray);
@@ -86,6 +87,9 @@ export default function DateWindow(){
                 return {...prev, object:elem.target, daySelected:true, day:elem.target.innerHTML}
             })
         }
+        setSelectedDay((prev) => {
+            return {...prev, month:monthToday + monthIndex, year:selectedYear[yearToday - yearIndex]}
+        })
     }
     
     function changeTimeStatus(elem) {
@@ -109,7 +113,21 @@ export default function DateWindow(){
             })
             return newArr
         })
+
         
+            let newTimeArrayToSave = []
+            for(let i = 0;i < timeArray.length;i++) {
+                if(timeArray[i].selected){
+                    newTimeArrayToSave.push(timeArray[i].time)
+                }
+            }
+
+            console.log(newTimeArrayToSave);
+
+                setSelectedDay((prev) => {
+                    return {...prev, time:newTimeArrayToSave}
+            })
+    
         
         
     }
@@ -181,7 +199,16 @@ export default function DateWindow(){
             if((monthToday + prev) < 11) {
                 newIndex += 1
             } else {
-                console.log("Дальше НИ-ХУ-Я!");
+                newIndex = -7
+                setYearIndex((prev) => {
+                    let newIndex = prev
+                    if(prev > 2020) {
+                        newIndex -= 1
+                    } else {
+                        newIndex = 2022
+                    }
+                    return newIndex
+                })
             }
             return newIndex
         })
@@ -200,7 +227,7 @@ export default function DateWindow(){
                 <div className="dateLeftTop">
                     <FontAwesomeIcon icon={faAngleLeft} className='dateLeftTopBtn dateLeftTopBtnLeft'/>
                     <div className="dateLeftTopMonth dateLeftTopBtn" onClick={(elem) => showList(elem)}>{selectedMonth[monthToday + monthIndex]}</div>
-                    <div className="dateLeftTopYear dateLeftTopBtn" onClick={(elem) => showList(elem)}>{selectedYear[yearToday - 2022]}</div>
+                    <div className="dateLeftTopYear dateLeftTopBtn" onClick={(elem) => showList(elem)}>{selectedYear[yearToday - yearIndex]}</div>
                     <FontAwesomeIcon icon={faAngleRight} className='dateLeftTopBtn dateLeftTopBtnRight' onClick={() => nextMonthBtn()}/>
                 </div>
                 <div className="dateLeftBottom">
