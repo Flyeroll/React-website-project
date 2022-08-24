@@ -10,6 +10,20 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function DateWindow(){
+    
+    //DATE MONTH YEAR
+    const d = new Date();
+    
+    let day = d.getDate(); // ДАТА СЕГОДНЯ "22"
+    console.log(day);
+    
+    let month = d.getMonth(); //возвращает месяц  '0-11'
+    console.log(month);
+    
+    let year = d.getFullYear(); // ГОД СЕГОДНЯ "2022"
+    console.log(year);
+    
+
 
 
     const [timeArray, setTimeArray] = useState([
@@ -25,28 +39,29 @@ export default function DateWindow(){
         {time:'19:00', selected:false},
         {time:'20:00', selected:false},
     ])
-
+    
     const [daysArray, setDaysArray] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31])
-    const [monthArray, setMonthArray] = useState("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+    const [monthArray, setMonthArray] = useState(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
     const [yearArray, setYearArray] = useState(2022, 2023, 2024)
     const [selectedDay, setSelectedDay] = useState({daySelected:false, day:"", month:"", year:"", time:"", object:""})
+    
+    const [listStatus, setListStatus] = useState({month:false, year:false})
 
-
-
-
+    const [selectedMonth, setSelectedMonth] = useState(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
+    
+    
     useEffect(() => {
         console.log(timeArray);
     },[timeArray])
     
-
+    
     
     useEffect(() => {
         console.log(selectedDay);
     },[selectedDay])
-
-
-
-
+    
+    
+    
     function selectDate(elem) {
         if(!selectedDay.daySelected) {
             console.log('1 ветвь!');
@@ -69,18 +84,18 @@ export default function DateWindow(){
             })
         }
     }
-
+    
     function changeTimeStatus(elem) {
         if(!elem.target.classList.contains('selectedSingleTime')) {
             elem.target.classList.add('selectedSingleTime')
         } else {
             elem.target.classList.remove('selectedSingleTime')
         }
-
+        
         let newElem = elem
-
-
-
+        
+        
+        
         setTimeArray((prevArr) => {
             let newArr = prevArr.map((hour) => {
                 let newHour = hour
@@ -91,77 +106,85 @@ export default function DateWindow(){
             })
             return newArr
         })
-
-
-  
+        
+        
+        
     }
-
+    
     function printTime() {
         return (
             timeArray.map((elem) => {
                 return <div className="singleTime" onClick={(elem) => changeTimeStatus(elem)}>{elem.time}</div>
             })
+            )
+        }
+        function changeScroll(elem) {
+            let scrollWindow = document.querySelector('.dateTime')
+            if(elem.target.classList.contains('dateArrowDown')) {
+                scrollWindow.scrollTop += 30
+            } else {
+                scrollWindow.scrollTop -= 30
+            }
+            console.log(timeArray);
+        }
+        
+        function showList(elem) {
+            if(elem.target.classList.contains('dateLeftTopMonth')) {
+                setListStatus((prev) => {
+                    return {...prev, month:!prev.month}
+                })
+            }
+            if(elem.target.classList.contains('dateLeftTopYear')) {
+                setListStatus((prev) => {
+                    return {...prev, year:!prev.year}
+                })
+            }
+        }
+
+        function printMonths() {
+            
+            return  (
+        <div className="dateMonthList">
+            <div>January</div>
+            <div>February</div>
+            <div>March</div>
+            <div>April</div>
+            <div>May</div>
+            <div>June</div>
+            <div>July</div>
+            <div>August</div>
+            <div>September</div>
+            <div>October</div>
+            <div>November</div>
+            <div>December</div>
+        </div>
         )
     }
-    function changeScroll(elem) {
-        let scrollWindow = document.querySelector('.dateTime')
-        if(elem.target.classList.contains('dateArrowDown')) {
-            scrollWindow.scrollTop += 30
-        } else {
-            scrollWindow.scrollTop -= 30
-        }
-        console.log(timeArray);
+    
+    function printYears() {
+        return (
+            <div className="dateYearList">
+            <div>2022</div>
+            <div>2023</div>
+            <div>2024</div>
+        </div>
+        )
     }
 
 
 
-    const d = new Date();
     
-    let day = d.getDate(); // ДАТА СЕГОДНЯ "22"
-    console.log(day);
-    
-    let month = d.getMonth(); //возвращает месяц  '0-11'
-    console.log(month);
 
-    let year = d.getFullYear(); // ГОД СЕГОДНЯ "2022"
-    console.log(year);
-    
-    function showList(elem) {
-        if(elem.target.classList.contains('dateLeftTopMonth')) {
-            let listToShow = document.querySelector('.dateMonthList')
-            if(listToShow.style.opacity = '0'){
-                listToShow.style.opacity = '1'
-                console.log(listToShow);
-            } 
-        }
-    }
 
     return (
         <div className="dateMain">
-            <div className="dateMonthList">
-                <div>January</div>
-                <div>February</div>
-                <div>March</div>
-                <div>April</div>
-                <div>May</div>
-                <div>June</div>
-                <div>July</div>
-                <div>August</div>
-                <div>September</div>
-                <div>October</div>
-                <div>November</div>
-                <div>December</div>
-            </div>
-            <div className="dateYearList">
-                <div>2022</div>
-                <div>2023</div>
-                <div>2024</div>
-            </div>
+            {listStatus.month ? printMonths() : null}
+            {listStatus.year ? printYears() : null}
             <div className="dateYearList"></div>
             <div className="dateLeft">
                 <div className="dateLeftTop">
                     <FontAwesomeIcon icon={faAngleLeft} className='dateLeftTopBtn'/>
-                    <div className="dateLeftTopMonth dateLeftTopBtn" onClick={(elem) => showList(elem)}>August</div>
+                    <div className="dateLeftTopMonth dateLeftTopBtn" onClick={(elem) => showList(elem)}>{selectedMonth[7]}</div>
                     <div className="dateLeftTopYear dateLeftTopBtn" onClick={(elem) => showList(elem)}>2022</div>
                     <FontAwesomeIcon icon={faAngleRight} className='dateLeftTopBtn'/>
                 </div>
