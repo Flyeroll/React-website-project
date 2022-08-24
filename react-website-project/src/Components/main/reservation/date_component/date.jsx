@@ -235,8 +235,9 @@ export default function DateWindow(){
             if(yearToday === selectedDay.year & monthToday === selectedDay.month) {
                 console.log("Дальше ебашить нельзя!");
             } else if(yearToday < selectedDay.year & selectedDay.month === 0){
-                setSelectedDay((prev) => {
-                    
+                newIndex = 4
+                setYearIndex((prev) => {
+                    return prev + 1
                 })
             }else {
                 newIndex -= 1
