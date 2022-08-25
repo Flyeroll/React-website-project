@@ -39,6 +39,20 @@ export default function DateWindow(){
     
     const [daysArray, setDaysArray] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35])
     const [monthArray, setMonthArray] = useState(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
+    const [monthsArray, setMonthsArray] = useState([
+        {name: "January", amountOfDays:31},
+        {name: "February", amountOfDays:28},
+        {name: "March", amountOfDays:31},
+        {name: "April", amountOfDays:30},
+        {name: "May", amountOfDays:31},
+        {name: "June", amountOfDays:30},
+        {name: "July", amountOfDays:31},
+        {name: "August", amountOfDays:31},
+        {name: "September", amountOfDays:30},
+        {name: "October", amountOfDays:31},
+        {name: "November", amountOfDays:30},
+        {name: "December", amountOfDays:31}
+    ])
     const [yearArray, setYearArray] = useState(2022, 2023, 2024)
     const [selectedDay, setSelectedDay] = useState({daySelected:false, day:dayToday, month:monthToday, year:yearToday, time:"", object:""})
     
@@ -50,6 +64,14 @@ export default function DateWindow(){
     
     const [monthIndex, setMonthIndex] = useState(0)
     const [yearIndex, setYearIndex] = useState(2022)
+
+    const [currentMonthLength, setCurrentMonthLength] = useState(monthsArray[monthToday].amountOfDays)
+
+
+    useEffect(() => {
+        console.log(currentMonthLength);
+    },[currentMonthLength])
+
 
 
     useEffect(() => {
@@ -248,10 +270,40 @@ export default function DateWindow(){
     }
 
 
+    function printDays(){
+        let xDays = monthsArray[selectedDay.month].amountOfDays
 
+        return daysArray.map((elem) => {
+            let newElem 
+            if(selectedDay.month === monthToday & selectedDay.year === yearToday) {
+                if(elem < dayToday) {
+                    newElem = <div className="tag unActiveDay"></div>
+                } else if(elem >= dayToday & elem <= xDays) {
+                    newElem = <div className="tag" onClick={(target) => selectDate(target)}>{elem}</div>
+                }
+            }else if (selectedDay.month !== monthToday) {
+                if (elem <= xDays) {
+                    newElem = <div className="tag" onClick={(target) => selectDate(target)}>{elem}</div>
+                } else if(elem > xDays) {
+                    newElem = <div className="tag unActiveDay"></div>
+                }
+            }else if(selectedDay.month === monthToday & selectedDay.year !== yearToday) {
+                if(elem <= xDays) {
+                    newElem = <div className="tag" onClick={(target) => selectDate(target)}>{elem}</div>
+                } else {
+                    newElem = <div className="tag unActiveDay"></div>
+                }
+
+            }
+            return newElem
+        })
+    }
     
 
 
+
+
+    
     return (
         <div className="dateMain">
             {listStatus.month ? printMonths() : null}
@@ -266,50 +318,19 @@ export default function DateWindow(){
                 </div>
                 <div className="dateLeftBottom">
                     <div className="dateLeftWeek">
-                        <div className="tag">Mo</div>
-                        <div className="tag">Di</div>
-                        <div className="tag">Mi</div>
-                        <div className="tag">Do</div>
-                        <div className="tag">Fr</div>
-                        <div className="tag">Sa</div>
-                        <div className="tag">So</div>
+                        <div className="tag weekDay">Mo</div>
+                        <div className="tag weekDay">Di</div>
+                        <div className="tag weekDay">Mi</div>
+                        <div className="tag weekDay">Do</div>
+                        <div className="tag weekDay">Fr</div>
+                        <div className="tag weekDay">Sa</div>
+                        <div className="tag weekDay">So</div>
                     </div>
                     <div className="dateDaysTable">
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>1</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>2</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>3</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>4</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>5</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>6</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>7</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>8</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>9</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>10</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>11</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>12</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>13</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>14</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>15</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>16</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>17</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>18</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>19</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>20</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>21</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>22</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>23</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>24</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>25</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>26</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>27</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>28</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>29</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>30</div>
-                        <div className="tag unActiveDay" >31</div>
-                        <div className="tag"></div>
-                        <div className="tag"></div>
-                        <div className="tag"></div>
-                        <div className="tag"></div>
+                        {printDays()}
+                        {/* <div className="tag" onClick={(elem) => selectDate(elem)}>30</div>
+                        <div className="tag unActiveDay" >31</div> */}
+
                     </div>
                 </div>
             </div>
