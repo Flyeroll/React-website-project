@@ -141,3 +141,11 @@
 .dateGrey{
     background-color: grey;
 }
+
+.unActiveDay{
+    background-color: rgb(141, 141, 141);
+}
+
+.tag.unActiveDay:hover {
+    background-color: rgb(141, 141, 141);
+}

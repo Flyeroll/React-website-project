@@ -37,7 +37,7 @@ export default function DateWindow(){
         {time:'20:00', selected:false},
     ])
     
-    const [daysArray, setDaysArray] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31])
+    const [daysArray, setDaysArray] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35])
     const [monthArray, setMonthArray] = useState(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
     const [yearArray, setYearArray] = useState(2022, 2023, 2024)
     const [selectedDay, setSelectedDay] = useState({daySelected:false, day:dayToday, month:monthToday, year:yearToday, time:"", object:""})
@@ -305,7 +305,7 @@ export default function DateWindow(){
                         <div className="tag" onClick={(elem) => selectDate(elem)}>28</div>
                         <div className="tag" onClick={(elem) => selectDate(elem)}>29</div>
                         <div className="tag" onClick={(elem) => selectDate(elem)}>30</div>
-                        <div className="tag" onClick={(elem) => selectDate(elem)}>31</div>
+                        <div className="tag unActiveDay" >31</div>
                         <div className="tag"></div>
                         <div className="tag"></div>
                         <div className="tag"></div>
