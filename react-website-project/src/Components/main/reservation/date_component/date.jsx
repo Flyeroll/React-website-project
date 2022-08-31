@@ -348,7 +348,7 @@ useEffect(() => {
     }, [currentYearAndMonth])
 
 
-    
+
     useEffect((element) => {
         console.log(finalCurrent);
     },[finalCurrent])
@@ -508,13 +508,42 @@ useEffect(() => {
     }
 
 
+
+    
     function printDays(){
         let xDays = monthsArray[selectedDay.month].amountOfDays
+        let dataArray = []
 
-        return daysArray.map((elem) => {
+        if(finalCurrent !== undefined) {
+            if(finalCurrent.currentMonthData !== undefined) {
+                let firstDayIndex = weeksDayArray.indexOf(finalCurrent.currentMonthData.firstDay)
+                console.log("finalCurrent bottom");
+                console.log(finalCurrent.currentMonthData.firstDay);
+                console.log(firstDayIndex);
+                console.log("finalCurrent top");
+
+
+        
+                for(let i=0; i < 35 ; i++) {
+                    let newElem
+                    if(i < firstDayIndex) {
+                        newElem = <div className="tag"></div>
+                    } else if(i >= firstDayIndex) {
+                        newElem = <div className="tag" onClick={(target) => selectDate(target)}>{i - firstDayIndex + 1}</div>
+                    }
+                    dataArray.push(newElem)
+                }
+                console.log(dataArray);
+            }
+        }
+  
+
+
+        return dataArray.map(elem => elem)
+        // return dataArray.map((elem) => {
             
-            return <div className="tag" onClick={(target) => selectDate(target)}>{elem}</div>
-        })
+        //     return elem
+        // })
     }
     
 
