@@ -124,8 +124,6 @@ monthArray.map((year) => {
 // console.log(weeksDayArray[refreshWeeksDay(weeksDayArray.indexOf(monthArray[0].monthInfo[0].firstDay), -1)]);
 // console.log(monthArray);
 
-daysArray.map((elem) => {
 
-})
 
 

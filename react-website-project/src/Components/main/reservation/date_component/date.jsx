@@ -21,6 +21,218 @@ export default function DateWindow(){
     let yearToday = d.getFullYear(); // ГОД СЕГОДНЯ "2022"
     
 
+// TEST PART TO IMPLEMENT
+
+const [weeksDayArray, setWeeksDayArray] = useState(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"])
+
+const [yearsArrayForPrint, setYearsArrayForPrint] = useState()
+
+const [yearsArray, setYearsArray] = useState([
+    {name:2022,
+    monthInfo: [
+        {monthName:"January", firstDay:weeksDayArray[5], lastDay:'', amountOfDays:31},
+        {monthName:"February", firstDay:"", lastDay:'', amountOfDays:28},
+        {monthName:"March", firstDay:"", lastDay:'', amountOfDays:31},
+        {monthName:"April", firstDay:"", lastDay:'', amountOfDays:30},
+        {monthName:"May", firstDay:"", lastDay:'', amountOfDays:31},
+        {monthName:"June", firstDay:"", lastDay:'', amountOfDays:30},
+        {monthName:"July", firstDay:"", lastDay:'', amountOfDays:31},
+        {monthName:"August", firstDay:"", lastDay:'', amountOfDays:31},
+        {monthName:"September", firstDay:"", lastDay:'', amountOfDays:30},
+        {monthName:"October", firstDay:"", lastDay:'', amountOfDays:31},
+        {monthName:"November", firstDay:"", lastDay:'', amountOfDays:30},
+        {monthName:"December", firstDay:"", lastDay:'', amountOfDays:31},
+    ]},
+    {name:2023,
+        monthInfo: [
+            {monthName:"January", firstDay:weeksDayArray[6], lastDay:'', amountOfDays:31},
+            {monthName:"February", firstDay:"", lastDay:'', amountOfDays:28},
+            {monthName:"March", firstDay:"", lastDay:'', amountOfDays:31},
+            {monthName:"April", firstDay:"", lastDay:'', amountOfDays:30},
+            {monthName:"May", firstDay:"", lastDay:'', amountOfDays:31},
+            {monthName:"June", firstDay:"", lastDay:'', amountOfDays:30},
+            {monthName:"July", firstDay:"", lastDay:'', amountOfDays:31},
+            {monthName:"August", firstDay:"", lastDay:'', amountOfDays:31},
+            {monthName:"September", firstDay:"", lastDay:'', amountOfDays:30},
+            {monthName:"October", firstDay:"", lastDay:'', amountOfDays:31},
+            {monthName:"November", firstDay:"", lastDay:'', amountOfDays:30},
+            {monthName:"December", firstDay:"", lastDay:'', amountOfDays:31},
+        ]},
+        {name:2024,
+            monthInfo: [
+                {monthName:"January", firstDay:weeksDayArray[0], lastDay:'', amountOfDays:31},
+                {monthName:"February", firstDay:"", lastDay:'', amountOfDays:29},
+                {monthName:"March", firstDay:"", lastDay:'', amountOfDays:31},
+                {monthName:"April", firstDay:"", lastDay:'', amountOfDays:30},
+                {monthName:"May", firstDay:"", lastDay:'', amountOfDays:31},
+                {monthName:"June", firstDay:"", lastDay:'', amountOfDays:30},
+                {monthName:"July", firstDay:"", lastDay:'', amountOfDays:31},
+                {monthName:"August", firstDay:"", lastDay:'', amountOfDays:31},
+                {monthName:"September", firstDay:"", lastDay:'', amountOfDays:30},
+                {monthName:"October", firstDay:"", lastDay:'', amountOfDays:31},
+                {monthName:"November", firstDay:"", lastDay:'', amountOfDays:30},
+                {monthName:"December", firstDay:"", lastDay:'', amountOfDays:31},
+            ]},
+])
+
+
+
+
+useEffect(() => {
+    setYearsArray((prev) => {
+        prev.map((year) => {
+
+            //Функция переходных значений для дней недели (аргументы: текущий индекс + необходимая величина изменения)
+            function refreshWeeksDay(index, increment) {
+                let newWeekdDay = index
+                if(index === 0 & increment < 0) {
+                    console.log("1 path");
+                    newWeekdDay = 6
+                } else if (index === 6 & increment === 1) {
+                    console.log("2 path");
+                    newWeekdDay = 0
+                } else if (index === 6 & increment === 2) {
+                    console.log("3 path");
+                    newWeekdDay = 1
+                } else {
+                    console.log("3 path");
+                    newWeekdDay += increment
+                    if(newWeekdDay === 7){
+                        newWeekdDay = 0
+                    } else if (newWeekdDay === 8) {
+                        newWeekdDay = 1
+                    }
+                }
+                return newWeekdDay
+            }
+            
+            let newYear = year
+        
+            for(let i = 0; i < 12; i++) {
+
+        
+                if(i === 0) {
+                    if(year.monthInfo[i].amountOfDays === 28){
+                        newYear.monthInfo[i].lastDay = weeksDayArray[refreshWeeksDay(weeksDayArray.indexOf(year.monthInfo[i].firstDay), -1)]
+                    } else if(year.monthInfo[i].amountOfDays === 29){
+                        newYear.monthInfo[i].lastDay = weeksDayArray[refreshWeeksDay(weeksDayArray.indexOf(year.monthInfo[i].firstDay), 0)]
+                    } else if(year.monthInfo[i].amountOfDays === 30) {
+                        newYear.monthInfo[i].lastDay = weeksDayArray[refreshWeeksDay(weeksDayArray.indexOf(year.monthInfo[i].firstDay), 1)]
+                    } else if(year.monthInfo[i].amountOfDays === 31) {
+                        newYear.monthInfo[i].lastDay = weeksDayArray[refreshWeeksDay(weeksDayArray.indexOf(year.monthInfo[i].firstDay), 2)]
+                    }
+                } else {
+                    //calc first day for current month
+                    if(year.monthInfo[i].amountOfDays === 28){
+                        newYear.monthInfo[i].firstDay = weeksDayArray[refreshWeeksDay(weeksDayArray.indexOf(year.monthInfo[i - 1].lastDay), 1)]
+                        newYear.monthInfo[i].lastDay = weeksDayArray[refreshWeeksDay(weeksDayArray.indexOf(year.monthInfo[i].firstDay), -1)]
+                    } else if(year.monthInfo[i].amountOfDays === 29){
+                        newYear.monthInfo[i].firstDay = weeksDayArray[refreshWeeksDay(weeksDayArray.indexOf(year.monthInfo[i - 1].lastDay), 1)]
+                        newYear.monthInfo[i].lastDay = weeksDayArray[refreshWeeksDay(weeksDayArray.indexOf(year.monthInfo[i].firstDay), 0)]
+                    } else if(year.monthInfo[i].amountOfDays === 30) {
+                        newYear.monthInfo[i].firstDay = weeksDayArray[refreshWeeksDay(weeksDayArray.indexOf(year.monthInfo[i - 1].lastDay), 1)]
+                        newYear.monthInfo[i].lastDay = weeksDayArray[refreshWeeksDay(weeksDayArray.indexOf(year.monthInfo[i].firstDay), 1)]
+                    } else if(year.monthInfo[i].amountOfDays === 31) {
+                        newYear.monthInfo[i].firstDay = weeksDayArray[refreshWeeksDay(weeksDayArray.indexOf(year.monthInfo[i - 1].lastDay), 1)]
+                        newYear.monthInfo[i].lastDay = weeksDayArray[refreshWeeksDay(weeksDayArray.indexOf(year.monthInfo[i].firstDay), 2)]
+                    }
+        
+                    //calc last day for current month
+        
+                }
+            }
+            
+        
+            return newYear
+        })
+    })
+
+    setYearsArrayForPrint((prev) => yearsArray)
+
+
+},[1])
+
+const [finalCurrent, setFinalCurrent] = useState()
+
+useEffect(() => {
+    console.log("Печатаем копию массива лет");
+    console.log(yearsArrayForPrint);
+}, [yearsArrayForPrint])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     const [timeArray, setTimeArray] = useState([
@@ -61,6 +273,7 @@ export default function DateWindow(){
     
     const [selectedMonth, setSelectedMonth] = useState(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
     const [selectedYear, setSelectedYear] = useState([2022, 2023, 2024])
+    const [currentYearAndMonth, setCurrentYearAndMonth] = useState({year: selectedDay.year, month: selectedDay.month,currentMonthData: ""})
     
     const [monthIndex, setMonthIndex] = useState(0)
     const [yearIndex, setYearIndex] = useState(2022)
@@ -107,26 +320,53 @@ export default function DateWindow(){
     
     
     useEffect(() => {
-        console.log(selectedDay);
+        setCurrentYearAndMonth((prev) => {
+
+            return {...prev,year: selectedDay.year, month: selectedDay.month}
+        })
+        console.log(yearsArrayForPrint);
+
     },[selectedDay])
+    
+    
+    
+    useEffect(() => {
+        console.log(currentYearAndMonth.year);
+        
+        console.log(currentYearAndMonth);
+        
+        let newMonth 
+        if(yearsArrayForPrint !== undefined) {
+            newMonth = yearsArrayForPrint.filter(elem => elem.name === currentYearAndMonth.year)[0].monthInfo[currentYearAndMonth.month]
+        }
+  
+        console.log(newMonth);
+
+        setFinalCurrent((prev) => {
+            return {...currentYearAndMonth, currentMonthData:newMonth}
+        })
+    }, [currentYearAndMonth])
+
+
+    
+    useEffect((element) => {
+        console.log(finalCurrent);
+    },[finalCurrent])
     
     
     
     function selectDate(elem) {
         if(!selectedDay.daySelected) {
-            console.log('1 ветвь!');
             elem.target.classList.add('dateDaySelected')
             setSelectedDay((prev) => {
                 return {...prev, object:elem.target, daySelected:true, day:elem.target.innerHTML}
             })
         } else if(selectedDay.daySelected & elem.target.classList.contains('dateDaySelected')){
-            console.log('2 ветвь!');
             selectedDay.object.classList.remove('dateDaySelected')
             setSelectedDay((prev) => {
                 return {...prev, object:'', daySelected:false, day:''}
             })
         } else if(selectedDay.daySelected & !elem.target.classList.contains('dateDaySelected')){
-            console.log('3 ветвь!');
             selectedDay.object.classList.remove('dateDaySelected')
             elem.target.classList.add('dateDaySelected')
             setSelectedDay((prev) => {
@@ -255,7 +495,6 @@ export default function DateWindow(){
         setMonthIndex((prev) => {
             let newIndex = prev
             if(yearToday === selectedDay.year & monthToday === selectedDay.month) {
-                console.log("Дальше ебашить нельзя!");
             } else if(yearToday < selectedDay.year & selectedDay.month === 0){
                 newIndex = 4
                 setYearIndex((prev) => {
@@ -263,7 +502,6 @@ export default function DateWindow(){
                 })
             }else {
                 newIndex -= 1
-                console.log('Ебашим!');
             }
             return newIndex
         })
@@ -274,31 +512,12 @@ export default function DateWindow(){
         let xDays = monthsArray[selectedDay.month].amountOfDays
 
         return daysArray.map((elem) => {
-            let newElem 
-            if(selectedDay.month === monthToday & selectedDay.year === yearToday) {
-                if(elem < dayToday) {
-                    newElem = <div className="tag unActiveDay"></div>
-                } else if(elem >= dayToday & elem <= xDays) {
-                    newElem = <div className="tag" onClick={(target) => selectDate(target)}>{elem}</div>
-                }
-            }else if (selectedDay.month !== monthToday) {
-                if (elem <= xDays) {
-                    newElem = <div className="tag" onClick={(target) => selectDate(target)}>{elem}</div>
-                } else if(elem > xDays) {
-                    newElem = <div className="tag unActiveDay"></div>
-                }
-            }else if(selectedDay.month === monthToday & selectedDay.year !== yearToday) {
-                if(elem <= xDays) {
-                    newElem = <div className="tag" onClick={(target) => selectDate(target)}>{elem}</div>
-                } else {
-                    newElem = <div className="tag unActiveDay"></div>
-                }
-
-            }
-            return newElem
+            
+            return <div className="tag" onClick={(target) => selectDate(target)}>{elem}</div>
         })
     }
     
+
 
 
 
