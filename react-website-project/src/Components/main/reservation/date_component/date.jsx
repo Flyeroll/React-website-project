@@ -155,8 +155,7 @@ useEffect(() => {
 const [finalCurrent, setFinalCurrent] = useState()
 
 useEffect(() => {
-    console.log("Печатаем копию массива лет");
-    console.log(yearsArrayForPrint);
+
 }, [yearsArrayForPrint])
 
 
@@ -282,20 +281,20 @@ useEffect(() => {
 
 
     useEffect(() => {
-        console.log(currentMonthLength);
+
     },[currentMonthLength])
 
 
 
     useEffect(() => {
-        console.log(monthToday + monthIndex);       //current month
+
         setSelectedDay((prev) => {
             return {...prev, month:monthToday + monthIndex, year:selectedYear[yearToday - yearIndex]}
         })
     }, [monthIndex])
 
     useEffect(() => {
-        console.log(selectedYear[yearToday - yearIndex]);       //current year
+
         setSelectedDay((prev) => {
             return {...prev, month:monthToday + monthIndex, year:selectedYear[yearToday - yearIndex]}
         })
@@ -310,7 +309,6 @@ useEffect(() => {
             }
         }
 
-        console.log(newTimeArrayToSave);
 
             setSelectedDay((prev) => {
                 return {...prev, time:newTimeArrayToSave}
@@ -324,23 +322,20 @@ useEffect(() => {
 
             return {...prev,year: selectedDay.year, month: selectedDay.month}
         })
-        console.log(yearsArrayForPrint);
 
     },[selectedDay])
     
     
     
     useEffect(() => {
-        console.log(currentYearAndMonth.year);
-        
-        console.log(currentYearAndMonth);
+
         
         let newMonth 
         if(yearsArrayForPrint !== undefined) {
             newMonth = yearsArrayForPrint.filter(elem => elem.name === currentYearAndMonth.year)[0].monthInfo[currentYearAndMonth.month]
         }
   
-        console.log(newMonth);
+
 
         setFinalCurrent((prev) => {
             return {...currentYearAndMonth, currentMonthData:newMonth}
@@ -350,7 +345,7 @@ useEffect(() => {
 
 
     useEffect((element) => {
-        console.log(finalCurrent);
+
     },[finalCurrent])
     
     
@@ -421,7 +416,6 @@ useEffect(() => {
             } else {
                 scrollWindow.scrollTop -= 30
             }
-            console.log(timeArray);
         }
         
         function showList(elem) {
@@ -487,6 +481,7 @@ useEffect(() => {
             }
             return newIndex
         })
+
     }
 
 
@@ -505,35 +500,36 @@ useEffect(() => {
             }
             return newIndex
         })
+
     }
 
 
 
     
     function printDays(){
-        let xDays = monthsArray[selectedDay.month].amountOfDays
+        let amountOfDays = monthsArray[selectedDay.month].amountOfDays
+        console.log(amountOfDays);
         let dataArray = []
 
         if(finalCurrent !== undefined) {
             if(finalCurrent.currentMonthData !== undefined) {
                 let firstDayIndex = weeksDayArray.indexOf(finalCurrent.currentMonthData.firstDay)
-                console.log("finalCurrent bottom");
-                console.log(finalCurrent.currentMonthData.firstDay);
-                console.log(firstDayIndex);
-                console.log("finalCurrent top");
+
 
 
         
                 for(let i=0; i < 35 ; i++) {
                     let newElem
                     if(i < firstDayIndex) {
-                        newElem = <div className="tag"></div>
-                    } else if(i >= firstDayIndex) {
+                        newElem = <div className="tag unActiveDay"></div>
+                    } else if(i >= firstDayIndex & i < amountOfDays) {
                         newElem = <div className="tag" onClick={(target) => selectDate(target)}>{i - firstDayIndex + 1}</div>
+                    }else if(i > amountOfDays){
+                        newElem = <div className="tag unActiveDay">{i - amountOfDays}</div>
                     }
                     dataArray.push(newElem)
                 }
-                console.log(dataArray);
+
             }
         }
   
