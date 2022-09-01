@@ -86,16 +86,12 @@ useEffect(() => {
             function refreshWeeksDay(index, increment) {
                 let newWeekdDay = index
                 if(index === 0 & increment < 0) {
-                    console.log("1 path");
                     newWeekdDay = 6
                 } else if (index === 6 & increment === 1) {
-                    console.log("2 path");
                     newWeekdDay = 0
                 } else if (index === 6 & increment === 2) {
-                    console.log("3 path");
                     newWeekdDay = 1
                 } else {
-                    console.log("3 path");
                     newWeekdDay += increment
                     if(newWeekdDay === 7){
                         newWeekdDay = 0
@@ -152,10 +148,10 @@ useEffect(() => {
 
 },[1])
 
-const [finalCurrent, setFinalCurrent] = useState()
+const [finalCurrent, setFinalCurrent] = useState({year: yearToday, month: monthToday, currentMonthData:''})
 
 useEffect(() => {
-
+    
 }, [yearsArrayForPrint])
 
 
@@ -301,7 +297,7 @@ useEffect(() => {
     }, [yearIndex])
 
     useEffect(() => {
-        console.log(timeArray);
+
         let newTimeArrayToSave = []
         for(let i = 0;i < timeArray.length;i++) {
             if(timeArray[i].selected){
@@ -345,7 +341,7 @@ useEffect(() => {
 
 
     useEffect((element) => {
-
+        console.log(finalCurrent);
     },[finalCurrent])
     
     
@@ -468,7 +464,7 @@ useEffect(() => {
             if((monthToday + prev) < 11) {
                 newIndex += 1
             } else {
-                newIndex = -7
+                newIndex = -8
                 setYearIndex((prev) => {
                     let newIndex = prev
                     if(prev > 2020) {
@@ -487,14 +483,16 @@ useEffect(() => {
 
 
     function prevMonthBtn() {
+        console.log(monthIndex);
         setMonthIndex((prev) => {
             let newIndex = prev
             if(yearToday === selectedDay.year & monthToday === selectedDay.month) {
-            } else if(yearToday < selectedDay.year & selectedDay.month === 0){
-                newIndex = 4
-                setYearIndex((prev) => {
-                    return prev + 1
-                })
+                if(yearToday < selectedDay.year & selectedDay.month === 0){
+                    newIndex = 4
+                    setYearIndex((prev) => {
+                        return prev + 1
+                    })
+            } 
             }else {
                 newIndex -= 1
             }
@@ -505,10 +503,16 @@ useEffect(() => {
 
 
 
+
+
     
     function printDays(){
-        let amountOfDays = monthsArray[selectedDay.month].amountOfDays
-        console.log(amountOfDays);
+        
+        // let amountOfDays = monthsArray[selectedDay.month].amountOfDays
+
+        let amountOfDays = 30
+
+  
         let dataArray = []
 
         if(finalCurrent !== undefined) {
@@ -542,7 +546,6 @@ useEffect(() => {
         // })
     }
     
-
 
 
 
