@@ -230,6 +230,9 @@ useEffect(() => {
 
 
 
+
+
+
     const [timeArray, setTimeArray] = useState([
         {time:'10:00', selected:false},
         {time:'11:00', selected:false},
@@ -287,6 +290,7 @@ useEffect(() => {
         setSelectedDay((prev) => {
             return {...prev, month:monthToday + monthIndex, year:selectedYear[yearToday - yearIndex]}
         })
+
     }, [monthIndex])
 
     useEffect(() => {
@@ -294,6 +298,7 @@ useEffect(() => {
         setSelectedDay((prev) => {
             return {...prev, month:monthToday + monthIndex, year:selectedYear[yearToday - yearIndex]}
         })
+
     }, [yearIndex])
 
     useEffect(() => {
@@ -456,8 +461,8 @@ useEffect(() => {
         </div>
         )
     }
-
-
+    
+    
     function nextMonthBtn() {
         setMonthIndex((prev) => {
             let newIndex = prev
@@ -481,70 +486,142 @@ useEffect(() => {
     }
 
 
-
+    
     function prevMonthBtn() {
-        console.log(monthIndex);
-        setMonthIndex((prev) => {
-            let newIndex = prev
-            if(yearToday === selectedDay.year & monthToday === selectedDay.month) {
-                if(yearToday < selectedDay.year & selectedDay.month === 0){
-                    newIndex = 4
-                    setYearIndex((prev) => {
-                        return prev + 1
-                    })
-            } 
-            }else {
-                newIndex -= 1
-            }
-            return newIndex
-        })
-
+        if (monthIndex === -8 & yearIndex < 2022) {
+            setMonthIndex((prev) => {
+                return 3
+            })
+            setYearIndex((prev) => {
+                let newEl = prev
+                newEl += 1
+                return newEl
+            })
+        } else if(monthIndex <= 3 & monthIndex >=-7 & monthIndex !== 0) {
+            setMonthIndex((prev) => {
+                let newEl = prev
+                newEl -= 1
+                return newEl
+            })
+        } else if(monthIndex === 0 & yearIndex === yearToday) {
+            console.log(finalCurrent);
+        } else {
+            setMonthIndex((prev) => {
+                let newEl = prev
+                newEl -= 1
+                return newEl
+            })
+        }
     }
 
-
-
-
-
     
+
+
     function printDays(){
-        
-        // let amountOfDays = monthsArray[selectedDay.month].amountOfDays
+        // finalCurrent.currentMonthData.amountOfDays
 
-        let amountOfDays = 30
-
-  
+        let arrayToPrint = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43]
         let dataArray = []
-
+                console.log('START');
         if(finalCurrent !== undefined) {
             if(finalCurrent.currentMonthData !== undefined) {
                 let firstDayIndex = weeksDayArray.indexOf(finalCurrent.currentMonthData.firstDay)
+                
+                let amountOfDays
 
-
-
-        
-                for(let i=0; i < 35 ; i++) {
+                if(finalCurrent.currentMonthData !== undefined) {
+                    if(finalCurrent.currentMonthData.amountOfDays !== undefined) {
+                        amountOfDays = finalCurrent.currentMonthData.amountOfDays
+                    }
+                }
+                
+                for(let i=0; i < firstDayIndex; i++) {
                     let newElem
+
                     if(i < firstDayIndex) {
                         newElem = <div className="tag unActiveDay"></div>
-                    } else if(i >= firstDayIndex & i < amountOfDays) {
-                        newElem = <div className="tag" onClick={(target) => selectDate(target)}>{i - firstDayIndex + 1}</div>
-                    }else if(i > amountOfDays){
-                        newElem = <div className="tag unActiveDay">{i - amountOfDays}</div>
-                    }
+                    } 
+                    dataArray.push(newElem)
+
+                }
+
+
+   
+                
+                for(let i=1; i < amountOfDays + 1; i++) {
+
+                    let newElem
+                        newElem = <div className="tag" onClick={(target) => selectDate(target)}>{i}</div>
+                    
                     dataArray.push(newElem)
                 }
 
+                let lastCounter = 43 - dataArray.length
+
+                for(let i=1; i < lastCounter; i++) {
+
+                    let newElem
+                        newElem = <div className="tag unActiveDay">{i}</div>
+                    
+                    dataArray.push(newElem)
+                }
+                console.log(lastCounter);
             }
         }
-  
 
-
-        return dataArray.map(elem => elem)
-        // return dataArray.map((elem) => {
-            
-        //     return elem
-        // })
+        return dataArray
     }
+
+
+    // function printDays(){
+    //     // finalCurrent.currentMonthData.amountOfDays
+
+    //     let arrayToPrint = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43]
+    //     let dataArray = []
+    //             console.log('START');
+    //     if(finalCurrent !== undefined) {
+    //         if(finalCurrent.currentMonthData !== undefined) {
+    //             let firstDayIndex = weeksDayArray.indexOf(finalCurrent.currentMonthData.firstDay)
+                
+    //             let amountOfDays
+
+    //             if(finalCurrent.currentMonthData !== undefined) {
+    //                 console.log(finalCurrent.currentMonthData.amountOfDays);
+    //                 if(finalCurrent.currentMonthData.amountOfDays !== undefined) {
+    //                     amountOfDays = finalCurrent.currentMonthData.amountOfDays
+    //                 }
+    //             }
+                
+    //             for(let i=0; i < arrayToPrint.length - 1 ; i++) {
+    //                 let newElem
+                    
+    //                 if (i === 0) {
+    //                     console.log("SSSSSSSSS");
+    //                     console.log(amountOfDays);
+    //                 }
+    //                 let obj = {i:i, amountOfDays:amountOfDays, path:'', index:""}
+
+
+    //                 if(i < firstDayIndex) {
+    //                     obj.path = 'i < firstDayIndex correct'
+    //                     newElem = <div className="tag unActiveDay"></div>
+    //                 } else if(i >= firstDayIndex & i <= amountOfDays) {
+    //                     obj.path = 'i >= firstDayIndex & i < amountOfDays'
+    //                     newElem = <div className="tag" onClick={(target) => selectDate(target)}>{i - firstDayIndex + 1}</div>
+    //                 }else if(i  > amountOfDays){
+    //                     obj.path = 'i  > amountOfDays'
+    //                     newElem = <div className="tag unActiveDay">{i - amountOfDays}</div>
+    //                 }
+    //                 dataArray.push(newElem)
+
+    //                 // console.log(obj);
+    //             }
+
+    //         }
+    //     }
+
+    //     return dataArray
+    // }
     
 
 
