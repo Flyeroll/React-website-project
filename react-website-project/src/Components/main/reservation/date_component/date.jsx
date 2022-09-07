@@ -7,6 +7,8 @@ import { faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function DateWindow(){
@@ -157,82 +159,6 @@ useEffect(() => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     const [timeArray, setTimeArray] = useState([
         {time:'10:00', selected:false},
         {time:'11:00', selected:false},
@@ -323,7 +249,12 @@ useEffect(() => {
 
             return {...prev,year: selectedDay.year, month: selectedDay.month}
         })
+        console.log(selectedDay);
 
+
+
+
+        let selectedDayCopy = {...selectedDay}
     },[selectedDay])
     
     
@@ -346,7 +277,7 @@ useEffect(() => {
 
 
     useEffect((element) => {
-        console.log(finalCurrent);
+    
     },[finalCurrent])
     
     
@@ -504,7 +435,7 @@ useEffect(() => {
                 return newEl
             })
         } else if(monthIndex === 0 & yearIndex === yearToday) {
-            console.log(finalCurrent);
+
         } else {
             setMonthIndex((prev) => {
                 let newEl = prev
@@ -522,7 +453,7 @@ useEffect(() => {
 
         let arrayToPrint = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43]
         let dataArray = []
-                console.log('START');
+        
         if(finalCurrent !== undefined) {
             if(finalCurrent.currentMonthData !== undefined) {
                 let firstDayIndex = weeksDayArray.indexOf(finalCurrent.currentMonthData.firstDay)
@@ -565,105 +496,53 @@ useEffect(() => {
                     
                     dataArray.push(newElem)
                 }
-                console.log(lastCounter);
             }
         }
 
         return dataArray
     }
 
-
-    // function printDays(){
-    //     // finalCurrent.currentMonthData.amountOfDays
-
-    //     let arrayToPrint = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43]
-    //     let dataArray = []
-    //             console.log('START');
-    //     if(finalCurrent !== undefined) {
-    //         if(finalCurrent.currentMonthData !== undefined) {
-    //             let firstDayIndex = weeksDayArray.indexOf(finalCurrent.currentMonthData.firstDay)
-                
-    //             let amountOfDays
-
-    //             if(finalCurrent.currentMonthData !== undefined) {
-    //                 console.log(finalCurrent.currentMonthData.amountOfDays);
-    //                 if(finalCurrent.currentMonthData.amountOfDays !== undefined) {
-    //                     amountOfDays = finalCurrent.currentMonthData.amountOfDays
-    //                 }
-    //             }
-                
-    //             for(let i=0; i < arrayToPrint.length - 1 ; i++) {
-    //                 let newElem
-                    
-    //                 if (i === 0) {
-    //                     console.log("SSSSSSSSS");
-    //                     console.log(amountOfDays);
-    //                 }
-    //                 let obj = {i:i, amountOfDays:amountOfDays, path:'', index:""}
-
-
-    //                 if(i < firstDayIndex) {
-    //                     obj.path = 'i < firstDayIndex correct'
-    //                     newElem = <div className="tag unActiveDay"></div>
-    //                 } else if(i >= firstDayIndex & i <= amountOfDays) {
-    //                     obj.path = 'i >= firstDayIndex & i < amountOfDays'
-    //                     newElem = <div className="tag" onClick={(target) => selectDate(target)}>{i - firstDayIndex + 1}</div>
-    //                 }else if(i  > amountOfDays){
-    //                     obj.path = 'i  > amountOfDays'
-    //                     newElem = <div className="tag unActiveDay">{i - amountOfDays}</div>
-    //                 }
-    //                 dataArray.push(newElem)
-
-    //                 // console.log(obj);
-    //             }
-
-    //         }
-    //     }
-
-    //     return dataArray
-    // }
-    
-
-
-
-
-    
     return (
-        <div className="dateMain">
-            {listStatus.month ? printMonths() : null}
-            {listStatus.year ? printYears() : null}
-            <div className="dateYearList"></div>
-            <div className="dateLeft">
-                <div className="dateLeftTop">
-                    <FontAwesomeIcon icon={faAngleLeft} className='dateLeftTopBtn dateLeftTopBtnLeft' onClick={() => prevMonthBtn()}/>
-                    <div className="dateLeftTopMonth dateLeftTopBtn" onClick={(elem) => showList(elem)}>{selectedMonth[monthToday + monthIndex]}</div>
-                    <div className="dateLeftTopYear dateLeftTopBtn" onClick={(elem) => showList(elem)}>{selectedYear[yearToday - yearIndex]}</div>
-                    <FontAwesomeIcon icon={faAngleRight} className='dateLeftTopBtn dateLeftTopBtnRight' onClick={() => nextMonthBtn()}/>
-                </div>
-                <div className="dateLeftBottom">
-                    <div className="dateLeftWeek">
-                        <div className="tag weekDay">Mo</div>
-                        <div className="tag weekDay">Di</div>
-                        <div className="tag weekDay">Mi</div>
-                        <div className="tag weekDay">Do</div>
-                        <div className="tag weekDay">Fr</div>
-                        <div className="tag weekDay">Sa</div>
-                        <div className="tag weekDay">So</div>
+        <div className="allObject">
+            <div className="dateMain">
+                {listStatus.month ? printMonths() : null}
+                {listStatus.year ? printYears() : null}
+                <div className="dateYearList"></div>
+                <div className="dateLeft">
+                    <div className="dateLeftTop">
+                        <FontAwesomeIcon icon={faAngleLeft} className='dateLeftTopBtn dateLeftTopBtnLeft' onClick={() => prevMonthBtn()}/>
+                        <div className="dateLeftTopMonth dateLeftTopBtn" onClick={(elem) => showList(elem)}>{selectedMonth[monthToday + monthIndex]}</div>
+                        <div className="dateLeftTopYear dateLeftTopBtn" onClick={(elem) => showList(elem)}>{selectedYear[yearToday - yearIndex]}</div>
+                        <FontAwesomeIcon icon={faAngleRight} className='dateLeftTopBtn dateLeftTopBtnRight' onClick={() => nextMonthBtn()}/>
                     </div>
-                    <div className="dateDaysTable">
-                        {printDays()}
-                        {/* <div className="tag" onClick={(elem) => selectDate(elem)}>30</div>
-                        <div className="tag unActiveDay" >31</div> */}
-
+                    <div className="dateLeftBottom">
+                        <div className="dateLeftWeek">
+                            <div className="tag weekDay">Mo</div>
+                            <div className="tag weekDay">Di</div>
+                            <div className="tag weekDay">Mi</div>
+                            <div className="tag weekDay">Do</div>
+                            <div className="tag weekDay">Fr</div>
+                            <div className="tag weekDay">Sa</div>
+                            <div className="tag weekDay">So</div>
+                        </div>
+                        <div className="dateDaysContainer">
+                            <div className="dateDaysTable">
+                                {printDays()}
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div className="dateRight">
+                    <FontAwesomeIcon icon={faAngleUp} className="dateArrow dateArrowUp" onClick={(elem) => changeScroll(elem)}/>
+                    <div className="dateTime">
+                        {printTime()}
+                    </div>
+                    <FontAwesomeIcon icon={faAngleDown} className="dateArrow dateArrowDown" onClick={(elem) => changeScroll(elem)}/>
+                </div>
+            <div className="bottomPart">
+                <FontAwesomeIcon icon={faCircleXmark} className="btnBottomPart btnCross"/>
+                <FontAwesomeIcon icon={faCircleCheck} className="btnBottomPart btnCheck"/>
             </div>
-            <div className="dateRight">
-                <FontAwesomeIcon icon={faAngleUp} className="dateArrow dateArrowUp" onClick={(elem) => changeScroll(elem)}/>
-                <div className="dateTime">
-                    {printTime()}
-                </div>
-                <FontAwesomeIcon icon={faAngleDown} className="dateArrow dateArrowDown" onClick={(elem) => changeScroll(elem)}/>
             </div>
         </div>
     )
