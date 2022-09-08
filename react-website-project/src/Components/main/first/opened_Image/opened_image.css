@@ -1,0 +1,8 @@
+.openedImageComponent{
+    width: 500px;
+    height: 500px;
+    background-color: cyan;
+    position: fixed;
+    top: calc(50vh - 250px);
+    z-index: 5;
+}

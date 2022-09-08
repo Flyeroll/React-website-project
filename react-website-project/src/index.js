@@ -13,8 +13,7 @@ import DateWindow from "./Components/main/reservation/date_component/date"
 
 ReactDOM.render(
   <BrowserRouter>
-    {/* <App /> */}
-    <DateWindow />
+    <App />
   </BrowserRouter>
   ,
   document.getElementById('root')

@@ -5,6 +5,7 @@ import "./first.css"
 import { Outlet } from "react-router-dom";
 
 import Data from '../../API/api.json'
+import OpenedImage from './opened_Image/opened_img'
 
 
 export default function First(){
@@ -138,9 +139,14 @@ export default function First(){
         return number
 
     }
+
+    function showPicture(elem) {
+        console.log(elem.target);
+    }
     
     return (
         <div className="componentFirst">
+            <OpenedImage className="openedImage"/>
             <input type="text" className="firstInput"  id="dishesInput" onChange={(element) => filterArray(element) }/>
             {/* all Breakfasts */}
             
@@ -160,7 +166,7 @@ export default function First(){
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
-                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" />
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
                     </div>
                     ))}
                     </div>
@@ -185,7 +191,7 @@ export default function First(){
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
-                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" />
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
                     </div>
                     ))}
                     </div>
@@ -212,7 +218,7 @@ export default function First(){
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
-                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" />
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
                     </div>
                     ))}
                     </div>
@@ -238,7 +244,7 @@ export default function First(){
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
-                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" />
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
                     </div>
                     ))}
                     </div>
@@ -262,7 +268,7 @@ export default function First(){
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
-                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" />
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
                     </div>
                     ))}
                     </div>
@@ -290,12 +296,11 @@ export default function First(){
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
-                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" />
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
                     </div>
                     ))}
                     </div>
         {showReserve ? <Outlet/> : null}
-
         </div>
     )
 }

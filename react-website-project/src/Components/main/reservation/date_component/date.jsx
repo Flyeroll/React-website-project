@@ -513,8 +513,8 @@ useEffect(() => {
                 <div className="dateLeft">
                     <div className="dateLeftTop">
                         <FontAwesomeIcon icon={faAngleLeft} className='dateLeftTopBtn dateLeftTopBtnLeft' onClick={() => prevMonthBtn()}/>
-                        <div className="dateLeftTopMonth dateLeftTopBtn" onClick={(elem) => showList(elem)}>{selectedMonth[monthToday + monthIndex]}</div>
-                        <div className="dateLeftTopYear dateLeftTopBtn" onClick={(elem) => showList(elem)}>{selectedYear[yearToday - yearIndex]}</div>
+                        <div className="dateLeftTopMonth dateLeftTopBtn" >{selectedMonth[monthToday + monthIndex]}</div>
+                        <div className="dateLeftTopYear dateLeftTopBtn" >{selectedYear[yearToday - yearIndex]}</div>
                         <FontAwesomeIcon icon={faAngleRight} className='dateLeftTopBtn dateLeftTopBtnRight' onClick={() => nextMonthBtn()}/>
                     </div>
                     <div className="dateLeftBottom">
