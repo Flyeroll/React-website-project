@@ -399,6 +399,8 @@ useEffect(() => {
             let newIndex = prev
             if((monthToday + prev) < 11) {
                 newIndex += 1
+            } else if((monthToday + prev) === 11 & yearIndex === 2020){
+
             } else {
                 newIndex = -8
                 setYearIndex((prev) => {
