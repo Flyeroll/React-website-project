@@ -129,16 +129,42 @@ img {
     cursor: zoom-in;
 }
 
-.dishPrice {
-    cursor: default;
-    right: 30px;
-    bottom: 5px;
+.showedFoto {
+    width: 700px;
+    height: 400px;
+    position: fixed;
+    top: calc(50vh - 200px);
+    z-index: 5;
+}
+
+
+.dishPrice  {
     position: absolute;
     user-select: none;
+    bottom: 5px;
+    right: 20px;
+    margin: 0;
 }
 
-
-.dishPrice span {
-    user-select: none;
+.showedFotoContainer {
+    display: flex;
+    position: relative;
 }
+
+.fotoAngle {
+    position: absolute;
+    scale: 2.5;
+    z-index: 10;
+    top: 190px;
+    cursor: pointer;
+}
+
+.fotoAngleLeft {
+    left: -20px;
+}
+
+.fotoAngleRight {
+    right: -20px;
+}
+
 

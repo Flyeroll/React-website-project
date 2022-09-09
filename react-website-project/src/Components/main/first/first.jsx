@@ -5,7 +5,9 @@ import "./first.css"
 import { Outlet } from "react-router-dom";
 
 import Data from '../../API/api.json'
-import OpenedImage from './opened_Image/opened_img'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function First(){
@@ -22,6 +24,7 @@ export default function First(){
     const [filteredArrayDinner, setFilteredArrayDinner] = useState(Data)
     const [filteredArrayDessert, setFilteredArrayDessert] = useState(Data)
     const [filteredArrayColdDrinks, setFilteredArrayColdDrinks] = useState(Data)
+    const [showImage, setShowImage] = useState({status:false, adress:""})
     
     const [input, setInput] = useState('')
 
@@ -34,6 +37,14 @@ export default function First(){
                 return element.target.value
             })
     }
+
+    useEffect(() => {
+        let adress = showImage.adress.nodeValue
+        if(adress !== undefined) {
+            console.log(adress.slice(14, adress.indexOf('j')));
+            console.log(adress.indexOf('.'));
+        }
+    }, [showImage.adress])
 
     useEffect(() => {
         //making copy of original data
@@ -53,6 +64,7 @@ export default function First(){
                 noUndefinedArray.push(elem)
             }
     })
+
 
 
 
@@ -141,12 +153,28 @@ export default function First(){
     }
 
     function showPicture(elem) {
-        console.log(elem.target);
+        setShowImage((prev) => {
+            return {...prev, status:!prev.status, adress:elem.target.attributes.src}
+        })
+        let src = elem.target.attributes.src;
+        
+    }
+
+    function pictureElement() {
+        return (
+            <div className="showedFoto">
+                <div className="showedFotoContainer">
+                    <FontAwesomeIcon icon={faAngleLeft} className="fotoAngle fotoAngleLeft"/>
+                    <img className="showedFoto" src={`${require(`../../../../public/images/fotos/1.2.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
+                    <FontAwesomeIcon icon={faAngleRight} className="fotoAngle fotoAngleRight"/>
+                </div>
+            </div> )
     }
     
     return (
         <div className="componentFirst">
-            <OpenedImage className="openedImage"/>
+            {showImage.status ? pictureElement() : null }
+            
             <input type="text" className="firstInput"  id="dishesInput" onChange={(element) => filterArray(element) }/>
             {/* all Breakfasts */}
             

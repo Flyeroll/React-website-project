@@ -3,10 +3,10 @@ import "./style.css"
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleUp } from '@fortawesome/free-solid-svg-icons'
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { faAngleUp } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 
