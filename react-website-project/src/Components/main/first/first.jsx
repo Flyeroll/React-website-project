@@ -30,6 +30,8 @@ export default function First(){
 
     // Counter
     const [counter, setCounter] = useState(Data)
+    const [JPEGcode, setJPEGcode] = useState('')
+
 
     function filterArray(element) {
             let elementVar = element
@@ -38,11 +40,22 @@ export default function First(){
             })
     }
 
+
+    useEffect(() => {
+        if(showImage.status) {
+            console.log(JPEGcode);
+        }
+    },[JPEGcode])
+
     useEffect(() => {
         let adress = showImage.adress.nodeValue
         if(adress !== undefined) {
-            console.log(adress.slice(14, adress.indexOf('j')));
-            console.log(adress.indexOf('.'));
+            let part = adress.slice(14, adress.indexOf('j'))
+            let indexOfLastDot = part.indexOf('.', (part.indexOf('.')) + 1)
+            let endPart = part.slice(0, indexOfLastDot)
+            setJPEGcode((prev) => {
+                return endPart
+            })
         }
     }, [showImage.adress])
 
@@ -160,12 +173,17 @@ export default function First(){
         
     }
 
+
     function pictureElement() {
+        let picture = JPEGcode
         return (
             <div className="showedFoto">
                 <div className="showedFotoContainer">
                     <FontAwesomeIcon icon={faAngleLeft} className="fotoAngle fotoAngleLeft"/>
-                    <img className="showedFoto" src={`${require(`../../../../public/images/fotos/1.2.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
+                    {/* {`../../../../public/images/fotos/${JPEGcode}.jpg`}
+                    {`${require(`../../../../public/images/fotos/1.1.jpg`)}`} */}
+                    
+                    <img className="showedFoto" src={process.env.PUBLIC_URL + `/images/fotos/${JPEGcode}.jpg`} alt="Dish" onClick={elem => showPicture(elem)}/>
                     <FontAwesomeIcon icon={faAngleRight} className="fotoAngle fotoAngleRight"/>
                 </div>
             </div> )
