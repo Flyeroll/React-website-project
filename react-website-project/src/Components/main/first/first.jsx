@@ -61,6 +61,8 @@ export default function First(){
         if(showImage.status) {
             console.log(JPEGcode);
         }
+  
+
     },[JPEGcode])
 
     useEffect(() => {
@@ -182,11 +184,18 @@ export default function First(){
     }
 
     function showPicture(elem) {
-        setShowImage((prev) => {
-            return {...prev, status:!prev.status, adress:elem.target.attributes.src}
-        })
-        let src = elem.target.attributes.src;
-        
+        if(!showImage.status) {
+            setShowImage((prev) => {
+                return {status:!prev.status, adress:elem.target.attributes.src}
+            })
+        } else if(showImage.status) {
+            setShowImage((prev) => {
+                return {status:!prev.status,adress:""}
+            })
+            setCurrentImage((prev) => {
+                return 2
+            })
+        }
     }
 
     function nextImg(){
