@@ -31,6 +31,7 @@ export default function First(){
     // Counter
     const [counter, setCounter] = useState(Data)
     const [JPEGcode, setJPEGcode] = useState('')
+    const [currentImage, setCurrentImage] = useState(2)
 
 
     function filterArray(element) {
@@ -40,6 +41,21 @@ export default function First(){
             })
     }
 
+
+
+    useEffect(() => {
+        console.log(currentImage);
+        let adress = showImage.adress.nodeValue
+        if(adress !== undefined) {
+            let part = adress.slice(14, adress.indexOf('j'))
+            let indexOfLastDot = part.indexOf('.', (part.indexOf('.')) + 1)
+            let endPart = `${part.slice(0, indexOfLastDot - 1)}${currentImage}`
+            setJPEGcode((prev) => {
+                return endPart
+            })
+        }
+
+    },[currentImage])
 
     useEffect(() => {
         if(showImage.status) {
@@ -52,7 +68,7 @@ export default function First(){
         if(adress !== undefined) {
             let part = adress.slice(14, adress.indexOf('j'))
             let indexOfLastDot = part.indexOf('.', (part.indexOf('.')) + 1)
-            let endPart = part.slice(0, indexOfLastDot)
+            let endPart = `${part.slice(0, indexOfLastDot - 1)}${currentImage}`
             setJPEGcode((prev) => {
                 return endPart
             })
@@ -173,21 +189,48 @@ export default function First(){
         
     }
 
+    function nextImg(){
+        console.log("NextImg");
+        let prevNew
+        setCurrentImage((prev) => {
+            let prevNew
+            if(prev > 0 & prev !== 3){
+                prevNew = prev + 1
+            }  else if(prev === 3) {
+            prevNew = 3
+            }
+            return prevNew
+        })
+    }
+    
+    function prevImg(){
+        console.log("PrevImg");
+        setCurrentImage((prev) => {
+            let prevNew
+            if(prev > 1 || prev === 3){
+                prevNew = prev - 1
+            }  else {
+            prevNew = prev
+            }
+            return prevNew
+        })
+    }
 
     function pictureElement() {
-        let picture = JPEGcode
+
         return (
             <div className="showedFoto">
                 <div className="showedFotoContainer">
-                    <FontAwesomeIcon icon={faAngleLeft} className="fotoAngle fotoAngleLeft"/>
+                    <FontAwesomeIcon icon={faAngleLeft} className="fotoAngle fotoAngleLeft" onClick={() => prevImg()}/>
                     {/* {`../../../../public/images/fotos/${JPEGcode}.jpg`}
                     {`${require(`../../../../public/images/fotos/1.1.jpg`)}`} */}
                     
                     <img className="showedFoto" src={process.env.PUBLIC_URL + `/images/fotos/${JPEGcode}.jpg`} alt="Dish" onClick={elem => showPicture(elem)}/>
-                    <FontAwesomeIcon icon={faAngleRight} className="fotoAngle fotoAngleRight"/>
+                    <FontAwesomeIcon icon={faAngleRight} className="fotoAngle fotoAngleRight" onClick={() => nextImg()}/>
                 </div>
             </div> )
     }
+
     
     return (
         <div className="componentFirst">
