@@ -91,10 +91,10 @@
     0% {transform: scale(0.97)}
     50% {transform: scale(1.1)}
     100% {transform: scale(1)}
-  }
+}
   
   
-  .navMap {
+.navMap {
       transition: 1s all ease-in-out;
       position: fixed;
       right: -420px;
@@ -103,18 +103,18 @@
       width: 400px;
       height: 100vh;
       cursor: default;
-    }
+}
     
     
-    .navIcon:hover {
+.navIcon:hover {
         animation-name: navMapAnimation;
         animation-iteration-count: 1;
         animation-duration: 1s;
         animation-delay: 0.1s;
-    }
+}
     
-    .trueShow {
-    right: 0px;
+.trueShow {
+right: 0px;
 }
 
 

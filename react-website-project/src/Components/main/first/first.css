@@ -181,4 +181,20 @@ img {
     right: -30px;
 }
 
+.inputFieldReserveBtn {
+    transition: 0.2s all ease-in-out;
+    user-select: none;
+}
+
+@keyframes navMapAnimation {
+    0% {transform: scale(0.97)}
+    50% {transform: scale(1.1)}
+    100% {transform: scale(1)}
+  }
+.inputFieldReserveBtn:hover {
+        animation-name: navMapAnimation;
+        animation-iteration-count: 1;
+        animation-duration: 0.3s;
+}
+
 

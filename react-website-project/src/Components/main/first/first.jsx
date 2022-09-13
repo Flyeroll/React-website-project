@@ -15,8 +15,7 @@ export default function First(){
     const [initialArray, setinitialArray] = useState(Data)
     const [filteredArray, setFilteredArray] = useState(Data)
 
-    const [showReserve, setShowReserve] = useState(true)
-
+    
     // Categories
     const [filteredArrayBreakfast, setFilteredArrayBreakfast] = useState(Data)
     const [filteredArrayLunch, setFilteredArrayLunch] = useState(Data)
@@ -27,16 +26,17 @@ export default function First(){
     const [showImage, setShowImage] = useState({status:false, adress:""})
     
     const [input, setInput] = useState('')
-
+    
     // Counter
     const [counter, setCounter] = useState(Data)
     const [JPEGcode, setJPEGcode] = useState('')
     const [currentImage, setCurrentImage] = useState(1)
-
+    
     // Reserve Button
- 
-
-
+    const [showReserve, setShowReserve] = useState(false)
+    
+    
+    
     function filterArray(element) {
             setInput((prev) => {
                 return element.target.value
@@ -258,6 +258,17 @@ export default function First(){
             </div> )
     }
 
+    function showReserveWindow() {
+        console.log("SHOW RESERVATION TABLE!");
+    }
+
+    function printReserve() {
+        return (
+            <div className="inputFieldReserveBtn" onClick={(elem) => showReserveWindow()}>Reserve!</div>
+        )
+    }
+
+
     
 
 
@@ -291,7 +302,7 @@ export default function First(){
             {showImage.status ? pictureElement() : null }
             <div className="inputField">
                 <input type="text" className="firstInput"  id="dishesInput" onChange={(element) => filterArray(element) }/>
-                <div>Reserve!</div>
+                {!showReserve ? printReserve() : null }
             </div>
             {/* all Breakfasts */}
             
