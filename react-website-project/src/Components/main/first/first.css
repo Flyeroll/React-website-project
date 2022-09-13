@@ -49,6 +49,7 @@ img {
     padding-top: 7px;
     cursor: default;
     margin: 5px;
+    user-select: none;
 }
 
 .dishBtnForm {
@@ -99,6 +100,16 @@ img {
     padding-right: 5px;
 }
 
+.inputField {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.inputField > * {
+    margin-left: 20px;
+    margin-right: 20px;
+}
 .firstInput {
     width: 200px;
     margin-top: 10px;
@@ -110,6 +121,7 @@ img {
     font-size: 15px;
     text-align: center;
     cursor: default;
+    user-select: none;
 }
 
 .dishName {
@@ -135,6 +147,8 @@ img {
     position: fixed;
     top: calc(50vh - 200px);
     z-index: 5;
+    user-select: none;
+    transition: 1s all ease-in-out;
 }
 
 
@@ -160,11 +174,11 @@ img {
 }
 
 .fotoAngleLeft {
-    left: -20px;
+    left: -30px;
 }
 
 .fotoAngleRight {
-    right: -20px;
+    right: -30px;
 }
 
 

@@ -31,11 +31,13 @@ export default function First(){
     // Counter
     const [counter, setCounter] = useState(Data)
     const [JPEGcode, setJPEGcode] = useState('')
-    const [currentImage, setCurrentImage] = useState(2)
+    const [currentImage, setCurrentImage] = useState(1)
+
+    // Reserve Button
+ 
 
 
     function filterArray(element) {
-            let elementVar = element
             setInput((prev) => {
                 return element.target.value
             })
@@ -44,7 +46,6 @@ export default function First(){
 
 
     useEffect(() => {
-        console.log(currentImage);
         let adress = showImage.adress.nodeValue
         if(adress !== undefined) {
             let part = adress.slice(14, adress.indexOf('j'))
@@ -58,14 +59,6 @@ export default function First(){
     },[currentImage])
 
     useEffect(() => {
-        if(showImage.status) {
-            console.log(JPEGcode);
-        }
-  
-
-    },[JPEGcode])
-
-    useEffect(() => {
         let adress = showImage.adress.nodeValue
         if(adress !== undefined) {
             let part = adress.slice(14, adress.indexOf('j'))
@@ -76,6 +69,25 @@ export default function First(){
             })
         }
     }, [showImage.adress])
+
+
+
+    useEffect(() => {
+        if(!showImage.status) {
+  
+            setCurrentImage((prev) => {
+                return 1
+            })
+            setJPEGcode((prev) => {
+                return ""
+            })
+            setShowImage((prev) => {
+                return {...prev, adress:""}
+            })
+        }
+    }, [showImage.status])
+
+
 
     useEffect(() => {
         //making copy of original data
@@ -149,6 +161,7 @@ export default function First(){
             })
             return newObj
         })
+        console.log(counter);
     }
 
     function minusDish(element){
@@ -164,11 +177,9 @@ export default function First(){
             })
             return newObj
         })
+        console.log(counter);
     }
     
-    useEffect(() => {
-        console.log(counter);
-    },[counter])
     
     function printCountPlus(prevEl){
         let number = 0;
@@ -190,16 +201,14 @@ export default function First(){
             })
         } else if(showImage.status) {
             setShowImage((prev) => {
-                return {status:!prev.status,adress:""}
+                return {status:!prev.status, adress:""}
             })
-            setCurrentImage((prev) => {
-                return 2
-            })
+
         }
     }
 
     function nextImg(){
-        console.log("NextImg");
+
         let prevNew
         setCurrentImage((prev) => {
             let prevNew
@@ -213,7 +222,7 @@ export default function First(){
     }
     
     function prevImg(){
-        console.log("PrevImg");
+
         setCurrentImage((prev) => {
             let prevNew
             if(prev > 1 || prev === 3){
@@ -225,27 +234,65 @@ export default function First(){
         })
     }
 
+    function showLeftArrow(){
+        return (
+            <FontAwesomeIcon icon={faAngleLeft} className="fotoAngle fotoAngleLeft" onClick={() => prevImg()}/>
+        )
+    }
+
+    function showRightArrow(){
+        return (
+            <FontAwesomeIcon icon={faAngleRight} className="fotoAngle fotoAngleRight" onClick={() => nextImg()}/>
+        )
+    }
+
     function pictureElement() {
 
         return (
             <div className="showedFoto">
                 <div className="showedFotoContainer">
-                    <FontAwesomeIcon icon={faAngleLeft} className="fotoAngle fotoAngleLeft" onClick={() => prevImg()}/>
-                    {/* {`../../../../public/images/fotos/${JPEGcode}.jpg`}
-                    {`${require(`../../../../public/images/fotos/1.1.jpg`)}`} */}
-                    
+                    {currentImage !== 1 ? showLeftArrow() : null }
                     <img className="showedFoto" src={process.env.PUBLIC_URL + `/images/fotos/${JPEGcode}.jpg`} alt="Dish" onClick={elem => showPicture(elem)}/>
-                    <FontAwesomeIcon icon={faAngleRight} className="fotoAngle fotoAngleRight" onClick={() => nextImg()}/>
+                    {currentImage !== 3 ? showRightArrow() : null }
                 </div>
             </div> )
     }
 
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return (
         <div className="componentFirst">
             {showImage.status ? pictureElement() : null }
-            
-            <input type="text" className="firstInput"  id="dishesInput" onChange={(element) => filterArray(element) }/>
+            <div className="inputField">
+                <input type="text" className="firstInput"  id="dishesInput" onChange={(element) => filterArray(element) }/>
+                <div>Reserve!</div>
+            </div>
             {/* all Breakfasts */}
             
 
@@ -264,7 +311,7 @@ export default function First(){
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
-                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.1.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
                     </div>
                     ))}
                     </div>
@@ -289,7 +336,7 @@ export default function First(){
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
-                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.1.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
                     </div>
                     ))}
                     </div>
@@ -316,7 +363,7 @@ export default function First(){
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
-                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.1.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
                     </div>
                     ))}
                     </div>
@@ -342,7 +389,7 @@ export default function First(){
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
-                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.1.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
                     </div>
                     ))}
                     </div>
@@ -366,7 +413,7 @@ export default function First(){
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
-                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.1.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
                     </div>
                     ))}
                     </div>
@@ -394,7 +441,7 @@ export default function First(){
                             </div>
                             <div className="dishPrice">{prev.price} <span>$</span></div>
                         </ div>
-                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.2.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
+                        <img className="dishImg" src={`${require(`../../../../public/images/fotos/${prev.id}.1.jpg`)}`} alt="Dish" onClick={elem => showPicture(elem)}/>
                     </div>
                     ))}
                     </div>
