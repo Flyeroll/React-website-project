@@ -2,6 +2,7 @@
 // DISHES
 import React, { useEffect, useState } from "react";
 import "./first.css"
+import Reservation from "../reservation/reservation"
 import { Outlet } from "react-router-dom";
 
 import Data from '../../API/api.json'
@@ -27,13 +28,17 @@ export default function First(){
     
     const [input, setInput] = useState('')
     
-    // Counter
+    // Final data with dishes here (Counter)
     const [counter, setCounter] = useState(Data)
+
     const [JPEGcode, setJPEGcode] = useState('')
     const [currentImage, setCurrentImage] = useState(1)
     
     // Reserve Button
     const [showReserve, setShowReserve] = useState(false)
+
+    //Reserve window
+    
     
     
     
@@ -44,6 +49,10 @@ export default function First(){
     }
 
 
+    useEffect(() => {
+        console.log(counter);
+            
+    },[counter])
 
     useEffect(() => {
         let adress = showImage.adress.nodeValue
@@ -157,27 +166,36 @@ export default function First(){
                 if(elem.name === elementName) {
                     newCount++
                 }
+ 
                 return {...elem, counter:newCount}
             })
             return newObj
         })
-        console.log(counter);
+        setShowReserve((prev) => {
+            return true
+        })
     }
 
     function minusDish(element){
         let elementName = element.target.parentElement.parentElement.firstElementChild.innerHTML
-
+        let checkShowReserve = false
         setCounter((prev) => {
             let newObj = prev.map((elem) => {
                 let newCount = elem.counter
                 if(elem.name === elementName & newCount > 0){
                     newCount--
                 }
+                if(newCount !== 0) {
+                    checkShowReserve = true
+                }
                 return {...elem, counter:newCount}
             })
             return newObj
         })
-        console.log(counter);
+
+        setShowReserve((prev) => {
+            return checkShowReserve
+        })
     }
     
     
@@ -299,10 +317,11 @@ export default function First(){
 
     return (
         <div className="componentFirst">
+            {/* <Reservation className="reservationTable"/> */}
             {showImage.status ? pictureElement() : null }
             <div className="inputField">
                 <input type="text" className="firstInput"  id="dishesInput" onChange={(element) => filterArray(element) }/>
-                {!showReserve ? printReserve() : null }
+                {showReserve ? printReserve() : null }
             </div>
             {/* all Breakfasts */}
             
