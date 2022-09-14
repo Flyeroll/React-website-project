@@ -36,8 +36,9 @@ export default function First(){
     
     // Reserve Button
     const [showReserve, setShowReserve] = useState(false)
-
+    
     //Reserve window
+    const [showReserveWindowToggler, setShowReserveWindowToggler] = useState(false)
     
     
     
@@ -50,7 +51,7 @@ export default function First(){
 
 
     useEffect(() => {
-        console.log(counter);
+
             
     },[counter])
 
@@ -277,14 +278,23 @@ export default function First(){
     }
 
     function showReserveWindow() {
-        console.log("SHOW RESERVATION TABLE!");
+        setShowReserveWindowToggler(prev => true)
     }
 
-    function printReserve() {
+    function printReserveBtn() {
         return (
             <div className="inputFieldReserveBtn" onClick={(elem) => showReserveWindow()}>Reserve!</div>
         )
     }
+    
+
+    function closeReserveWindow(elem){
+        if(elem.target.classList.contains("xMarkReservation")) {
+            setShowReserveWindowToggler(prev => false)
+        }
+    }
+
+    
 
 
     
@@ -316,12 +326,12 @@ export default function First(){
 
 
     return (
-        <div className="componentFirst">
-            {/* <Reservation className="reservationTable"/> */}
+        <div className="componentFirst" onClick={(elem) => closeReserveWindow(elem)}>
+            {showReserveWindowToggler ? <Reservation className="reservationTable"/> : null}
             {showImage.status ? pictureElement() : null }
             <div className="inputField">
                 <input type="text" className="firstInput"  id="dishesInput" onChange={(element) => filterArray(element) }/>
-                {showReserve ? printReserve() : null }
+                {showReserve ? printReserveBtn() : null }
             </div>
             {/* all Breakfasts */}
             

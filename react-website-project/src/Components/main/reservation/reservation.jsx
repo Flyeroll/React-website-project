@@ -76,14 +76,14 @@ export default function Reservation (props) {
     }
 
     function crossFunc() {
-        console.log("CROSS ");
+        
 
     }
     return(
         <ThemeContext.Provider value={false}>
             <div className="mainDiv">
                 <div className="reserveMainWindow">
-                    <FontAwesomeIcon icon={ faXmark } className="xMarkNav" onClick={() => crossFunc()}/>
+                    <FontAwesomeIcon icon={ faXmark } className="xMarkNav xMarkReservation" onClick={() => crossFunc()}/>
                     {statusLine === 1 ? <FirstPage /> : null}
                     {statusLine === 2 ? <SecondPage /> : null}
                     {statusLine === 3 ? <ThirdPage /> : null}
