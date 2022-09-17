@@ -84,7 +84,7 @@ export default function Reservation (props) {
             <div className="mainDiv">
                 <div className="reserveMainWindow">
                     <FontAwesomeIcon icon={ faXmark } className="xMarkNav xMarkReservation" onClick={() => crossFunc()}/>
-                    {statusLine === 1 ? <FirstPage /> : null}
+                    {statusLine === 1 ? <FirstPage data3={props.data2}/> : null}
                     {statusLine === 2 ? <SecondPage /> : null}
                     {statusLine === 3 ? <ThirdPage /> : null}
 

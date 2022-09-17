@@ -327,7 +327,7 @@ export default function First(){
 
     return (
         <div className="componentFirst" onClick={(elem) => closeReserveWindow(elem)}>
-            {showReserveWindowToggler ? <Reservation className="reservationTable"/> : null}
+            {showReserveWindowToggler ? <Reservation className="reservationTable" data2={counter}/> : null}
             {showImage.status ? pictureElement() : null }
             <div className="inputField">
                 <input type="text" className="firstInput"  id="dishesInput" onChange={(element) => filterArray(element) }/>
