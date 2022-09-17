@@ -294,6 +294,45 @@ export default function First(){
         }
     }
 
+    function minusDishCheque(elem) {
+        setCounter((oldCounter) => {
+            return {...oldCounter, counter:0}
+
+    })
+
+
+
+    
+
+
+
+    function printUsersDishes(data) {
+        let arr = []
+        for(let i = 0; i < 36; i ++) {
+            if(data[i].counter !== 0) {
+                arr.push(data[i])
+            }
+        }
+
+        let newArr = arr.map((elem) => {
+            return (            
+            <div className="chequeLine">
+                <div>{elem.name}</div>
+                <div className="chequeLineCounter">
+                    <div className="dishBtnMinus dishBtn" onClick={() => minusDishCheque(elem)}>-</div>
+                    {elem.counter}
+                    <div className="dishBtnPlus dishBtn" onClick={() => plusDishCheque(elem)}>+</div>
+                </div>
+            </div>
+            )
+        })
+        console.log(arr);
+        return (
+            <div className="chequeBox">
+                {newArr}
+            </div>
+        )
+    }
     
 
 
@@ -327,7 +366,7 @@ export default function First(){
 
     return (
         <div className="componentFirst" onClick={(elem) => closeReserveWindow(elem)}>
-            {showReserveWindowToggler ? <Reservation className="reservationTable"/> : null}
+            {showReserveWindowToggler ? <Reservation className="reservationTable" userDishesData={() => printUsersDishes(counter)}/> : null}
             {showImage.status ? pictureElement() : null }
             <div className="inputField">
                 <input type="text" className="firstInput"  id="dishesInput" onChange={(element) => filterArray(element) }/>

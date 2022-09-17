@@ -197,6 +197,30 @@ img {
         animation-duration: 0.3s;
 }
 
+
+.chequeLine {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chequeBox {
+    height: 400px;
+    width: 500px;
+    background-color: crimson;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+
+.chequeLineCounter {
+    display: flex;
+}
+
+.chequeLineCounter > * {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 .reservationTable {
     
 }
