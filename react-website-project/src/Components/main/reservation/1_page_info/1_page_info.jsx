@@ -7,7 +7,7 @@ export default function firstPageReserv(props) {
         <div className="allComponent">
             <h2 className="allComponentTitle">Contact</h2>
             <div className="contactForm">
-                
+                {props.data3[0].name}
             </div>
         </div>
     )
