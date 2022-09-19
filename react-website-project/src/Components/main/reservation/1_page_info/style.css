@@ -1,3 +1,31 @@
 .allComponentTitle{
     user-select: none;
 }
+
+
+.contactFormLine{
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    height: 40px;
+}
+
+.contactFormLineAmountBox {
+    display: flex;
+    justify-content: space-around;
+    width: 100px;
+    margin-right: 30px;
+}
+
+.contactFormList {
+    background-color: white;
+    width: 600px;
+    height: 400px;
+    overflow: hidden;
+    overflow-y: scroll;
+    user-select: none;
+}
+
+.contactFormLinePlusMinus {
+    cursor: pointer;
+}
