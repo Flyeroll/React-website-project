@@ -23,14 +23,41 @@ export default function firstPageReserv(props) {
     },[usersList])
 
 
-
-    function plusDish(elem) {
-        console.log(elem);
-    }
-
     function minusDish(elem) {
-        console.log(elem);
+        let nameOfDish = elem.target.parentElement.parentElement.childNodes[0].textContent
+
+
+        setUsersListDisplay((prev) => {
+
+            let newArr = prev.map((dish) => {
+                let newEl
+                if(dish.counter !== 0) {
+                    newEl = dish.counter - 1
+                } else if(dish.counter === 0){
+                    newEl = 0
+                }
+                return {...dish, counter:newEl}
+            })
+            return newArr
+        })
+        console.log(usersListDisplay)
+        console.log(nameOfDish);
     }
+    
+    function plusDish(elem) {
+        let nameOfDish = elem.target.parentElement.parentElement.childNodes[0].textContent
+
+        setUsersListDisplay((prev) => {
+    
+            let newArr = prev.map((dish) => {
+                let newEl = dish.counter + 1
+                return {...dish, counter:newEl}
+            })
+            return newArr
+        })
+        console.log(nameOfDish);
+    }
+    
 
 
 
