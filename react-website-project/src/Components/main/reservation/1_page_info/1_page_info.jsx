@@ -8,6 +8,7 @@ export default function firstPageReserv(props) {
     const[orderSumm, setOrderSumm] = useState(400)
     const[showPopUp, setShowPopUp] = useState(false)
     const[selectedDish, setSelectedDish] = useState("")
+    const[btnPopUpStatus, setBtnPopUpStatus] = useState(true)
 
 
     useEffect(() => {
@@ -21,7 +22,7 @@ export default function firstPageReserv(props) {
         setUsersListDisplay((prev) => {
             return newArr
         })
-        console.log(usersListDisplay);
+
     },[usersList])
 
     useEffect(() => {
@@ -49,7 +50,10 @@ export default function firstPageReserv(props) {
                 let newEl
                 if(dish.counter !== 0 & nameOfDish === dish.name) {
                     newEl = dish.counter - 1
-                    printPopUp(dish)
+                    printPopUp(elem)
+                    setSelectedDish((prev) => {
+                        return `- ${dish.price}$`
+                    })
                 } else if(dish.counter === 0 & nameOfDish === dish.name){
                     newEl = 0
                 } else {
@@ -76,10 +80,16 @@ export default function firstPageReserv(props) {
                 let newEl
                 if(dish.counter !== 0 & nameOfDish === dish.name) {
                     newEl = dish.counter + 1
-                    printPopUp(dish)
+                    printPopUp(elem)
+                                        setSelectedDish((prev) => {
+                        return `+ ${dish.price}$`
+                    })
                 } else if(dish.counter === 0 & nameOfDish === dish.name){
                     newEl = dish.counter + 1
-                    printPopUp(dish)
+                    printPopUp(elem)
+                                        setSelectedDish((prev) => {
+                        return `+ ${dish.price}$`
+                    })
                 } else {
                     newEl = dish.counter
                     
@@ -93,24 +103,35 @@ export default function firstPageReserv(props) {
     
     
     function printPopUp(dish) {
+
+        console.log(dish);
+        let plusOrMinus = dish.target.innerHTML
+        console.log(plusOrMinus);
         setShowPopUp((prev) => {
             return !prev
         })
         
-
-        let elToColorise = document.querySelector(".DishPriceColor")
-        console.log(elToColorise);
-
         
-
+        
+        
+        
+        setTimeout(() => {
+            let elToColorise = document.querySelector(".DishPriceColor")
+            if(plusOrMinus === "+"){
+                elToColorise.classList.add('greenDishPrice')
+            } else if (plusOrMinus === "-") {
+                elToColorise.classList.add('redDishPrice')
+            }
+        }, 0);
+        
+        
         setTimeout(() => {
             setShowPopUp((prev) => {
                 return !prev
             })
-        }, 2000);
+        }, 200);
         
-        console.log(dish);
-        
+
         
     }
     
@@ -128,9 +149,9 @@ export default function firstPageReserv(props) {
                                 <div className="contactFormLine">
                                     <div className="contactFormLineName">{elem.name}</div>
                                     <div className="contactFormLineAmountBox">
-                                        <div className="contactFormLinePlusMinus" onClick={(elem) => minusDish(elem)}>-</div>
+                                        <div className="contactFormLinePlusMinus" onClick={!showPopUp ? (elem) => minusDish(elem): null}>-</div>
                                         <div className="contactFormLineAmount">{elem.counter}</div>
-                                        <div className="contactFormLinePlusMinus" onClick={(elem) => plusDish(elem)}>+</div>
+                                        <div className="contactFormLinePlusMinus" onClick={!showPopUp ? (elem) => plusDish(elem): null}>+</div>
                                     </div>
                                 </div>
                             )
@@ -140,7 +161,7 @@ export default function firstPageReserv(props) {
                 <div className="contactFormSecond">
                     <h3>Your Total Check</h3>
                     <h5>{orderSumm}$</h5>
-                    {showPopUp ? <h4 className="DishPriceColor">hiddenText</h4> : null}
+                    {showPopUp ? <h4 className="DishPriceColor">{selectedDish}</h4> : null}
                     <h3>If your Order is correct please proceed</h3>
                 </div>
 
