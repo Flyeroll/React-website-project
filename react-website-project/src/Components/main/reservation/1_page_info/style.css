@@ -29,3 +29,37 @@
 .contactFormLinePlusMinus {
     cursor: pointer;
 }
+
+.contactFormMain{
+    display: flex;
+    position: relative;
+}
+
+.contactFormSecond {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: orange;
+}
+
+.contactFormSecond h3 {
+    margin-bottom: 50px;
+}
+.contactFormSecond h5 {
+    margin-bottom: 70px;
+    font-size: 20px;
+}
+
+.contactFormSecond h4 {
+    position: absolute;
+    top: 100px;
+}
+
+.contactFormSecond h4.greenDishPrice {
+    color: green;
+}
+
+.contactFormSecond h4.redDishPrice {
+    color: red;
+}
