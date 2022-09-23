@@ -73,25 +73,35 @@ export default function secondPageReserv() {
     return (
         <div className="allComponent">
             <h2 className="allComponentTitle">Choose your table(s)</h2>
-             <div className="myCanvas">
-                 <div className="firstRow row">
-                     <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>1</div>
-                     <div className="welcome">Welcome !</div>
-                     <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>2</div>
-                 </div>
-                 <div className="secondRow row">
-                     <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>3</div>
-                     <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>4</div>
-                     <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>5</div>
-                     <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>6</div>
-                 </div>
-                 <div className="thirdRow row">
-                     <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>7</div>
-                     <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>8</div>
-                     <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>9</div>
-                     <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>10</div>
-                 </div>
-             </div>
+            <div className="columns">
+
+                <div className="firstColumn"></div>
+
+                <div className="secondColumn">
+                    <h2>Please choose your table(s)</h2>
+                    <div className="myCanvas">
+                        <div className="firstRow row">
+                            <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>1</div>
+                            <div className="welcome">Welcome !</div>
+                            <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>2</div>
+                        </div>
+                        <div className="secondRow row">
+                            <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>3</div>
+                            <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>4</div>
+                            <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>5</div>
+                            <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>6</div>
+                        </div>
+                        <div className="thirdRow row">
+                            <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>7</div>
+                            <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>8</div>
+                            <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>9</div>
+                            <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>10</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
     )
 }
