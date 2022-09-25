@@ -21,6 +21,8 @@ export default function secondPageReserv() {
             })
             // clear Tables data to display user
             const [clearReservedTables,setClearReservedTables] = useState('')
+            const [phoneNumber, setPhoneNumber] = useState('')
+            const [numberParts, setNumberParts] = useState(["", "", "", ""])
         
             function changeTableStatus(table) {
                 let content = table.target.innerHTML
@@ -46,6 +48,13 @@ export default function secondPageReserv() {
                     console.log("Table is occupied!");
                 }
             }
+
+            function phoneFilter(elem) {
+
+                let phone = document.getElementsByClassName('phoneNumber')[0].value
+                setPhoneNumber((prev) => elem.target.value)
+
+            }
         
         
         
@@ -64,21 +73,114 @@ export default function secondPageReserv() {
             },[reservedTables])
             
             useEffect(() => {
-                console.log(clearReservedTables);
+
             }, [clearReservedTables])
             
+            
+            useEffect(() => {
+                
+                let firstThreeText
+                let secondThreeText 
+                let firstTwoText
+                let secondTwoText
+                let finalNumber
+                
+                if(phoneNumber.length < 4){
+                    let firstThreeArr = phoneNumber.slice(0, 3)
+                    let newArrText = ""
+                    for(let i = 0; i < firstThreeArr.length; i++) {
+                        if(firstThreeArr[i] !== undefined) {
+                            newArrText += firstThreeArr[i]
+                        } else if(firstThreeArr[i] === undefined) {
+                            newArrText += "_"
+                        }
+                    }
+                    firstThreeText = `(${newArrText})`
+                    console.log(firstThreeText);
+                    setNumberParts((prev) => {
+                        return [...prev, prev[0] = firstThreeText]
+                    })
+                    
+                }
+                
+                if(phoneNumber.length < 7 ){
+                    let secondThreeArr = phoneNumber.slice(3, 6)
+                    let newArrText = ""
+                    for(let i = 0; i < secondThreeArr.length; i++) {
+                        if(secondThreeArr[i] !== undefined) {
+                            newArrText += secondThreeArr[i]
+                        } else if(secondThreeArr[i] === undefined) {
+                            newArrText += "_"
+                        }
+                    }
 
+                    secondThreeText = ` ${newArrText}`
+                    console.log(secondThreeText);
+                    
+                }
+
+                
+                
+                if(phoneNumber.length > 6 ){
+                    let firstTwoArr = phoneNumber.slice(6, 8)
+                    let newArrText = ""
+                    for(let i = 0; i < firstTwoArr.length; i++) {
+                        if(firstTwoArr[i] !== undefined) {
+                            newArrText += firstTwoArr[i]
+                        } else if(firstTwoArr[i] === undefined) {
+                            newArrText += "_"
+                        }
+                    }
+                    
+                    firstTwoText = ` ${newArrText}`
+                    console.log(firstTwoText);
+                }
+                
+                if(phoneNumber.length > 8 ){
+                    let secondTwoArr = phoneNumber.slice(8, 10)
+                    let newArrText = ""
+                    for(let i = 0; i < secondTwoArr.length; i++) {
+                        if(secondTwoArr[i] !== undefined) {
+                            newArrText += secondTwoArr[i]
+                        } else if(secondTwoArr[i] === undefined) {
+                            newArrText += "_"
+                        }
+                    }
+                    
+                    secondTwoText = ` ${newArrText}`
+                    console.log(secondTwoText);
+
+                }
+                
+               
+                finalNumber = `${firstThreeText} + ${secondThreeText} + ${firstTwoText} + ${secondTwoText}`
+
+                console.log(finalNumber);
+
+                
+            },[phoneNumber])
+
+            useEffect(() => {
+                console.log(numberParts);
+            },[numberParts])
 
 
     return (
         <div className="allComponent">
-            <h2 className="allComponentTitle">Choose your table(s)</h2>
+            <h2 className="allComponentTitle">Info</h2>
             <div className="columns">
 
-                <div className="firstColumn"></div>
+                <div className="firstColumn">
+                    <h3>Your Contacts</h3>
+                    <div className="reservationClientDataBox">
+
+                        <input type="text" className="reservationInput" placeholder="your name"/>
+                        <input type="text" className="reservationInput phoneNumber" placeholder="your phone" maxlength="10" onChange={(elem) => phoneFilter(elem)} value={phoneNumber}/>
+                    </div>
+                </div>
 
                 <div className="secondColumn">
-                    <h2>Please choose your table(s)</h2>
+                    <h3>Please choose your table(s)</h3>
                     <div className="myCanvas">
                         <div className="firstRow row">
                             <div className="tableFree table tableNumber" onClick={(table) => changeTableStatus(table)}>1</div>

@@ -91,3 +91,9 @@
     background-color: rgba(162, 56, 18, 0.937);
     width:500px;
 }
+
+.reservationInput {
+    width: 250px;
+    height: 50px;
+    font-size: 35px;
+}
