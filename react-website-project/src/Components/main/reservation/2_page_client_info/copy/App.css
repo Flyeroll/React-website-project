@@ -1,0 +1,40 @@
+.App{
+    position: relative;
+}
+
+.numberBall {
+    position: absolute;
+    transition: 0.5s all ease-out;
+    top: -17px;
+    font-size: 20px;
+    user-select: none;
+    border: 2px solid black;
+    width: 25px;
+    height: 25px;
+    pointer-events: none;
+    border-radius: 100%;
+    background-color: rgb(2, 187, 255);
+    cursor: pointer;
+}
+
+.numberBall.opened {
+    width: 150px;
+    border-radius: 0%;
+    cursor: pointer;
+}
+
+input{
+    color: rgb(187, 0, 0);
+    opacity: 0;
+    z-index: 10;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+input.opened {
+    cursor: default;
+    width: 150px;
+    z-index: 20;
+}

@@ -22,7 +22,7 @@ export default function secondPageReserv() {
             // clear Tables data to display user
             const [clearReservedTables,setClearReservedTables] = useState('')
             const [phoneNumber, setPhoneNumber] = useState('')
-            const [numberParts, setNumberParts] = useState(["", "", "", ""])
+            const [numberParts, setNumberParts] = useState({1:"", 2:"", 3:"", 4:""})
         
             function changeTableStatus(table) {
                 let content = table.target.innerHTML
@@ -96,9 +96,9 @@ export default function secondPageReserv() {
                         }
                     }
                     firstThreeText = `(${newArrText})`
-                    console.log(firstThreeText);
+
                     setNumberParts((prev) => {
-                        return [...prev, prev[0] = firstThreeText]
+                        return {...prev, 1:firstThreeText}
                     })
                     
                 }
@@ -115,13 +115,16 @@ export default function secondPageReserv() {
                     }
 
                     secondThreeText = ` ${newArrText}`
-                    console.log(secondThreeText);
+                    
+                    setNumberParts((prev) => {
+                        return {...prev, 2:secondThreeText}
+                    })
                     
                 }
 
                 
                 
-                if(phoneNumber.length > 6 ){
+                if(phoneNumber.length < 9 ){
                     let firstTwoArr = phoneNumber.slice(6, 8)
                     let newArrText = ""
                     for(let i = 0; i < firstTwoArr.length; i++) {
@@ -133,10 +136,13 @@ export default function secondPageReserv() {
                     }
                     
                     firstTwoText = ` ${newArrText}`
-                    console.log(firstTwoText);
+                    
+                    setNumberParts((prev) => {
+                        return {...prev, 3:firstTwoText}
+                    })
                 }
                 
-                if(phoneNumber.length > 8 ){
+                if(phoneNumber.length < 11 ){
                     let secondTwoArr = phoneNumber.slice(8, 10)
                     let newArrText = ""
                     for(let i = 0; i < secondTwoArr.length; i++) {
@@ -148,7 +154,10 @@ export default function secondPageReserv() {
                     }
                     
                     secondTwoText = ` ${newArrText}`
-                    console.log(secondTwoText);
+                    
+                    setNumberParts((prev) => {
+                        return {...prev, 4:secondTwoText}
+                    })
 
                 }
                 
