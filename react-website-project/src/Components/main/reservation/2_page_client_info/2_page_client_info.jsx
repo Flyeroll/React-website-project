@@ -208,6 +208,18 @@ export default function secondPageReserv() {
                 console.log(pageTwoValidator);
             },[pageTwoValidator])
 
+            function guestsNumber(elem) {
+                if(elem.target.value > 0 ) {
+                    setPageTwoValidator((prev) => {
+                        return {...prev, visitorsNumb:true}
+                    })
+                } else {
+                    setPageTwoValidator((prev) => {
+                        return {...prev, visitorsNumb:false}
+                    })
+                }
+            }
+
 
     return (
         <div className="allComponent">
@@ -218,13 +230,15 @@ export default function secondPageReserv() {
                     <h3>Your Contacts</h3>
                     <div className="reservationClientDataBox">
 
-                        <input type="text" className="reservationInput" placeholder="your name"/>
+                        <input type="text" className="nameInput" placeholder="your name"/>
                         <h4>Please give your phone number</h4>
                         <div className="phoneBox">
                             <FontAwesomeIcon icon={faPhone} className="phoneIcon"/>
                             <input type="text" className="inputPhoneNumber" placeholder="your phone" maxLength={18}  onChange={(elem) => phoneFilter(elem)} onClick={(elem) => showInputPhone(elem)} />
                             <h2 className='numberBall'>&nbsp;&nbsp;{`${number}`}</h2>
                         </div>
+                        <h4 className="titleQuestsNumber">How many guests are coming?</h4>
+                        <input type="number" className="guestsNumber" max={20} min={1} onClick={(elem) => guestsNumber(elem)}/>
                     </div>
                 </div>
 
