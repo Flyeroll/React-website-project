@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import "./style.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPhone } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function secondPageReserv() {
@@ -23,6 +25,8 @@ export default function secondPageReserv() {
             const [clearReservedTables,setClearReservedTables] = useState('')
             const [phoneNumber, setPhoneNumber] = useState('')
             const [numberParts, setNumberParts] = useState({1:"", 2:"", 3:"", 4:""})
+            const [number, setNumber] = useState("")
+            const [pageTwoValidator, setPageTwoValidator] = useState({phone:false, name:false, table:false, visitorsNumb:false, dateAndTime:false})
         
             function changeTableStatus(table) {
                 let content = table.target.innerHTML
@@ -51,7 +55,7 @@ export default function secondPageReserv() {
 
             function phoneFilter(elem) {
 
-                let phone = document.getElementsByClassName('phoneNumber')[0].value
+                let phone = document.getElementsByClassName('inputPhoneNumber')[0].value
                 setPhoneNumber((prev) => elem.target.value)
 
             }
@@ -71,6 +75,21 @@ export default function secondPageReserv() {
                 setClearReservedTables((prev) => newClearArrayTables)
                 
             },[reservedTables])
+
+            function format(element) {
+                setNumber((prev) => {
+                  return element.target.value
+                })
+              }
+            
+              function showInputPhone(elem) {
+                let ballToOpen = document.getElementsByClassName('numberBall')[0]
+                let phoneIcon = document.getElementsByClassName('phoneIcon')[0]
+
+                ballToOpen.classList.add('opened')
+                phoneIcon.classList.add('opened')
+                elem.target.classList.add('opened')
+              }
             
             useEffect(() => {
 
@@ -163,15 +182,31 @@ export default function secondPageReserv() {
                 
                
                 finalNumber = `${firstThreeText} + ${secondThreeText} + ${firstTwoText} + ${secondTwoText}`
-
-                console.log(finalNumber);
-
-                
+    
             },[phoneNumber])
 
             useEffect(() => {
-                console.log(numberParts);
+                setNumber((prev) => {
+                    let finalResult = `${numberParts['1']} ${numberParts['2']} ${numberParts['3']} ${numberParts['4']}`
+                    return finalResult
+                })
             },[numberParts])
+
+            useEffect((prev) => {
+                if(number.length === 18) {
+                    setPageTwoValidator((prev) => {
+                        return {...prev, phone:true}
+                    })
+                } else if(number.length !== 18) {
+                    setPageTwoValidator((prev) => {
+                        return {...prev, phone:false}
+                    })
+                }
+            },[number])
+
+            useEffect((elem) => {
+                console.log(pageTwoValidator);
+            },[pageTwoValidator])
 
 
     return (
@@ -184,7 +219,12 @@ export default function secondPageReserv() {
                     <div className="reservationClientDataBox">
 
                         <input type="text" className="reservationInput" placeholder="your name"/>
-                        <input type="text" className="reservationInput phoneNumber" placeholder="your phone" maxlength="10" onChange={(elem) => phoneFilter(elem)} value={phoneNumber}/>
+                        <h4>Please give your phone number</h4>
+                        <div className="phoneBox">
+                            <FontAwesomeIcon icon={faPhone} className="phoneIcon"/>
+                            <input type="text" className="inputPhoneNumber" placeholder="your phone" maxLength={18}  onChange={(elem) => phoneFilter(elem)} onClick={(elem) => showInputPhone(elem)} />
+                            <h2 className='numberBall'>&nbsp;&nbsp;{`${number}`}</h2>
+                        </div>
                     </div>
                 </div>
 

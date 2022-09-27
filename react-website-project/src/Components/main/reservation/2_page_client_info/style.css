@@ -83,6 +83,10 @@
     background-color: aqua;
 }
 
+.firstColumn h3{
+    text-align: center;
+}
+
 .secondColumn {
     display: flex; 
     flex-direction: column;
@@ -96,4 +100,65 @@
     width: 250px;
     height: 50px;
     font-size: 35px;
+}
+
+.phoneBox {
+    position: relative;
+}
+
+.numberBall {
+    position: absolute;
+    transition: 0.9s all ease-in-out;
+    left: 5px;
+    font-size: 20px;
+    user-select: none;
+    border: 2px solid black;
+    width: 0px;
+    pointer-events: none;
+    background-color: rgb(255, 0, 0);
+    cursor: pointer;
+    opacity: 0;
+}
+
+.numberBall.opened {
+    width: 220px;
+    height: 25px;
+    border-radius: 0%;
+    cursor: pointer;
+    opacity: 1;
+
+}
+
+.inputPhoneNumber{
+    position: absolute;
+    color: rgb(0, 31, 134);
+    opacity: 0;
+    z-index: 10;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.inputPhoneNumber.opened {
+    cursor: default;
+    z-index: 20;
+    width: 223px;
+    border-radius: 0%;
+}
+
+.phoneIcon {
+    position: absolute;
+    pointer-events: none;
+    width: 25px;
+    height: 25px;
+    background-color: green;
+    border-radius: 50%;
+    z-index: 50;
+    transition: 0.7s all ease-in-out;
+    left: 5px;
+}
+
+.phoneIcon.opened {
+    left: 230px;
 }
