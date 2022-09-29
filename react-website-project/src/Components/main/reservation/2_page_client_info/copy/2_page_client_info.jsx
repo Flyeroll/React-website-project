@@ -260,33 +260,22 @@ export default function secondPageReserv() {
                 <div className="firstColumn">
                     <h3>Your Contacts</h3>
                     <div className="reservationClientDataBox">
-                            <div className="nameInputClear">
-                                <input type="text" className="nameInput" placeholder="your name" onChange={(elem) => nameValidator(elem)}/>
+                            <input type="text" className="nameInput" placeholder="your name" onChange={(elem) => nameValidator(elem)}/>
+                            <h4>Please give your phone number</h4>
+                            <div className="phoneBox">
+                                <FontAwesomeIcon icon={faPhone} className="phoneIcon"/>
+                                <input type="text" className="inputPhoneNumber" placeholder="your phone"  maxLength={18}  onChange={(elem) => phoneFilter(elem)} onClick={(elem) => showInputPhone(elem)} />
+                                <h2 className='numberBall'>&nbsp;&nbsp;{`${number}`}</h2>
                             </div>
-
-                            <div className="phoneInputClear">
-                                <h4>Please give your phone number</h4>
-                                <div className="phoneBox">
-                                    <FontAwesomeIcon icon={faPhone} className="phoneIcon"/>
-                                    <input type="text" className="inputPhoneNumber" placeholder="your phone"  maxLength={18}  onChange={(elem) => phoneFilter(elem)} onClick={(elem) => showInputPhone(elem)} />
-                                    <h2 className='numberBall'>&nbsp;&nbsp;{`${number}`}</h2>
-                                </div>
-                            </div>
-
-                            <div className="guestInputClear">
-                                <h4 className="titleQuestsNumber">How many guests are coming?</h4>
-                                <input type="number" className="guestsNumberInput" max={20} min={1} onChange={(elem) => guestsNumber(elem)}/>
-                            </div>
-
-                            <div className="dateInputClear">
+                            <h4 className="titleQuestsNumber">How many guests are coming?</h4>
+                            <input type="number" className="guestsNumberInput" max={20} min={1} onChange={(elem) => guestsNumber(elem)}/>
+                        </div>
+                        <div className="datePickerComponento">
+                            <div>
                                 <h4>Pick date bellow</h4>
-                                <input className="dateInput"/>
                                 <FontAwesomeIcon icon={ faCalendarDays} className="calendarIcon"/>
-                                <div className="datePickerComponento">
-                                    <DatePicker className="datePickerComponento"/>
-                                </div>
+                                <DatePicker className="datePickerComponento"/>
                             </div>
-
                         </div>
                     </div>
 

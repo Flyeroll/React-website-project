@@ -297,33 +297,6 @@ export default function First(){
     
 
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     return (
         <div className="componentFirst" onClick={(elem) => closeReserveWindow(elem)}>
