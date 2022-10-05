@@ -11,7 +11,7 @@ import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 
 
-export default function DateWindow(props){
+export default function DateWindow(){
     
     //DATE MONTH YEAR
     const d = new Date();
@@ -504,9 +504,6 @@ useEffect(() => {
         return dataArray
     }
 
-
-
-
     return (
         <div className="allObject">
             <div className="dateMain">
@@ -545,8 +542,8 @@ useEffect(() => {
                     <FontAwesomeIcon icon={faAngleDown} className="dateArrow dateArrowDown" onClick={(elem) => changeScroll(elem)}/>
                 </div>
             <div className="bottomPart">
-                <FontAwesomeIcon icon={faCircleXmark} className="btnBottomPart btnCross" onClick={props.changeStatusForParent}/>
-                <FontAwesomeIcon icon={faCircleCheck} className="btnBottomPart btnCheck" onClick={() => props.sendData(selectedDay)}/>
+                <FontAwesomeIcon icon={faCircleXmark} className="btnBottomPart btnCross"/>
+                <FontAwesomeIcon icon={faCircleCheck} className="btnBottomPart btnCheck"/>
             </div>
             </div>
         </div>

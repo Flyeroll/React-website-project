@@ -267,33 +267,6 @@ export default function secondPageReserv() {
 
 
             // TESTTTT
-            function changeStatusForParent() {
-                setDatePickerStatus((prev) => {
-                    return false
-                })
-            }
-
-
-            const [pickerData, setPickerData] = useState('')
-
-            function recieveDataFromPicker(data) {
-                setPickerData((prev) => {
-                    return data
-                })
-            }
-
-            useEffect((prev) => {
-                console.log("Это данные пикера от родителя!   - ");
-                console.log(pickerData);
-                console.log(pickerData.time);
-                if(pickerData.time !== undefined){
-                    if(pickerData.time.length !== undefined & pickerData.time.length < 1){
-                        console.log("Выберите дату!");
-                    } else if (pickerData.time.length !== undefined & pickerData.time.length > 0) {
-                        console.log("Дата выбрана!");
-                    }
-                }
-            },[pickerData])
 
     return (
         <div className="allComponent" onClick={(elem) => showClicked(elem)}>
@@ -324,7 +297,7 @@ export default function secondPageReserv() {
                                 <h4>Pick date bellow</h4>
                                 <input className="dateInput" readOnly/>
                                 <div className="datePickerComponento">
-                                    {datePickerStatus ? <DatePicker className="datePickerComponento" statusForParent={changeStatusForParent} sendData={recieveDataFromPicker}/> : null}
+                                    {datePickerStatus ? <DatePicker className="datePickerComponento" statusForParent={} /> : null}
                                 </div>
                             </div>
 
