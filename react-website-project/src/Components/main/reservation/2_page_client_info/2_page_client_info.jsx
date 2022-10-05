@@ -4,7 +4,6 @@ import "./style.css"
 import DatePicker from "../date_component/date"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone } from '@fortawesome/free-solid-svg-icons'
-import {  faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function secondPageReserv() {
@@ -29,6 +28,7 @@ export default function secondPageReserv() {
             const [numberParts, setNumberParts] = useState({1:"", 2:"", 3:"", 4:""})
             const [number, setNumber] = useState("")
             const [pageTwoValidator, setPageTwoValidator] = useState({phone:false, name:false, table:false, visitorsNumb:false, dateAndTime:false})
+            const [datePickerStatus, setDatePickerStatus] = useState(true)
         
             function changeTableStatus(table) {
                 let content = table.target.innerHTML
@@ -251,12 +251,20 @@ export default function secondPageReserv() {
 
             }
 
+            function showClicked(elem) {
+                console.log(elem.target);
+                if(elem.target.classList.contains('btnCross')) {
+                    setDatePickerStatus((prev) => {
+                        return false
+                    })
+                }
+            }
+
 
     return (
-        <div className="allComponent">
+        <div className="allComponent" onClick={(elem) => showClicked(elem)}>
             <h2 className="allComponentTitle">Info</h2>
             <div className="columns">
-
                 <div className="firstColumn">
                     <h3>Your Contacts</h3>
                     <div className="reservationClientDataBox">
@@ -280,10 +288,9 @@ export default function secondPageReserv() {
 
                             <div className="dateInputClear">
                                 <h4>Pick date bellow</h4>
-                                <input className="dateInput"/>
-                                <FontAwesomeIcon icon={ faCalendarDays} className="calendarIcon"/>
+                                <input className="dateInput" readOnly/>
                                 <div className="datePickerComponento">
-                                    <DatePicker className="datePickerComponento"/>
+                                    {datePickerStatus ? <DatePicker className="datePickerComponento" /> : null}
                                 </div>
                             </div>
 
