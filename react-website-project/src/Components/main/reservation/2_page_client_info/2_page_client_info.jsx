@@ -28,11 +28,19 @@ export default function secondPageReserv() {
             const [numberParts, setNumberParts] = useState({1:"", 2:"", 3:"", 4:""})
             const [number, setNumber] = useState("")
             const [pageTwoValidator, setPageTwoValidator] = useState({phone:false, name:false, table:false, visitorsNumb:false, dateAndTime:false})
-            const [datePickerStatus, setDatePickerStatus] = useState(true)
+            const [datePickerStatus, setDatePickerStatus] = useState(false)
+
+            //for displaying month's name
+            const [monthArray, setMonthArray] = useState(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
+            //data from Date picker component to operate with
+            const [pickerData, setPickerData] = useState('')
+
+            // date to display in date input field
+            const [dateForInputToShow, setDateForInputToShow] = useState('')
         
             function changeTableStatus(table) {
                 let content = table.target.innerHTML
-                console.log(content);
+
                 
                 if(table.target.classList.contains('tableFree')) {
                     let classes = table.target.classList
@@ -194,10 +202,8 @@ export default function secondPageReserv() {
 
                 }
                 
-               
                 finalNumber = `${firstThreeText} + ${secondThreeText} + ${firstTwoText} + ${secondTwoText}`
     
-                console.log(phoneNumber);
             },[phoneNumber])
 
             useEffect(() => {
@@ -218,11 +224,11 @@ export default function secondPageReserv() {
                     })
                 }
             },[number])
-
+            
             useEffect((elem) => {
                 console.log(pageTwoValidator);
             },[pageTwoValidator])
-
+            
             function guestsNumber(elem) {
                 if(elem.target.value > 20){
                     elem.target.value = 20
@@ -238,6 +244,28 @@ export default function secondPageReserv() {
                 }
             }
             
+            useEffect((prev) => {
+                if(pickerData.time !== undefined){
+                    if(pickerData.time.length !== undefined & pickerData.time.length < 1){
+                        console.log("Выберите дату!");
+                    } else if (pickerData.time.length !== undefined & pickerData.time.length > 0) {
+                        console.log("Дата выбрана!");
+                    }
+                }
+                
+                setDateForInputToShow((prev) => {
+                    let newDay = pickerData.day
+                    let newMonth = pickerData.month
+                    let newYear = pickerData.year
+                    let newValue = `${newDay}.${newMonth}.${newYear}`
+                    return newValue
+                })
+            },[pickerData])
+            
+            useEffect((prev) => {
+                
+            }, [datePickerStatus])
+
             function nameValidator(elem) {
                 if(elem.target.value !== "") {
                     setPageTwoValidator((prev) => {
@@ -252,7 +280,6 @@ export default function secondPageReserv() {
             }
 
             function showClicked(elem) {
-                console.log(elem.target);
                 if(elem.target.classList.contains('btnCross')) {
                     setDatePickerStatus((prev) => {
                         return false
@@ -262,38 +289,39 @@ export default function secondPageReserv() {
 
 
 
-
-
-
-
-            // TESTTTT
-            function changeStatusForParent() {
+            function changeStatusForParent(e) {
+                e.preventDefault()
                 setDatePickerStatus((prev) => {
                     return false
                 })
             }
 
 
-            const [pickerData, setPickerData] = useState('')
+            
 
             function recieveDataFromPicker(data) {
+
                 setPickerData((prev) => {
                     return data
                 })
+
+                setDatePickerStatus((prev) => {
+                    return false
+                })
             }
 
-            useEffect((prev) => {
-                console.log("Это данные пикера от родителя!   - ");
-                console.log(pickerData);
-                console.log(pickerData.time);
-                if(pickerData.time !== undefined){
-                    if(pickerData.time.length !== undefined & pickerData.time.length < 1){
-                        console.log("Выберите дату!");
-                    } else if (pickerData.time.length !== undefined & pickerData.time.length > 0) {
-                        console.log("Дата выбрана!");
-                    }
+            useEffect(() => {
+                console.log(pickerData.daySelected);
+            },[pickerData.daySelected])
+            
+            function openDatePicker() {
+                if(!datePickerStatus) {
+                    setDatePickerStatus((prev) => {
+                        return true
+                    })
                 }
-            },[pickerData])
+            }
+
 
     return (
         <div className="allComponent" onClick={(elem) => showClicked(elem)}>
@@ -322,7 +350,7 @@ export default function secondPageReserv() {
 
                             <div className="dateInputClear">
                                 <h4>Pick date bellow</h4>
-                                <input className="dateInput" readOnly/>
+                                <input className="dateInput" readOnly onClick={() => openDatePicker()} value={dateForInputToShow}/>
                                 <div className="datePickerComponento">
                                     {datePickerStatus ? <DatePicker className="datePickerComponento" statusForParent={changeStatusForParent} sendData={recieveDataFromPicker}/> : null}
                                 </div>

@@ -482,9 +482,16 @@ useEffect(() => {
    
                 
                 for(let i=1; i < amountOfDays + 1; i++) {
-
                     let newElem
+                    if(monthToday === currentYearAndMonth.month){
+                        if(i < dayToday){
+                            newElem = <div className="tag unActiveDay">{i}</div>
+                        } else if (i === dayToday || i > dayToday) {
+                            newElem = <div className="tag" onClick={(target) => selectDate(target)}>{i}</div>
+                        }
+                    } else if(monthToday !== currentYearAndMonth.month){
                         newElem = <div className="tag" onClick={(target) => selectDate(target)}>{i}</div>
+                    }
                     
                     dataArray.push(newElem)
                 }
