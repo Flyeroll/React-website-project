@@ -107,11 +107,17 @@
     height: 50px;
     font-size: 35px;
 }
-
+/* 1 */
 .phoneBox {
     position: relative;
 }
 
+.phoneBox > * {
+    left: 0px;
+    top: 20px;
+}
+
+/* 2 */
 .numberBall {
     position: absolute;
     transition: 0.9s all ease-in-out;
@@ -134,6 +140,7 @@
 
 }
 
+/* 2 */
 .inputPhoneNumber{
     position: absolute;
     color: rgb(0, 31, 134);
@@ -152,7 +159,9 @@
     border-radius: 0%;
 }
 
+/* 2 */
 .phoneIcon {
+    left: 0;
     position: absolute;
     pointer-events: none;
     width: 25px;
@@ -168,6 +177,7 @@
 }
 
 .nameInput {
+    font-size: 20px;
     cursor: default;
     border: 2px solid black;
     width: 223px;
@@ -176,6 +186,7 @@
 }
 
 .guestsNumberInput{
+    font-size: 20px;
     border: 2px solid black;
     width: 223px;
     height: 25px;
@@ -200,7 +211,8 @@
 }
 
 .reservationClientDataBox > * {
-    margin-bottom: 20px;
+    margin-bottom: 80px;
+    margin-top: 40px;
 }
 
 .nameInputClearBox {
@@ -214,7 +226,11 @@
 }
 
 
-
+.dateInput {
+    font-size: 20px;
+    width: 223px;
+    height: 25px;
+}
 
 .guestInputClearBox {
 

@@ -37,6 +37,9 @@ export default function secondPageReserv() {
 
             // date to display in date input field
             const [dateForInputToShow, setDateForInputToShow] = useState('')
+
+            //guestsNumber to display
+            const [guestsTodisplay, setGuestsToDisplay] = useState("1")
         
             function changeTableStatus(table) {
                 let content = table.target.innerHTML
@@ -127,6 +130,8 @@ export default function secondPageReserv() {
                 let finalNumber
                 
                 if(phoneNumber.length < 4){
+                    console.log('LENGTHHHH');
+                    console.log(phoneNumber.length);
                     let firstThreeArr = phoneNumber.slice(0, 3)
                     let newArrText = ""
                     for(let i = 0; i < firstThreeArr.length; i++) {
@@ -136,7 +141,13 @@ export default function secondPageReserv() {
                             newArrText += "_"
                         }
                     }
-                    firstThreeText = `(${newArrText})`
+
+  
+                    if(phoneNumber.length > 0) {
+                        firstThreeText = `(${newArrText})`
+                    } else if(phoneNumber.length === 0) {
+                        firstThreeText = ``
+                    }
 
                     setNumberParts((prev) => {
                         return {...prev, 1:firstThreeText}
@@ -226,10 +237,16 @@ export default function secondPageReserv() {
             },[number])
             
             useEffect((elem) => {
-                console.log(pageTwoValidator);
+
             },[pageTwoValidator])
             
             function guestsNumber(elem) {
+                let numbArr = [0,1,2,3,4,5,6,7,8,9]
+                let valueOfInput = elem.target.value
+                console.log(elem.target);
+                // elem.target.value = newChar
+                
+                
                 if(elem.target.value > 20){
                     elem.target.value = 20
                 }
@@ -242,6 +259,7 @@ export default function secondPageReserv() {
                         return {...prev, visitorsNumb:false}
                     })
                 }
+
             }
             
             useEffect((prev) => {
@@ -254,10 +272,25 @@ export default function secondPageReserv() {
                 }
                 
                 setDateForInputToShow((prev) => {
-                    let newDay = pickerData.day
-                    let newMonth = pickerData.month
-                    let newYear = pickerData.year
-                    let newValue = `${newDay}.${newMonth}.${newYear}`
+                    let newDay
+                    let newMonth
+                    let newYear
+                    let newValue
+                    if(
+                        pickerData.day !== undefined &
+                        pickerData.month !== undefined &
+                        pickerData.year !== undefined
+                        ){
+                            newDay = pickerData.day
+                            newMonth = pickerData.month
+                            newYear = pickerData.year
+                            newValue = `${newDay}.${newMonth + 1}.${newYear}`
+                        } else {
+                            newDay = '__'
+                            newMonth = '__'
+                            newYear = '____'
+                            newValue = `${newDay}.${newMonth}.${newYear}`
+                        }
                     return newValue
                 })
             },[pickerData])
@@ -311,7 +344,7 @@ export default function secondPageReserv() {
             }
 
             useEffect(() => {
-                console.log(pickerData.daySelected);
+                
             },[pickerData.daySelected])
             
             function openDatePicker() {
@@ -345,7 +378,7 @@ export default function secondPageReserv() {
 
                             <div className="guestInputClear">
                                 <h4 className="titleQuestsNumber">How many guests are coming?</h4>
-                                <input type="number" className="guestsNumberInput" max={20} min={1} onChange={(elem) => guestsNumber(elem)}/>
+                                <input type="number" className="guestsNumberInput" max={20} min={1} onChange={(elem) => guestsNumber(elem)}  defaultValue={1}/>
                             </div>
 
                             <div className="dateInputClear">
