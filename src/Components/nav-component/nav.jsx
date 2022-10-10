@@ -55,16 +55,16 @@ export default function Nav() {
             }}>
                 <img src="/images/logo.png" alt="" className="navLogo"/>
                 <div className="buttons">
-                    <div className="menuBtn navBtn" onClick={() => openMenu()}>
+                    <button className="menuBtn navBtn" onClick={() => openMenu()}>
                         Menu
-                        <div className="menuBar showMenuFalse" id="menuBtn">
+                        <button className="menuBar showMenuFalse" id="menuBtn">
       
-                                <h6 className="navMenuBtn"><Link to="/dishes" className="linkToHide">Dishes</ Link></h6>
-                                <h6 className="navMenuBtn"><Link to="/about" className="linkToHide">About Us</Link></h6>
-                                <h6 className="navMenuBtn"><Link to="/contacts" className="linkToHide">Contacts</Link></h6>
+                                <button className="navMenuBtn"><Link to="/dishes" className="linkToHide">Dishes</ Link></button>
+                                <button className="navMenuBtn"><Link to="/about" className="linkToHide">About Us</Link></button>
+                                <button className="navMenuBtn"><Link to="/contacts" className="linkToHide">Contacts</Link></button>
                                 
-                        </div>
-                        </div>
+                        </button>
+                    </button>
                     <div className="reserveMenuBtn navBtn"><Link to="reservation" className="link">Reservation</Link></div>
                 </div>
                 <FontAwesomeIcon icon={ faMapLocation } className="navIcon" onClick={() => showOrHideMap()}/>
