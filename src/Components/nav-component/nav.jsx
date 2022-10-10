@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./nav.scoped.css"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,6 +15,9 @@ import { Link } from "react-router-dom";
 
 export default function Nav() {
 
+    const [showMenu, setShowMenu] = useState(false)
+    const menuBtnRef = useRef()
+
     function showOrHideMap() {
         let mapNav = document.querySelectorAll('#xMarkNav')
 
@@ -28,25 +31,30 @@ export default function Nav() {
         
     }
     function openMenu(){
-        let menu = document.querySelectorAll('.menuBar')
-        console.log(menu[0].classList);
-        if(menu[0].classList.contains('showMenuFalse')) {
-            menu[0].classList.remove('showMenuFalse')
-            menu[0].classList.add('showMenuTrue')
-            let itemsToHideShow = document.querySelectorAll('.linkToHide')
-            itemsToHideShow.forEach((link) => {
-                link.style.pointerEvents = 'all'
-            })
-        } else {
-            menu[0].classList.add('showMenuFalse')
-            let itemsToHideShow = document.querySelectorAll('.linkToHide')
-            itemsToHideShow.forEach((link) => {
-                link.style.pointerEvents = 'none'
-            })
-            menu[0].classList.remove('showMenuTrue')
-        }
+        setShowMenu((prev) => {
+            return !prev
+        })
 
     }
+
+    function printMenu() {
+        return (
+            <div className="menuBar showMenuTrue" id="menuBtn">
+                <button className="navMenuBtn"><Link to="/dishes" className="linkToHide">Dishes</ Link></button>
+                <button className="navMenuBtn"><Link to="/about" className="linkToHide">About Us</Link></button>
+                <button className="navMenuBtn"><Link to="/contacts" className="linkToHide">Contacts</Link></button>
+            </div>
+        )
+    }
+
+
+    function showObj(event){
+        console.log(event);
+    }
+
+    useEffect(() => {
+        console.log(menuBtnRef);
+    },[])
     return(
         <div>
 
@@ -55,15 +63,9 @@ export default function Nav() {
             }}>
                 <img src="/images/logo.png" alt="" className="navLogo"/>
                 <div className="buttons">
-                    <button className="menuBtn navBtn" onClick={() => openMenu()}>
+                    <button ref={menuBtnRef} className="menuBtn navBtn" onClick={() => openMenu()}>
                         Menu
-                        <button className="menuBar showMenuFalse" id="menuBtn">
-      
-                                <button className="navMenuBtn"><Link to="/dishes" className="linkToHide">Dishes</ Link></button>
-                                <button className="navMenuBtn"><Link to="/about" className="linkToHide">About Us</Link></button>
-                                <button className="navMenuBtn"><Link to="/contacts" className="linkToHide">Contacts</Link></button>
-                                
-                        </button>
+                        {showMenu ? printMenu() : null }
                     </button>
                     <div className="reserveMenuBtn navBtn"><Link to="reservation" className="link">Reservation</Link></div>
                 </div>
