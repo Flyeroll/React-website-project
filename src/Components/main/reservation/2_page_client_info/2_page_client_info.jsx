@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import "./style.css"
 import DatePicker from "../date_component/date"
@@ -27,7 +27,7 @@ export default function secondPageReserv() {
             const [phoneNumber, setPhoneNumber] = useState('')
             const [numberParts, setNumberParts] = useState({1:"", 2:"", 3:"", 4:""})
             const [number, setNumber] = useState("")
-            const [pageTwoValidator, setPageTwoValidator] = useState({phone:false, name:false, table:false, visitorsNumb:false, dateAndTime:false})
+            const [pageTwoValidator, setPageTwoValidator] = useState({phone:false, name:false, table:false, visitorsNumb:true, dateAndTime:false})
             const [datePickerStatus, setDatePickerStatus] = useState(false)
 
             //for displaying month's name
@@ -40,6 +40,10 @@ export default function secondPageReserv() {
 
             //guestsNumber to display
             const [guestsTodisplay, setGuestsToDisplay] = useState("1")
+
+            //Refs
+            const phoneInputRef = useRef()
+            const inputDateRef = useRef()
         
             function changeTableStatus(table) {
                 let content = table.target.innerHTML
@@ -130,8 +134,6 @@ export default function secondPageReserv() {
                 let finalNumber
                 
                 if(phoneNumber.length < 4){
-                    console.log('LENGTHHHH');
-                    console.log(phoneNumber.length);
                     let firstThreeArr = phoneNumber.slice(0, 3)
                     let newArrText = ""
                     for(let i = 0; i < firstThreeArr.length; i++) {
@@ -226,26 +228,32 @@ export default function secondPageReserv() {
 
             useEffect((prev) => {
                 if(number.length === 18) {
+                    let input = phoneInputRef.current
+                    input.classList.add("inputGreen")
+                    console.log(input.classList);
                     setPageTwoValidator((prev) => {
                         return {...prev, phone:true}
                     })
                 } else if(number.length !== 18) {
+                    let input = phoneInputRef.current
+                    if(input.classList.contains("inputGreen")) {
+                        input.classList.remove("inputGreen")
+                    }
+
+                    console.log(input.classList);
                     setPageTwoValidator((prev) => {
                         return {...prev, phone:false}
                     })
                 }
             },[number])
             
-            useEffect((elem) => {
-
+            useEffect(() => {
+                console.log(pageTwoValidator);
             },[pageTwoValidator])
             
             function guestsNumber(elem) {
                 let numbArr = [0,1,2,3,4,5,6,7,8,9]
                 let valueOfInput = elem.target.value
-                console.log(elem.target);
-                // elem.target.value = newChar
-                
                 
                 if(elem.target.value > 20){
                     elem.target.value = 20
@@ -272,6 +280,7 @@ export default function secondPageReserv() {
                 }
                 
                 setDateForInputToShow((prev) => {
+                    let newTime
                     let newDay
                     let newMonth
                     let newYear
@@ -279,17 +288,31 @@ export default function secondPageReserv() {
                     if(
                         pickerData.day !== undefined &
                         pickerData.month !== undefined &
-                        pickerData.year !== undefined
+                        pickerData.year !== undefined 
                         ){
-                            newDay = pickerData.day
-                            newMonth = pickerData.month
-                            newYear = pickerData.year
-                            newValue = `${newDay}.${newMonth + 1}.${newYear}`
+                            if(pickerData.time.length > 0){
+                                setPageTwoValidator((prev) => {
+                                    return {...prev, dateAndTime:true}
+                                })
+                                newDay = pickerData.day
+                                newMonth = pickerData.month
+                                newYear = pickerData.year
+                                newValue = `${newDay}.${newMonth + 1}.${newYear}     ${pickerData.time[0]} `
+                            } else {
+                                setPageTwoValidator((prev) => {
+                                    return {...prev, dateAndTime:false}
+                                })
+                                newDay = '__'
+                                newMonth = '__'
+                                newYear = '____'
+                                newValue = `Please, set date and time`
+                            }
+                            
                         } else {
                             newDay = '__'
                             newMonth = '__'
                             newYear = '____'
-                            newValue = `${newDay}.${newMonth}.${newYear}`
+                            newValue = `Please, set date and time`
                         }
                     return newValue
                 })
@@ -364,26 +387,26 @@ export default function secondPageReserv() {
                     <h3>Your Contacts</h3>
                     <div className="reservationClientDataBox">
                             <div className="nameInputClear">
-                                <input type="text" className="nameInput" placeholder="your name" onChange={(elem) => nameValidator(elem)}/>
+                                <input type="text" className={"nameInput " + (pageTwoValidator.name ? "inputGreen" : null)} placeholder="your name" onChange={(elem) => nameValidator(elem)}/>
                             </div>
 
                             <div className="phoneInputClear">
                                 <h4>Please give your phone number</h4>
                                 <div className="phoneBox">
                                     <FontAwesomeIcon icon={faPhone} className="phoneIcon"/>
-                                    <input type="text" className="inputPhoneNumber" placeholder="your phone"  maxLength={18}  onChange={(elem) => phoneFilter(elem)} onClick={(elem) => showInputPhone(elem)} />
-                                    <h2 className='numberBall'>&nbsp;&nbsp;{`${number}`}</h2>
+                                    <input type="text" className="inputPhoneNumber " placeholder="your phone"  maxLength={18}  onChange={(elem) => phoneFilter(elem)} onClick={(elem) => showInputPhone(elem)} />
+                                    <h2 ref={phoneInputRef} className="numberBall">&nbsp;&nbsp;{`${number}`}</h2>
                                 </div>
                             </div>
 
                             <div className="guestInputClear">
                                 <h4 className="titleQuestsNumber">How many guests are coming?</h4>
-                                <input type="number" className="guestsNumberInput" max={20} min={1} onChange={(elem) => guestsNumber(elem)}  defaultValue={1}/>
+                                <input type="number" className={"guestsNumberInput " + (pageTwoValidator.visitorsNumb ? "inputGreen" : null)} max={20} min={1} onChange={(elem) => guestsNumber(elem)}  defaultValue={1}/>
                             </div>
 
                             <div className="dateInputClear">
                                 <h4>Pick date bellow</h4>
-                                <input className="dateInput" readOnly onClick={() => openDatePicker()} value={dateForInputToShow}/>
+                                <input ref={inputDateRef} className={"dateInput " + (pageTwoValidator.dateAndTime ? "inputGreen" : null)} readOnly onClick={() => openDatePicker()} value={dateForInputToShow}/>
                                 <div className="datePickerComponento">
                                     {datePickerStatus ? <DatePicker className="datePickerComponento" statusForParent={changeStatusForParent} sendData={recieveDataFromPicker}/> : null}
                                 </div>

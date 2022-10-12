@@ -165,13 +165,13 @@
     justify-content: space-around;
     align-items: center;
     position: absolute;
-    left: -50%;
+    left: -40px;
     top: 60px;
-    width: 200%;
+    width: 200px;
     background-color: rgb(81, 163, 0);
     transition: 0.3s all ease-in-out;
     z-index: 10;
-    
+    opacity: 0.5;
 }
 
 .showMenuFalse {
@@ -211,7 +211,6 @@
 .linkToHide {
     color: rgb(0, 0, 0);
     user-select: none;
-    pointer-events: none;
     cursor: pointer;
     text-decoration: none;
 }

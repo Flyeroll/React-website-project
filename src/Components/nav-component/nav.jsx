@@ -30,37 +30,46 @@ export default function Nav() {
         }
         
     }
-    function openMenu(){
-        setShowMenu((prev) => {
-            return !prev
-        })
-
-    }
-
+    
     function printMenu() {
         return (
             <div className="menuBar showMenuTrue" id="menuBtn">
-                <button className="navMenuBtn"><Link to="/dishes" className="linkToHide">Dishes</ Link></button>
-                <button className="navMenuBtn"><Link to="/about" className="linkToHide">About Us</Link></button>
-                <button className="navMenuBtn"><Link to="/contacts" className="linkToHide">Contacts</Link></button>
+                <div className="navMenuBtn"><Link to="/dishes" className="linkToHide">Dishes</ Link></div>
+                <div className="navMenuBtn"><Link to="/about" className="linkToHide">About Us</Link></div>
+                <div className="navMenuBtn"><Link to="/contacts" className="linkToHide">Contacts</Link></div>
             </div>
         )
     }
 
-
-    function showObj(event){
-        console.log(event);
+ 
+    
+    function openMenu(){
+        setShowMenu((prev) => {
+            return !prev
+        })
+        
     }
-
+    
+    
+    
     useEffect(() => {
-        console.log(menuBtnRef);
+        const closeDropDown = e => {
+            if(e.target !== menuBtnRef.current) {
+                setShowMenu((prev) => {
+                    return false
+                })
+            }
+        }
+
+        document.addEventListener('click', closeDropDown)
+
+        return () => document.removeEventListener('click', closeDropDown)
+        
     },[])
     return(
         <div>
 
-            <div className="nav" onClick={(elem) => {
-                console.log(elem.target)
-            }}>
+            <div className="nav">
                 <img src="/images/logo.png" alt="" className="navLogo"/>
                 <div className="buttons">
                     <button ref={menuBtnRef} className="menuBtn navBtn" onClick={() => openMenu()}>
