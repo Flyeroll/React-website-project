@@ -28,6 +28,7 @@ export default function secondPageReserv() {
             const [numberParts, setNumberParts] = useState({1:"", 2:"", 3:"", 4:""})
             const [number, setNumber] = useState("")
             const [pageTwoValidator, setPageTwoValidator] = useState({phone:false, name:false, table:false, visitorsNumb:true, dateAndTime:false})
+            const [pageTwoValidatorFinal, setPageTwoValidatorFinal] = useState(false)
             const [datePickerStatus, setDatePickerStatus] = useState(false)
 
             //for displaying month's name
@@ -121,7 +122,15 @@ export default function secondPageReserv() {
               }
             
             useEffect(() => {
-
+                if(clearReservedTables.length > 0){
+                    setPageTwoValidator((prev) => {
+                        return {...prev, table:true}
+                    })
+                } else {
+                    setPageTwoValidator((prev) => {
+                        return {...prev, table:false}
+                    })
+                }
             }, [clearReservedTables])
             
             
@@ -248,8 +257,28 @@ export default function secondPageReserv() {
             },[number])
             
             useEffect(() => {
-                console.log(pageTwoValidator);
+                if(
+                    pageTwoValidator.dateAndTime === true &
+                    pageTwoValidator.name === true &
+                    pageTwoValidator.phone === true &
+                    pageTwoValidator.table === true &
+                    pageTwoValidator.visitorsNumb === true 
+                ) {
+                    setPageTwoValidatorFinal((prev) => {
+                        return true
+                    })
+                } else {
+                    setPageTwoValidatorFinal((prev) => {
+                        return false
+                    })
+                }
             },[pageTwoValidator])
+
+
+            useEffect(() => {
+                console.log('ФИНАЛКА');
+                console.log(pageTwoValidatorFinal);
+            },[pageTwoValidatorFinal])
             
             function guestsNumber(elem) {
                 let numbArr = [0,1,2,3,4,5,6,7,8,9]
