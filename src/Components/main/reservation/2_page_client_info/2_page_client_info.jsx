@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone } from '@fortawesome/free-solid-svg-icons'
 
 
-export default function secondPageReserv() {
+export default function secondPageReserv(props) {
 
 
             
@@ -276,8 +276,7 @@ export default function secondPageReserv() {
 
 
             useEffect(() => {
-                console.log('ФИНАЛКА');
-                console.log(pageTwoValidatorFinal);
+                
             },[pageTwoValidatorFinal])
             
             function guestsNumber(elem) {

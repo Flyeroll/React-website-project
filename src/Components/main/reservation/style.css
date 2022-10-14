@@ -37,7 +37,6 @@
     position: absolute;
     bottom: 50px;
     user-select:none ;
-    cursor: pointer;
 }
 
 .reserveShape {
@@ -96,11 +95,21 @@
     height: 5px;
 }
 
+.reserveBtn {
+    cursor: pointer;
+}
+
 .reservBtnBack {
     margin-right: 30px;
 }
 
 .reservBtnForward {
     margin-left: 30px;
+}
+
+.reservBtnForwardLocked {
+    cursor: default;
+    background-color: grey;
+    pointer-events: none;
 }
 

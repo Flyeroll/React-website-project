@@ -19,7 +19,7 @@ import { createContext } from "react";
 
 export const showWindow = createContext() 
 
-export default function Reservation (props) {
+export default function Reservation () {
 
     const [statusLine, setStatusLine] = useState(1)
     const [secondPageValidator, setSecondPageValidator] = useState(false)
@@ -76,22 +76,38 @@ export default function Reservation (props) {
         }, 475);
     }
 
-    function crossFunc() {
-        
-
+    function getValidatorFromSecondPage(secondPageValidator) {
+        if(secondPageValidator === false) {
+            setSecondPageValidator(prev => false)
+        } else {
+            setSecondPageValidator(prev => true)
+        }
     }
+
     return(
         <ThemeContext.Provider value={false}>
             <div className="mainDiv">
                 <div className="reserveMainWindow">
-                    <FontAwesomeIcon icon={ faXmark } className="xMarkNav xMarkReservation" onClick={() => crossFunc()}/>
-                    {statusLine === 1 ? <FirstPage data3={props.data2}/> : null}
+                    <FontAwesomeIcon icon={ faXmark } className="xMarkNav xMarkReservation"/>
+                    {statusLine === 1 ? <FirstPage /> : null}
                     {statusLine === 2 ? <SecondPage /> : null}
                     {statusLine === 3 ? <ThirdPage /> : null}
 
                     <div className="reserveBtnSection">
-                        {statusLine === 1 ? null : <div className="reserveBtn reservBtnBack" onClick={(btn) => changeStatus(btn)}>back</div>}
-                        {statusLine === 3 ? null : <div className="reserveBtn reservBtnForward" onClick={(btn) => changeStatus(btn)}>continue</div>}
+                        {/* 1 page */}
+                        {statusLine === 1 ? <div className="reserveBtn reservBtnForward" onClick={(btn) => changeStatus(btn)}>continue</div> : null }
+                        
+                        {/* 2 page */}
+                        {statusLine === 2 ? <div className="reserveBtn reservBtnBack" onClick={(btn) => changeStatus(btn)}>back</div> : null}
+                        {statusLine === 2 ? <div className={(!secondPageValidator ? "reserveBtn reservBtnForward reservBtnForwardLocked" : "reserveBtn reservBtnForward")} onClick={(btn) => changeStatus(btn)}>continue</div> : null}
+                        {/* 3 page */}
+                        {statusLine === 3 ? <div className="reserveBtn reservBtnBack">Ok !</div> : null}
+
+
+
+
+                        {/* {statusLine === 1 ? null : <div className="reserveBtn reservBtnBack" onClick={(btn) => changeStatus(btn)}>back</div>}
+                        {statusLine === 3 ? null : <div className={(!secondPageValidator ? "reserveBtn reservBtnForward reservBtnForwardLocked" : "reserveBtn reservBtnForward")} onClick={(btn) => changeStatus(btn)}>continue</div>} */}
                         
                     </div>
                     <div className="reserveShape">
