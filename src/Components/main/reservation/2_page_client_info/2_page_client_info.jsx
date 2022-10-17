@@ -276,7 +276,7 @@ export default function secondPageReserv(props) {
 
 
             useEffect(() => {
-                
+                props.dataForParent(pageTwoValidatorFinal)
             },[pageTwoValidatorFinal])
             
             function guestsNumber(elem) {
