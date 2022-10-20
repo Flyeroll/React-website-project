@@ -291,6 +291,8 @@ export default function First(){
     function closeReserveWindow(elem){
         if(elem.target.classList.contains("xMarkReservation")) {
             setShowReserveWindowToggler(prev => false)
+        } else if(elem.target.classList.contains("reservBtnOk")){
+            setShowReserveWindowToggler(prev => false)
         }
     }
 

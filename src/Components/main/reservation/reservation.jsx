@@ -90,6 +90,10 @@ export default function Reservation (props) {
         })
     }
 
+    function checkIt(elem) {
+        console.log(elem.target);
+    }
+
     return(
         <ThemeContext.Provider value={false}>
             <div className="mainDiv">
@@ -107,13 +111,7 @@ export default function Reservation (props) {
                         {statusLine === 2 ? <div className="reserveBtn reservBtnBack" onClick={(btn) => changeStatus(btn)}>back</div> : null}
                         {statusLine === 2 ? <div className={(!secondPageValidator ? "reserveBtn reservBtnForward reservBtnForwardLocked" : "reserveBtn reservBtnForward")} onClick={(btn) => changeStatus(btn)}>continue</div> : null}
                         {/* 3 page */}
-                        {statusLine === 3 ? <div className="reserveBtn reservBtnBack">Ok !</div> : null}
-
-
-
-
-                        {/* {statusLine === 1 ? null : <div className="reserveBtn reservBtnBack" onClick={(btn) => changeStatus(btn)}>back</div>}
-                        {statusLine === 3 ? null : <div className={(!secondPageValidator ? "reserveBtn reservBtnForward reservBtnForwardLocked" : "reserveBtn reservBtnForward")} onClick={(btn) => changeStatus(btn)}>continue</div>} */}
+                        {statusLine === 3 ? <div className="reserveBtn reservBtnOk" onClick={(elem) => checkIt(elem)}>Ok !</div> : null}
                         
                     </div>
                     <div className="reserveShape">
