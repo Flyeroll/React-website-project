@@ -76,13 +76,12 @@ export default function Nav() {
                         Menu
                         {showMenu ? printMenu() : null }
                     </button>
-                    <div className="reserveMenuBtn navBtn"><Link to="reservation" className="link">Reservation</Link></div>
                 </div>
                 <FontAwesomeIcon icon={ faMapLocation } className="navIcon" onClick={() => showOrHideMap()}/>
                 <div className="navMap falseShow" id="xMarkNav">
                     <div className="contentNav">
                         <h1>Coffee House</h1>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit quidem optio error repudiandae earum quod repellat nostrum vel esse perspiciatis aperiam, molestiae illum sequi ipsum? Ratione velit nulla consectetur. Explicabo!</p>
+                        <h3>You can find us:</h3>
                     </div>
                     <FontAwesomeIcon icon={ faXmark } onClick={() => showOrHideMap()} className="xMarkNav"/>
                 </div>
