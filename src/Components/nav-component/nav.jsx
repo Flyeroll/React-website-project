@@ -90,6 +90,12 @@ export default function Nav() {
                     <div className="contentNav">
                         <h1>Coffee House</h1>
                         <h3>You can find us:</h3>
+                        <p>3, Kirochnaya street</p>
+                        <p>Saint-Petersburg</p>
+                        <img src="/images/map.jpg" />
+                        <p>coffeehouse@gmail.com</p>
+                        <p>Working hours</p>
+                        <p>Mon - Sun from 13:00 to 23:30</p>
                         <div id="map"></div>
                     </div>
                     <FontAwesomeIcon icon={ faXmark } onClick={() => showOrHideMap()} className="xMarkNav"/>
