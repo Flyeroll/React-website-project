@@ -13,6 +13,10 @@ import { Link } from "react-router-dom";
 
 
 
+
+
+
+
 export default function Nav() {
 
     const [showMenu, setShowMenu] = useState(false)
@@ -66,6 +70,10 @@ export default function Nav() {
         return () => document.removeEventListener('click', closeDropDown)
         
     },[])
+
+      
+
+
     return(
         <div>
 
@@ -82,6 +90,7 @@ export default function Nav() {
                     <div className="contentNav">
                         <h1>Coffee House</h1>
                         <h3>You can find us:</h3>
+                        <div id="map"></div>
                     </div>
                     <FontAwesomeIcon icon={ faXmark } onClick={() => showOrHideMap()} className="xMarkNav"/>
                 </div>
