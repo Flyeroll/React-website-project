@@ -154,6 +154,19 @@
     padding: 15px;
 }
 
+.contentNav > p {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.contentNav > h3 {
+    padding-top: 30px;
+}
+
+.forStyling {
+    margin-bottom: -40px;
+}
+
 .menuBtn {
     position: relative;
 }
@@ -213,6 +226,37 @@
     user-select: none;
     cursor: pointer;
     text-decoration: none;
+}
+
+
+
+
+.mapImg {
+    position: fixed;
+    height: 200px;
+    cursor: zoom-in;
+    border: 2px solid black;
+    right: 50px;
+    top: 230px;
+}
+
+.mapImg {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.mapImg.mapShowed {
+    transition: 1s all ease-in-out;
+    position: fixed;
+    right: calc(50% - 600px);
+    top: calc(50% - 400px);
+    height: 800px;
+    border: 6px solid black;
+}
+
+.spacingForMap {
+    margin-bottom: 200px;
 }
 
 

@@ -24,6 +24,7 @@ export default function Nav() {
 
     function showOrHideMap() {
         let mapNav = document.querySelectorAll('#xMarkNav')
+        let mapEl = document.getElementsByClassName("mapImg")
 
         if(mapNav[0].classList.contains('falseShow')) {
             mapNav[0].classList.remove('falseShow')
@@ -71,6 +72,14 @@ export default function Nav() {
         
     },[])
 
+    function showMap() {
+        let mapEl = document.getElementsByClassName("mapImg")
+        console.log(mapEl);
+        if(!mapEl[0].classList.contains('mapShowed')) {
+            mapEl[0].classList.add('mapShowed')
+        }
+    }
+
       
 
 
@@ -90,13 +99,12 @@ export default function Nav() {
                     <div className="contentNav">
                         <h1>Coffee House</h1>
                         <h3>You can find us:</h3>
-                        <p>3, Kirochnaya street</p>
-                        <p>Saint-Petersburg</p>
-                        <img src="/images/map.jpg" />
+                        <p className="forStyling">3, Kirochnaya street</p>
+                        <p className="spacingForMap">Saint-Petersburg</p>
+                        <img src="/map.jpg" className="mapImg" onClick={() => showMap()}/>
                         <p>coffeehouse@gmail.com</p>
-                        <p>Working hours</p>
+                        <p className="forStyling">Working hours</p>
                         <p>Mon - Sun from 13:00 to 23:30</p>
-                        <div id="map"></div>
                     </div>
                     <FontAwesomeIcon icon={ faXmark } onClick={() => showOrHideMap()} className="xMarkNav"/>
                 </div>
