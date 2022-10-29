@@ -29,9 +29,11 @@ export default function Nav() {
         if(mapNav[0].classList.contains('falseShow')) {
             mapNav[0].classList.remove('falseShow')
             mapNav[0].classList.add('trueShow')
+            mapEl[0].classList.add('moveToLeft')
         } else {
             mapNav[0].classList.add('falseShow')
             mapNav[0].classList.remove('trueShow')
+            mapEl[0].classList.remove('moveToLeft')
         }
         
     }
@@ -101,7 +103,10 @@ export default function Nav() {
                         <h3>You can find us:</h3>
                         <p className="forStyling">3, Kirochnaya street</p>
                         <p className="spacingForMap">Saint-Petersburg</p>
-                        <img src="/map.jpg" className="mapImg" onClick={() => showMap()}/>
+                        <p className="mapImg mapBox" onClick={() => showMap()}>
+                            <img src="/map.jpg" />
+                            <h1>Click image to close</h1>
+                        </p>
                         <p>coffeehouse@gmail.com</p>
                         <p className="forStyling">Working hours</p>
                         <p>Mon - Sun from 13:00 to 23:30</p>
