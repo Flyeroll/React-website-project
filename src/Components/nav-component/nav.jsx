@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from "react";
 import "./nav.scoped.css"
 
@@ -17,11 +18,12 @@ import { Link } from "react-router-dom";
 
 
 
-export default function Nav() {
 
+export default function Nav() {
+    
     const [showMenu, setShowMenu] = useState(false)
     const menuBtnRef = useRef()
-
+    
     function showOrHideMap() {
         let mapNav = document.querySelectorAll('#xMarkNav')
         let mapEl = document.getElementsByClassName("mapImg")
@@ -102,11 +104,8 @@ export default function Nav() {
                         <h1>Coffee House</h1>
                         <h3>You can find us:</h3>
                         <p className="forStyling">3, Kirochnaya street</p>
-                        <p className="spacingForMap">Saint-Petersburg</p>
-                        <p className="mapImg mapBox" onClick={() => showMap()}>
-                            <img src="/map.jpg" />
-                            <h1>Click image to close</h1>
-                        </p>
+                        <p>Saint-Petersburg</p>
+                        <div className="mapDiv"></div>
                         <p>coffeehouse@gmail.com</p>
                         <p className="forStyling">Working hours</p>
                         <p>Mon - Sun from 13:00 to 23:30</p>

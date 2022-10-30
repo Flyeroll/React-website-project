@@ -9,8 +9,10 @@
     "@googlemaps/react-wrapper": "^1.1.35",
     "@react-google-maps/api": "^2.13.1",
     "craco-plugin-scoped-css": "^1.1.1",
+    "leaflet": "^1.9.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-leaflet": "^4.1.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "0.9.5"
   },

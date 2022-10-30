@@ -255,25 +255,11 @@
     border: 6px solid black;
 }
 
-.mapBox img {
-    width: 100%;
-    height: 100%;
-}
 
-.mapBox.mapShowed:hover{
-    opacity: 0.5;
-}
-
-.spacingForMap {
-    margin-bottom: 200px;
-}
-
-
-
-.mapBox > * {
-    position: absolute;
-    top: 0px;
-    left: 0px;
+.mapDiv{
+    height: 300px;
+    width: 300px;
+    background-color: red;
 }
 
 
