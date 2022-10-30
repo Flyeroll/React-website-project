@@ -1,4 +1,3 @@
-/* eslint-disable */
 // DISHES
 import React, { useEffect, useState } from "react";
 import "./first.css"
