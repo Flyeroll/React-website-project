@@ -5,8 +5,6 @@ import './index.css';
 
 import { BrowserRouter } from "react-router-dom"
 
-
-
 import DateWindow from "./Components/main/reservation/date_component/date"
 
 
