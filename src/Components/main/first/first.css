@@ -94,12 +94,74 @@ img {
     }
 }
 
+
 .dishFormMain{
     width: 640px;
     background-color: rgb(244, 244, 244);
     border-radius: 20px;
     display: flex;
     justify-content: space-between;
+}
+
+@media screen and (max-width: 400px) {
+    .categoryTitle {
+        font-size: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .allDishes{
+        grid-template-columns: 1fr;
+
+    }
+    .dishFormMain{
+        position: relative;
+        flex-direction: column;
+        width: 170px;
+        height: 150px;
+        border-radius: 10px;
+    }
+    .dishFormMain > * {
+        position: absolute;
+    }
+    .dishImg{
+        top: 32px;
+        height: 100px;
+        width: 160px;
+    }
+    .dishName{
+        width: 150px;
+        margin: 0;
+        padding: 0;
+        top: 4px;
+        left: -75px;
+        font-size: x-small;
+    }
+    .dishBtnForm{
+        left: -160px;
+        bottom: -6px;
+    }
+    .dishBtn{
+        width: 20px;
+        height: 20px;
+        background-color: blue;
+        text-align: center;
+        border-radius: 50%;
+    }
+    .dishPrice{
+        left: 0px;
+        top: 0px;
+        width: 50px;
+        font-size: 10px;
+    }
+    .dishDescription{
+        display: none;
+    }
+    .dishForm{
+        position: relative;
+    }
+    .dishForm > * {
+        position: absolute;
+    }
 }
 
 .inputField {
