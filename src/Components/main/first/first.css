@@ -103,6 +103,21 @@ img {
     justify-content: space-between;
 }
 
+.showedFoto {
+    width: 700px;
+    height: 400px;
+    position: fixed;
+    top: calc(50vh - 200px);
+    z-index: 5;
+    user-select: none;
+    transition: 1s all ease-in-out;
+}
+
+.showedFotoContainer {
+    display: flex;
+    position: relative;
+}
+
 @media screen and (max-width: 400px) {
     .categoryTitle {
         font-size: 20px;
@@ -110,7 +125,7 @@ img {
         padding-bottom: 10px;
     }
     .allDishes{
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
 
     }
     .dishFormMain{
@@ -138,20 +153,17 @@ img {
     }
     .dishBtnForm{
         left: -160px;
-        bottom: -6px;
+        bottom: -7px;
     }
     .dishBtn{
-        width: 20px;
-        height: 20px;
-        background-color: blue;
-        text-align: center;
+        width: 14px;
+        height: 14px;
+        background-color: rgb(224, 224, 224);
         border-radius: 50%;
+        text-align: center;
     }
     .dishPrice{
-        left: 0px;
-        top: 0px;
-        width: 50px;
-        font-size: 10px;
+        display: none;
     }
     .dishDescription{
         display: none;
@@ -162,6 +174,10 @@ img {
     .dishForm > * {
         position: absolute;
     }
+    .showedFoto{
+        display: none;
+    }
+
 }
 
 .inputField {
@@ -205,15 +221,6 @@ img {
     cursor: zoom-in;
 }
 
-.showedFoto {
-    width: 700px;
-    height: 400px;
-    position: fixed;
-    top: calc(50vh - 200px);
-    z-index: 5;
-    user-select: none;
-    transition: 1s all ease-in-out;
-}
 
 
 .dishPrice  {
@@ -224,10 +231,7 @@ img {
     margin: 0;
 }
 
-.showedFotoContainer {
-    display: flex;
-    position: relative;
-}
+
 
 .fotoAngle {
     position: absolute;
