@@ -13,7 +13,7 @@ export default function firstPageReserv(props) {
 
     useEffect(() => {
         let newArr = []
-        for(let i = 0;i < 36; i++){
+        for(let i = 0; i < 36; i++){
             if(usersList[i].counter !== 0){
                 newArr.push(usersList[i])
             }

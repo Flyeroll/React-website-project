@@ -1,7 +1,7 @@
 .myCanvas {
     width: 600px;
     height: 400px;
-    background-color: blue;
+    background-color: rgb(225, 225, 225);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -32,10 +32,11 @@
     align-items: center;
     width: 75px;
     height: 75px;
-    background-color: green;
+    background-color: rgb(210, 210, 210);
     margin: 10px;
     border-radius: 20%;
     cursor: pointer;
+    transition: 0.5s all ease-in-out;
 }
 
 .tableFree {
@@ -49,7 +50,7 @@
 }
 
 .tableSelected {
-    background-color: yellow;
+    background-color: rgb(111, 209, 255);
 }
 
 .tableOccupied {
@@ -81,7 +82,7 @@
 .firstColumn {
     padding-left: 10p;
     width: 300px;
-    background-color: aqua;
+    background-color: rgb(255, 255, 255);
 }
 
 .firstColumn h3{
@@ -98,7 +99,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgba(162, 56, 18, 0.937);
+    background-color: rgb(255, 255, 255);
     width:500px;
 }
 
@@ -221,7 +222,6 @@
 }
 
 .phoneInputClearBox {
-    background-color: deeppink;
     height: 50px;
     margin-bottom: 20px;
 }
@@ -234,16 +234,10 @@
 }
 
 .inputGreen {
-    background-color: rgba(68, 255, 0, 0.254);
+    background-color: rgb(126, 219, 255);
 }
 
-.guestInputClearBox {
 
-}
-
-.dateInputClearBox {
-
-}
 
 
 
