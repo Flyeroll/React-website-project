@@ -447,27 +447,19 @@ useEffect(() => {
         }
     }
 
-    
-
-
     function printDays(){
-        // finalCurrent.currentMonthData.amountOfDays
-
         let arrayToPrint = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43]
         let dataArray = []
         
         if(finalCurrent !== undefined) {
             if(finalCurrent.currentMonthData !== undefined) {
                 let firstDayIndex = weeksDayArray.indexOf(finalCurrent.currentMonthData.firstDay)
-                
                 let amountOfDays
-
                 if(finalCurrent.currentMonthData !== undefined) {
                     if(finalCurrent.currentMonthData.amountOfDays !== undefined) {
                         amountOfDays = finalCurrent.currentMonthData.amountOfDays
                     }
                 }
-                
                 for(let i=0; i < firstDayIndex; i++) {
                     let newElem
 
@@ -475,22 +467,17 @@ useEffect(() => {
                         newElem = <div className="tag unActiveDay"></div>
                     } 
                     dataArray.push(newElem)
-
                 }
-
-
-   
-                
                 for(let i=1; i < amountOfDays + 1; i++) {
                     let newElem
                     if(monthToday === currentYearAndMonth.month){
                         if(i < dayToday){
                             newElem = <div className="tag unActiveDay">{i}</div>
                         } else if (i === dayToday || i > dayToday) {
-                            newElem = <div className="tag" onClick={(target) => selectDate(target)}>{i}</div>
+                            newElem = <div className="tag normalTag" onClick={(target) => selectDate(target)}>{i}</div>
                         }
                     } else if(monthToday !== currentYearAndMonth.month){
-                        newElem = <div className="tag" onClick={(target) => selectDate(target)}>{i}</div>
+                        newElem = <div className="tag normalTag" onClick={(target) => selectDate(target)}>{i}</div>
                     }
                     
                     dataArray.push(newElem)
@@ -499,7 +486,6 @@ useEffect(() => {
                 let lastCounter = 43 - dataArray.length
 
                 for(let i=1; i < lastCounter; i++) {
-
                     let newElem
                         newElem = <div className="tag unActiveDay">{i}</div>
                     
@@ -507,12 +493,8 @@ useEffect(() => {
                 }
             }
         }
-
         return dataArray
     }
-
-
-
 
     return (
         <div className="allObject">

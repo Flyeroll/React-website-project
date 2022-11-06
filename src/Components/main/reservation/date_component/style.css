@@ -1,11 +1,10 @@
-
 .dateMain {
     position: absolute;
     display: flex;
     flex-direction: row;
     width: 400px;
     height: 250px;
-    background-color: azure;
+    background-color: #aed1ff;
     border-top: 2px solid black;
     border-left: 2px solid black;
     border-right: 2px solid black;
@@ -20,7 +19,7 @@
 .dateLeft {
     width: 300px;
     height: 100%;
-    background-color: burlywood;
+    background-color: #aed1ff;
 }
 
 .dateRight {
@@ -31,6 +30,8 @@
     width: 100px;
     overflow: hidden;
     user-select: none;
+    background-color: #d0e1f7;
+    border-radius: 20px;
 }
 
 .dateTime {
@@ -40,7 +41,7 @@
     overflow: hidden;
     overflow-y: scroll;
     height: 200px;
-    background-color: darkkhaki;
+    background-color: rgb(255, 255, 255);
 }
 
 .singleTime {
@@ -51,8 +52,16 @@
     cursor: pointer;
 }
 
-.singleTime.selectedSingleTime {
-    background-color: chartreuse;
+.singleTime:hover {
+    background-color:rgb(81, 185, 255);
+}
+
+.singleTime.selectedSingleTime{
+    background-color: rgb(39, 158, 255);
+}
+
+.singleTime.selectedSingleTime:hover {
+    background-color: rgb(39, 158, 255);
 }
 
 .dateLeftTop {
@@ -66,10 +75,6 @@
     color: rgb(90, 90, 90);
     user-select: none;
     cursor: pointer;
-}
-
-.dateLeftTopBtn:hover {
-    color: rgb(0, 0, 0);
 }
 
 .dateLeftTopBtnLeft {
@@ -100,11 +105,11 @@
 }
 
 .tag:hover{
-    background-color: rgba(64, 171, 64, 0.431);
+    background-color: rgb(81, 185, 255);
 }
 
 .tag.dateDaySelected:hover {
-    background-color: rgb(64, 171, 64);
+    background-color: rgb(39, 158, 255);
 }
 
 .dateLeftWeek {
@@ -149,15 +154,16 @@
 }
 
 .unActiveDay{
-    background-color: rgb(141, 141, 141);
+    background-color: rgb(220, 220, 220);
+    cursor: default;
 }
 
 .tag.unActiveDay:hover {
-    background-color: rgb(141, 141, 141);
+    background-color: rgb(220, 220, 220);
 }
 
 .tag.weekDay {
-    background-color: rgb(95, 158, 160);
+    background-color: rgb(0, 149, 255);
 }
 
 .bottomPart {
@@ -165,37 +171,52 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    right: -2px;
+    right: -21px;
     width: 400px;
     height: 50px;
-    background-color: burlywood;
+    background-color: #aed1ff;
     bottom: -50px;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
     border-left: 2px solid black;
-}
-
-.btnBottomPart {
-    scale: 1.8;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
     margin-left: 20px;
     margin-right: 20px;
     transition: 0.1s all ease-in-out;
-    cursor: pointer;
 }
 
 .btnCross {
-    color: rgb(127, 0, 0);
+    margin-top: 20px;
+    margin-bottom: 5px;
+    width: 50px;
+    height: 30px;
+    cursor: pointer;
+    margin-right:20px;
+    color: rgb(100, 0, 0);
 }
 
 .btnCross:hover {
-    color: rgb(173, 0, 0);
+    color: rgb(200, 0, 0);
 }
 
 .btnCheck {
-    color: rgb(0, 113, 15);
+    margin-top: 20px;
+    margin-bottom: 3px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin-left:20px;
+    color: rgb(0, 100, 13);
 }
 
 .btnCheck:hover {
-    color: rgb(0, 164, 22);
+    color: rgb(0, 200, 27);
 }
 
+.normalTag {
+    background-color: white;
+    cursor: pointer;
+}
+
+.normalTag.dateDaySelected {
+    background-color: rgb(39, 158, 255);
+}
