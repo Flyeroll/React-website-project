@@ -1,0 +1,21 @@
+.thirdPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.thirdPage > * {
+    position: absolute;
+}
+
+.thirdPage h1 {
+    font-size: 50px;
+    top: 220px;
+}
+
+.thirdPage h3 {
+    font-size: 30px;
+    top: 420px;
+}
