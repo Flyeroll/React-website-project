@@ -5,8 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapLocation, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 import { Outlet, Link } from 'react-router-dom';
-
-import { MapContainer, TileLayer, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
 
 export default function Nav() {
   const [showMenu, setShowMenu] = useState(false);
@@ -61,6 +60,7 @@ export default function Nav() {
     }
   }
 
+
   return (
     <div>
 
@@ -79,7 +79,19 @@ export default function Nav() {
             <h3>You can find us:</h3>
             <p className="forStyling">3, Kirochnaya street</p>
             <p>Saint-Petersburg</p>
-            <div className="mapDiv" />
+            <div>
+            {/* <MapContainer id="map" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+    <TileLayer
+      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    />
+    <Marker position={[51.505, -0.09]}>
+      <Popup>
+        A pretty CSS3 popup. <br /> Easily customizable.
+      </Popup>
+    </Marker>
+  </MapContainer> */}
+            </div>
             <p>coffeehouse@gmail.com</p>
             <p className="forStyling">Working hours</p>
             <p>Mon - Sun from 13:00 to 23:30</p>

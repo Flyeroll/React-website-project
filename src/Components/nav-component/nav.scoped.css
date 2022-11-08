@@ -255,11 +255,14 @@
     border: 6px solid black;
 }
 
+#map {
 
-.mapDiv{
-    height: 300px;
-    width: 300px;
 }
+
+#map > * {
+}
+
+
 
 
 

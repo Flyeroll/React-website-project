@@ -326,14 +326,7 @@ useEffect(() => {
             })
             return newArr
         })
-
-        
-
-    
-        
-        
     }
-    
     function printTime() {
         return (
             timeArray.map((elem) => {

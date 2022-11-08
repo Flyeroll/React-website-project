@@ -35,7 +35,7 @@ export default function secondPageReserv(props) {
             const [monthArray, setMonthArray] = useState(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
             //data from Date picker component to operate with
             const [pickerData, setPickerData] = useState('')
-
+            
             // date to display in date input field
             const [dateForInputToShow, setDateForInputToShow] = useState('')
 
@@ -87,11 +87,8 @@ export default function secondPageReserv(props) {
                 elem.target.value = newChar
 
                 setPhoneNumber((prev) => newChar)
-
             }
-        
-        
-        
+
             useEffect(() => {
                 let newRawObjTables = reservedTables
                 let newRawArrayTables = Object.values(newRawObjTables)
@@ -133,7 +130,6 @@ export default function secondPageReserv(props) {
                 }
             }, [clearReservedTables])
             
-            
             useEffect(() => {
                 
                 let firstThreeText
@@ -153,7 +149,6 @@ export default function secondPageReserv(props) {
                         }
                     }
 
-  
                     if(phoneNumber.length > 0) {
                         firstThreeText = `(${newArrText})`
                     } else if(phoneNumber.length === 0) {
@@ -185,8 +180,6 @@ export default function secondPageReserv(props) {
                     
                 }
 
-                
-                
                 if(phoneNumber.length < 9 ){
                     let firstTwoArr = phoneNumber.slice(6, 8)
                     let newArrText = ""
@@ -215,7 +208,6 @@ export default function secondPageReserv(props) {
                             newArrText += "_"
                         }
                     }
-                    
                     secondTwoText = ` ${newArrText}`
                     
                     setNumberParts((prev) => {
@@ -344,7 +336,13 @@ export default function secondPageReserv(props) {
                         }
                     return newValue
                 })
+                console.log("PICKER DATA");
+                console.log(pickerData);
+                props.timeAndDate(pickerData)
             },[pickerData])
+
+
+
             
             useEffect((prev) => {
                 
@@ -380,15 +378,10 @@ export default function secondPageReserv(props) {
                 })
             }
 
-
-            
-
             function recieveDataFromPicker(data) {
-
                 setPickerData((prev) => {
                     return data
                 })
-
                 setDatePickerStatus((prev) => {
                     return false
                 })
@@ -405,7 +398,6 @@ export default function secondPageReserv(props) {
                     })
                 }
             }
-
 
     return (
         <div className="allComponent" onClick={(elem) => showClicked(elem)}>
