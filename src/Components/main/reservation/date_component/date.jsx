@@ -393,9 +393,9 @@ useEffect(() => {
             if((monthToday + prev) < 11) {
                 newIndex += 1
             } else if((monthToday + prev) === 11 & yearIndex === 2020){
-
+                console.log("VOT ONA SU4KA");
             } else {
-                newIndex = -8
+                newIndex = -10
                 setYearIndex((prev) => {
                     let newIndex = prev
                     if(prev > 2020) {
@@ -414,9 +414,13 @@ useEffect(() => {
 
     
     function prevMonthBtn() {
-        if (monthIndex === -8 & yearIndex < 2022) {
+        console.log(monthIndex);
+        console.log(yearIndex);
+
+        if (monthIndex === -10 & yearIndex < 2022) {
+            console.log("PERVII 1");
             setMonthIndex((prev) => {
-                return 3
+                return 2
             })
             setYearIndex((prev) => {
                 let newEl = prev
@@ -424,14 +428,19 @@ useEffect(() => {
                 return newEl
             })
         } else if(monthIndex <= 3 & monthIndex >=-7 & monthIndex !== 0) {
+            console.log("VTOROI 2");
             setMonthIndex((prev) => {
                 let newEl = prev
                 newEl -= 1
                 return newEl
             })
         } else if(monthIndex === 0 & yearIndex === yearToday) {
-
+            console.log("TRETII 3");
+            console.log(monthIndex);
+            
         } else {
+            console.log("4ETVERTII 4");
+            console.log(monthIndex);
             setMonthIndex((prev) => {
                 let newEl = prev
                 newEl -= 1
