@@ -87,11 +87,11 @@ useEffect(() => {
             //Функция переходных значений для дней недели (аргументы: текущий индекс + необходимая величина изменения)
             function refreshWeeksDay(index, increment) {
                 let newWeekdDay = index
-                if(index === 0 & increment < 0) {
+                if(index === 0 && increment < 0) {
                     newWeekdDay = 6
-                } else if (index === 6 & increment === 1) {
+                } else if (index === 6 && increment === 1) {
                     newWeekdDay = 0
-                } else if (index === 6 & increment === 2) {
+                } else if (index === 6 && increment === 2) {
                     newWeekdDay = 1
                 } else {
                     newWeekdDay += increment
@@ -288,12 +288,12 @@ useEffect(() => {
             setSelectedDay((prev) => {
                 return {...prev, object:elem.target, daySelected:true, day:elem.target.innerHTML}
             })
-        } else if(selectedDay.daySelected & elem.target.classList.contains('dateDaySelected')){
+        } else if(selectedDay.daySelected && elem.target.classList.contains('dateDaySelected')){
             selectedDay.object.classList.remove('dateDaySelected')
             setSelectedDay((prev) => {
                 return {...prev, object:'', daySelected:false, day:''}
             })
-        } else if(selectedDay.daySelected & !elem.target.classList.contains('dateDaySelected')){
+        } else if(selectedDay.daySelected && !elem.target.classList.contains('dateDaySelected')){
             selectedDay.object.classList.remove('dateDaySelected')
             elem.target.classList.add('dateDaySelected')
             setSelectedDay((prev) => {
@@ -392,7 +392,7 @@ useEffect(() => {
             let newIndex = prev
             if((monthToday + prev) < 11) {
                 newIndex += 1
-            } else if((monthToday + prev) === 11 & yearIndex === 2020){
+            } else if((monthToday + prev) === 11 && yearIndex === 2020){
                 console.log("VOT ONA SU4KA");
             } else {
                 newIndex = -10
@@ -417,24 +417,24 @@ useEffect(() => {
         console.log(monthIndex);
         console.log(yearIndex);
 
-        if (monthIndex === -10 & yearIndex < 2022) {
+        if (monthIndex === -10 && yearIndex < 2022) {
             console.log("PERVII 1");
             setMonthIndex((prev) => {
-                return 2
+                return 1
             })
             setYearIndex((prev) => {
                 let newEl = prev
                 newEl += 1
                 return newEl
             })
-        } else if(monthIndex <= 3 & monthIndex >=-7 & monthIndex !== 0) {
+        } else if(monthIndex <= 3 && monthIndex >=-7 && monthIndex !== 0) {
             console.log("VTOROI 2");
             setMonthIndex((prev) => {
                 let newEl = prev
                 newEl -= 1
                 return newEl
             })
-        } else if(monthIndex === 0 & yearIndex === yearToday) {
+        } else if(monthIndex === 0 && yearIndex === yearToday) {
             console.log("TRETII 3");
             console.log(monthIndex);
             
