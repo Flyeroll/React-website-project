@@ -413,9 +413,9 @@ export default function secondPageReserv(props) {
                             <div className="phoneInputClear">
                                 <h4>Please give your phone number</h4>
                                 <div className="phoneBox">
-                                    <FontAwesomeIcon icon={faPhone} className="phoneIcon"/>
-                                    <input type="text" className="inputPhoneNumber " placeholder="your phone"  maxLength={18}  onChange={(elem) => phoneFilter(elem)} onClick={(elem) => showInputPhone(elem)} />
-                                    <h2 ref={phoneInputRef} className="numberBall">&nbsp;&nbsp;{`${number}`}</h2>
+                                    <FontAwesomeIcon icon={faPhone} className="phoneIcon opened"/>
+                                    <input type="text" className="inputPhoneNumber opened" placeholder="your phone"  maxLength={18}  onChange={(elem) => phoneFilter(elem)} onClick={(elem) => showInputPhone(elem)} />
+                                    <h2 ref={phoneInputRef} className="numberBall opened">&nbsp;&nbsp;{`${number}`}</h2>
                                 </div>
                             </div>
 

@@ -1,5 +1,5 @@
 // DISHES
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './first.css';
 import { Outlet } from 'react-router-dom';
 
@@ -35,13 +35,39 @@ export default function First() {
   // Reserve window
   const [showReserveWindowToggler, setShowReserveWindowToggler] = useState(false);
 
+  // ref for closing opened dish img
+  const imgRef = useRef();
+  const imgLeftArrow = useRef();
+  const imgRightArrow = useRef();
+
   function filterArray(element) {
     setInput(() => element.target.value);
   }
 
+  // use effect for closing dish img
   useEffect(() => {
+    const closeDishImg = (e) => {
+      console.log('e.target');
+      console.log(e.target);
+      console.log('imgRef.current');
+      console.log(imgRef.current);
+      console.log('showImage.status');
+      console.log(showImage.status);
+      console.log('showImage.adress');
+      console.log(showImage.adress);
+      if (
+        e.target !== imgRef.current
 
-  }, [counter]);
+      ) {
+        console.log('OUTSIDE OF IMAGE');
+      } else {
+        console.log('IMAGE');
+      }
+    };
+    document.addEventListener('click', closeDishImg);
+
+    return () => document.removeEventListener('click', closeDishImg);
+  }, []);
 
   useEffect(() => {
     const adress = showImage.adress.nodeValue;
@@ -64,6 +90,7 @@ export default function First() {
   }, [showImage.adress]);
 
   useEffect(() => {
+    console.log(showImage.status);
     if (!showImage.status) {
       setCurrentImage(() => 1);
       setJPEGcode(() => '');
@@ -145,10 +172,8 @@ export default function First() {
   }
 
   function showPicture(elem) {
-    if (!showImage.status) {
-      setShowImage((prev) => ({ status: !prev.status, adress: elem.target.attributes.src }));
-    } else if (showImage.status) {
-      setShowImage((prev) => ({ status: !prev.status, adress: '' }));
+    if (showImage.status === false) {
+      setShowImage(() => ({ status: true, adress: elem.target.attributes.src }));
     }
   }
 
@@ -178,13 +203,13 @@ export default function First() {
 
   function showLeftArrow() {
     return (
-      <FontAwesomeIcon icon={faAngleLeft} className="fotoAngle fotoAngleLeft" onClick={() => prevImg()} />
+      <FontAwesomeIcon icon={faAngleLeft} className="fotoAngle fotoAngleLeft" onClick={() => prevImg()} ref={imgLeftArrow} />
     );
   }
 
   function showRightArrow() {
     return (
-      <FontAwesomeIcon icon={faAngleRight} className="fotoAngle fotoAngleRight" onClick={() => nextImg()} />
+      <FontAwesomeIcon icon={faAngleRight} className="fotoAngle fotoAngleRight" onClick={() => nextImg()} ref={imgRightArrow} />
     );
   }
 
@@ -193,7 +218,7 @@ export default function First() {
       <div className="showedFoto">
         <div className="showedFotoContainer">
           {currentImage !== 1 ? showLeftArrow() : null }
-          <img className="showedFoto" src={`${process.env.PUBLIC_URL}/images/fotos/${JPEGcode}.jpg`} alt="Dish" onClick={(elem) => showPicture(elem)} />
+          <img ref={imgRef} className="showedFoto" src={`${process.env.PUBLIC_URL}/images/fotos/${JPEGcode}.jpg`} alt="Dish" />
           {currentImage !== 3 ? showRightArrow() : null }
         </div>
       </div>

@@ -10,6 +10,7 @@ import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
 export default function Nav() {
   const [showMenu, setShowMenu] = useState(false);
   const menuBtnRef = useRef();
+  const menuPopUpRef = useRef();
 
   function showOrHideMap() {
     const mapNav = document.querySelectorAll('#xMarkNav');
@@ -28,7 +29,7 @@ export default function Nav() {
 
   function printMenu() {
     return (
-      <div className="menuBar showMenuTrue" id="menuBtn">
+      <div className="menuBar showMenuTrue" id="menuBtn" ref={menuPopUpRef}>
         <div className="navMenuBtn"><Link to="/dishes" className="linkToHide">Dishes</Link></div>
         <div className="navMenuBtn"><Link to="/about" className="linkToHide">About Us</Link></div>
         <div className="navMenuBtn"><Link to="/contacts" className="linkToHide">Contacts</Link></div>
@@ -37,18 +38,20 @@ export default function Nav() {
   }
 
   function openMenu() {
-    setShowMenu((prev) => !prev);
+    setShowMenu((prev) => true);
   }
 
   useEffect(() => {
     const closeDropDown = (e) => {
-      if (e.target !== menuBtnRef.current) {
+      if (
+        e.target !== menuBtnRef.current
+        && e.target !== menuPopUpRef.current
+      ) {
         setShowMenu((prev) => false);
       }
     };
 
     document.addEventListener('click', closeDropDown);
-
     return () => document.removeEventListener('click', closeDropDown);
   }, []);
 
@@ -80,7 +83,7 @@ export default function Nav() {
             <p className="forStyling">3, Kirochnaya street</p>
             <p>Saint-Petersburg</p>
             <div>
-            {/* <MapContainer id="map" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+            <MapContainer id="map" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
     <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -90,7 +93,7 @@ export default function Nav() {
         A pretty CSS3 popup. <br /> Easily customizable.
       </Popup>
     </Marker>
-  </MapContainer> */}
+  </MapContainer>
             </div>
             <p>coffeehouse@gmail.com</p>
             <p className="forStyling">Working hours</p>

@@ -220,3 +220,11 @@
 .normalTag.dateDaySelected {
     background-color: rgb(39, 158, 255);
 }
+
+@media screen and (max-width: 400px) {
+    .allObject {
+        position: fixed;
+        scale: 0.6;
+    }
+
+}

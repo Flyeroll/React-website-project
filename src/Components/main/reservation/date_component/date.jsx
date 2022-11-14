@@ -435,12 +435,8 @@ useEffect(() => {
                 return newEl
             })
         } else if(monthIndex === 0 && yearIndex === yearToday) {
-            console.log("TRETII 3");
-            console.log(monthIndex);
-            
+            //for ignoring
         } else {
-            console.log("4ETVERTII 4");
-            console.log(monthIndex);
             setMonthIndex((prev) => {
                 let newEl = prev
                 newEl -= 1
