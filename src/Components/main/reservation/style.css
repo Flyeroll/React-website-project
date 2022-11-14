@@ -21,6 +21,18 @@
     border-radius: 30%;
 }
 
+.reserveBtn.startPoint {
+    
+}
+
+.reserveBtn.middlePoint {
+
+}
+
+.reserveBtn.endPoint {
+
+}
+
 .reserveMainWindow {
     position: relative;
     width: 800px;

@@ -399,6 +399,16 @@ export default function secondPageReserv(props) {
                 }
             }
 
+            function tableNumber(elem) {
+                console.log('sssssssssss');
+                console.log(elem.target.classList);
+                if(elem.target.value > 0) {
+                    setPageTwoValidator((prev) => ({...prev, table:true}))
+                } else if(elem.target.value === 0) {
+                    setPageTwoValidator((prev) => ({...prev, table:false}))
+                }
+            }
+
     return (
         <div className="allComponent" onClick={(elem) => showClicked(elem)}>
             <h2 className="allComponentTitle">Info</h2>
@@ -423,17 +433,18 @@ export default function secondPageReserv(props) {
                                 <h4 className="titleQuestsNumber">How many guests are coming?</h4>
                                 <input type="number" className={"guestsNumberInput " + (pageTwoValidator.visitorsNumb ? "inputGreen" : null)} max={20} min={1} onChange={(elem) => guestsNumber(elem)}  defaultValue={1}/>
                             </div>
+                            <input type="number" className="tableNumberInput" max={10} min={0} onChange={(elem) => tableNumber(elem)}  defaultValue={0}/>
 
                             <div className="dateInputClear">
                                 <h4>Pick date bellow</h4>
                                 <input ref={inputDateRef} className={"dateInput " + (pageTwoValidator.dateAndTime ? "inputGreen" : null)} readOnly onClick={() => openDatePicker()} value={dateForInputToShow}/>
                                 <div className="datePickerComponento">
-                                    {datePickerStatus ? <DatePicker className="datePickerComponento" statusForParent={changeStatusForParent} sendData={recieveDataFromPicker}/> : null}
+                                    {datePickerStatus ? <DatePicker className="datePickerComponent" statusForParent={changeStatusForParent} sendData={recieveDataFromPicker}/> : null}
                                 </div>
                             </div>
 
-                        </div>
-                    </div>
+                </div>
+            </div>
 
                 <div className="secondColumn">
                     <h3>Please choose your table(s)</h3>

@@ -87,7 +87,7 @@
 
 .firstColumn h3{
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 85px;
 }
 
 .firstColumn > * {
@@ -138,7 +138,7 @@
     border-radius: 0%;
     cursor: pointer;
     opacity: 1;
-
+    
 }
 
 /* 2 */
@@ -214,18 +214,13 @@
 
 .reservationClientDataBox > * {
     margin-bottom: 80px;
-    margin-top: 40px;
-}
-
-.nameInputClearBox {
-    
+    margin-top: -22px;
 }
 
 .phoneInputClearBox {
     height: 50px;
     margin-bottom: 20px;
 }
-
 
 .dateInput {
     font-size: 20px;
@@ -237,6 +232,17 @@
     background-color: rgb(126, 219, 255);
 }
 
+.tableNumberInput {
+    font-size: 20px;
+    width: 240px;
+    height: 25px;
+}
+.tableNumberInput.inputGreen {
+    font-size: 20px;
+    width: 240px;
+    height: 25px;
+}
+
 @media screen and (max-width: 400px) {
     .reserveMainWindow {
         width: 100%;
@@ -244,6 +250,23 @@
     }
     .secondColumn {
         display: none;
+    }
+    .datePickerComponento {
+        position: fixed;
+        left: 4%;
+        top: 25%;
+    }
+    .secondColumn {
+        display: none;
+    }
+    .firstColumn h3{
+        padding-left: 25%;
+    }
+    .reservationClientDataBox > * {
+    margin-top: -20px;
+    }
+    .nameInput {
+        margin-bottom: -10px;
     }
 }
 
