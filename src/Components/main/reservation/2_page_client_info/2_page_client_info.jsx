@@ -400,12 +400,12 @@ export default function secondPageReserv(props) {
             }
 
             function tableNumber(elem) {
-                console.log('sssssssssss');
-                console.log(elem.target.classList);
                 if(elem.target.value > 0) {
                     setPageTwoValidator((prev) => ({...prev, table:true}))
-                } else if(elem.target.value === 0) {
+                    elem.target.classList.add('inputGreen')
+                } else  {
                     setPageTwoValidator((prev) => ({...prev, table:false}))
+                    elem.target.classList.remove('inputGreen')
                 }
             }
 

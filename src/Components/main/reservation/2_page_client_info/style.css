@@ -226,6 +226,7 @@
     font-size: 20px;
     width: 240px;
     height: 25px;
+    transition: 0.5s all ease-in-out;
 }
 
 .inputGreen {
@@ -236,6 +237,7 @@
     font-size: 20px;
     width: 240px;
     height: 25px;
+    transition: 0.5s all ease-in-out;
 }
 .tableNumberInput.inputGreen {
     font-size: 20px;

@@ -61,7 +61,12 @@ export default function Reservation(props) {
     function moveToSecondStep() {
         let secondBtn = document.querySelector('.reserveSecondBall')
         let reserveLineBlack = document.getElementById('reserveLineBlack')
-        reserveLineBlack.style = "width:160px;"
+        let currentWindowWidth = window.innerWidth;
+        if(currentWindowWidth < 400) {
+            reserveLineBlack.style = "width:80px;"
+        } else {
+            reserveLineBlack.style = "width:160px;"
+        }
         setTimeout(() => {
             secondBtn.classList.add('black')
         }, 550);
@@ -69,7 +74,12 @@ export default function Reservation(props) {
     function moveToThirdStep() {
         let thirdBtn = document.querySelector('.reserveThirdBall')
         let reserveLineBlack = document.getElementById('reserveLineBlack')
-        reserveLineBlack.style = "width:310px;"
+        let currentWindowWidth = window.innerWidth;
+        if(currentWindowWidth < 400) {
+            reserveLineBlack.style = "width:145px;"
+        } else {
+            reserveLineBlack.style = "width:310px;"
+        }
         setTimeout(() => {
             thirdBtn.classList.add('black')
         }, 475);
