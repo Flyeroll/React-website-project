@@ -256,11 +256,36 @@
 }
 
 #map {
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
+    border: 2px solid black;
 }
 
-#map > * {
+@media screen and (max-width: 400px) {
+    .navMap {
+        transition: 1s all ease-in-out;
+        position: fixed;
+        top: 0px;
+        background-color: rgb(232, 232, 232);
+        width: 100vw;
+        height: 100vh;
+        cursor: default;
+        z-index: 1;
+    }
+    .mapBox.mapShowed {
+        transition: 1s all ease-in-out;
+        left: calc(50% - 600px);
+        top: calc(50% - 400px);
+        height: 800px;
+        width: 1200px;
+        border: 6px solid black;
+    }
+    .navEmail {
+        display: none;
+    }
+    #map {
+        margin-bottom: -20px;
+    }
 }
 
 

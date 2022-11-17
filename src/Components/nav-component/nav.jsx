@@ -83,19 +83,19 @@ export default function Nav() {
             <p className="forStyling">3, Kirochnaya street</p>
             <p>Saint-Petersburg</p>
             <div>
-            <MapContainer id="map" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+            <MapContainer id="map" center={[59.94390977732626, 30.350782805398286]} zoom={16} scrollWheelZoom={false}>
     <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
-    <Marker position={[51.505, -0.09]}>
+    <Marker position={[59.94390977732626, 30.350782805398286]}>
       <Popup>
-        A pretty CSS3 popup. <br /> Easily customizable.
+        You can find our Restaurant here
       </Popup>
     </Marker>
   </MapContainer>
             </div>
-            <p>coffeehouse@gmail.com</p>
+            <p className="navEmail">coffeehouse@gmail.com</p>
             <p className="forStyling">Working hours</p>
             <p>Mon - Sun from 13:00 to 23:30</p>
           </div>
