@@ -407,6 +407,7 @@ export default function First() {
         ))}
       </div>
       {showReserve ? <Outlet /> : null}
+      <footer>© 2022 Coffee Hause</footer>
     </div>
   );
 }

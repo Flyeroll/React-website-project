@@ -263,6 +263,15 @@ img {
         animation-duration: 0.3s;
 }
 
+footer {
+    text-align: center;
+    position: fixed;
+    width: 100vw;
+    height: 20px;
+    background-color: rgb(200, 200, 200);
+    bottom: 0px;
+}
+
 
 
 

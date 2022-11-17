@@ -286,6 +286,9 @@
     #map {
         margin-bottom: -20px;
     }
+    .contentNav > p {
+        padding-top: 37px;
+    }
 }
 
 
