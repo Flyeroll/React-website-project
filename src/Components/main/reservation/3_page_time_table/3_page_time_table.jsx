@@ -7,7 +7,7 @@ export default function thirdPageReserv(props) {
   return (
     <div className="thirdPage">
       <h1>Thanks for reservation!</h1>
-      <h3 onClick={() => {console.log(dataFromPicker)}}>We are waiting for you {`${dataFromPicker.day}.${dataFromPicker.month + 1}.${dataFromPicker.year} in ${dataFromPicker.time[0]}`}</h3>
+      <h3 onClick={() => {console.log(dataFromPicker)}}>We are waiting for you {`${dataFromPicker.day}.${dataFromPicker.month + 1}.${dataFromPicker.year} in ${dataFromPicker.time}`}</h3>
     </div>
   );
 }

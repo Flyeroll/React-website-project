@@ -212,12 +212,11 @@ useEffect(() => {
 
 
     useEffect(() => {
+    setSelectedDay((prev) => {
+        return {...prev, month:monthToday + monthIndex, year:selectedYear[yearToday - yearIndex]}
+    })
 
-        setSelectedDay((prev) => {
-            return {...prev, month:monthToday + monthIndex, year:selectedYear[yearToday - yearIndex]}
-        })
-
-    }, [monthIndex])
+}, [monthIndex])
 
     useEffect(() => {
 
@@ -318,7 +317,9 @@ useEffect(() => {
         
         let currentTimeVariants = document.getElementsByClassName('selectedSingleTime')
 
-
+        setSelectedDay((prev) => {
+            return {...prev, time:currentTimeVariants[0].innerHTML}
+        })
         
         // let newElem = elem
         

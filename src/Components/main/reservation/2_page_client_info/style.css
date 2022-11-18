@@ -178,7 +178,7 @@
 }
 
 .nameInput {
-    font-size: 20px;
+    font-size: -5px;
     cursor: default;
     border: 2px solid black;
     width: 240px;
@@ -234,6 +234,7 @@
 }
 
 .tableNumberInput {
+    display: none;
     font-size: 20px;
     width: 240px;
     height: 25px;
@@ -274,6 +275,7 @@
         margin-bottom: 55px;
     }
     .tableNumberInput {
+        display: block;
         margin-bottom: 45px;
     }
 }

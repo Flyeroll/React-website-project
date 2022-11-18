@@ -317,7 +317,7 @@ export default function secondPageReserv(props) {
                                 newDay = pickerData.day
                                 newMonth = pickerData.month
                                 newYear = pickerData.year
-                                newValue = `${newDay}.${newMonth + 1}.${newYear}     ${pickerData.time[0]} `
+                                newValue = `${newDay}.${newMonth + 1}.${newYear}     ${pickerData.time} `
                             } else {
                                 setPageTwoValidator((prev) => {
                                     return {...prev, dateAndTime:false}
@@ -340,9 +340,6 @@ export default function secondPageReserv(props) {
                 console.log(pickerData);
                 props.timeAndDate(pickerData)
             },[pickerData])
-
-
-
             
             useEffect((prev) => {
                 
