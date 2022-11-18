@@ -85,26 +85,7 @@
 .navLogo {
     width: 80px;
     height: 80px;
-    animation-name: logoAnimation;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
 }
-
-/* animation */
-
-@keyframes logoAnimation {
-    0% {transform: rotate(-20deg)}
-    50% {transform: rotate(0deg)}
-    100% {transform: rotate(20deg)}
-}
-@keyframes navMapAnimation {
-    0% {transform: scale(0.97)}
-    50% {transform: scale(1.1)}
-    100% {transform: scale(1)}
-}
-
 
 .navMap {
     transition: 1s all ease-in-out;
@@ -114,16 +95,12 @@
     background-color: rgb(232, 232, 232);
     width: 400px;
     height: 100vh;
-    cursor: default;
     z-index: 1;
 }
 
 
 .navIcon:hover {
-    animation-name: navMapAnimation;
-    animation-iteration-count: 1;
-    animation-duration: 1s;
-    animation-delay: 0.1s;
+    cursor: pointer;
 }
 
 .trueShow {

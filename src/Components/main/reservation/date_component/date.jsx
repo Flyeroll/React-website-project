@@ -306,26 +306,32 @@ useEffect(() => {
     }
     
     function changeTimeStatus(elem) {
+        let allTimeVariants = document.getElementsByClassName('selectedSingleTime')
+        for (let i = 0; i < allTimeVariants.length; i++) {
+            allTimeVariants[i].classList.remove('selectedSingleTime')
+        }
         if(!elem.target.classList.contains('selectedSingleTime')) {
             elem.target.classList.add('selectedSingleTime')
         } else {
             elem.target.classList.remove('selectedSingleTime')
         }
         
-        let newElem = elem
+        let currentTimeVariants = document.getElementsByClassName('selectedSingleTime')
+
+
         
+        // let newElem = elem
         
-        
-        setTimeArray((prevArr) => {
-            let newArr = prevArr.map((hour) => {
-                let newHour = hour
-                if(newElem.target.innerHTML === hour.time){
-                    newHour.selected = !newHour.selected
-                }
-                return newHour
-            })
-            return newArr
-        })
+        // setTimeArray((prevArr) => {
+        //     let newArr = prevArr.map((hour) => {
+        //         let newHour = hour
+        //         if(newElem.target.innerHTML === hour.time){
+        //             newHour.selected = !newHour.selected
+        //         }
+        //         return newHour
+        //     })
+        //     return newArr
+        // })
     }
     function printTime() {
         return (

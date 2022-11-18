@@ -48,6 +48,7 @@ img {
     cursor: default;
     margin: 5px;
     user-select: none;
+    cursor: default;
 }
 
 .dishBtnForm {
@@ -250,6 +251,10 @@ img {
 .inputFieldReserveBtn {
     transition: 0.2s all ease-in-out;
     user-select: none;
+    cursor: pointer;
+    background-color: rgb(75, 162, 255);
+    padding: 10px;
+    border-radius: 20px;
 }
 
 @keyframes navMapAnimation {
