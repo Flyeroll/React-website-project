@@ -104,6 +104,7 @@ export default function Nav() {
       </div>
 
       <Outlet />
+      <footer>© 2022 Coffee Hause</footer>
     </div>
   );
 }

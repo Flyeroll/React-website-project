@@ -55,11 +55,9 @@ export default function First() {
       console.log(showImage.status);
       console.log('showImage.adress');
       console.log(showImage.adress);
-      if (
-        e.target !== imgRef.current
-
-      ) {
+      if (e.target !== imgRef.current) {
         console.log('OUTSIDE OF IMAGE');
+        // setShowImage(() => ({ status: false, adress: '' }));
       } else {
         console.log('IMAGE');
       }
@@ -90,7 +88,8 @@ export default function First() {
   }, [showImage.adress]);
 
   useEffect(() => {
-    console.log(showImage.status);
+    console.log("ALLLL");
+    console.log(showImage);
     if (!showImage.status) {
       setCurrentImage(() => 1);
       setJPEGcode(() => '');
@@ -240,6 +239,13 @@ export default function First() {
       setShowReserveWindowToggler(() => false);
     } else if (elem.target.classList.contains('reservBtnOk')) {
       setShowReserveWindowToggler(() => false);
+    }
+    if (
+      !elem.target.classList.contains('showedFoto') &&
+      !elem.target.classList.contains('fotoAngle') &&
+      showImage.status === true
+    ) {
+      setShowImage(() => ({ status: false, adress: '' }));
     }
   }
 
@@ -407,7 +413,6 @@ export default function First() {
         ))}
       </div>
       {showReserve ? <Outlet /> : null}
-      <footer>© 2022 Coffee Hause</footer>
     </div>
   );
 }
