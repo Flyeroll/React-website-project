@@ -1,5 +1,5 @@
 // DISHES
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './first.css';
 import { Outlet } from 'react-router-dom';
 
@@ -35,37 +35,9 @@ export default function First() {
   // Reserve window
   const [showReserveWindowToggler, setShowReserveWindowToggler] = useState(false);
 
-  // ref for closing opened dish img
-  const imgRef = useRef();
-  const imgLeftArrow = useRef();
-  const imgRightArrow = useRef();
-
   function filterArray(element) {
     setInput(() => element.target.value);
   }
-
-  // use effect for closing dish img
-  useEffect(() => {
-    const closeDishImg = (e) => {
-      console.log('e.target');
-      console.log(e.target);
-      console.log('imgRef.current');
-      console.log(imgRef.current);
-      console.log('showImage.status');
-      console.log(showImage.status);
-      console.log('showImage.adress');
-      console.log(showImage.adress);
-      if (e.target !== imgRef.current) {
-        console.log('OUTSIDE OF IMAGE');
-        // setShowImage(() => ({ status: false, adress: '' }));
-      } else {
-        console.log('IMAGE');
-      }
-    };
-    document.addEventListener('click', closeDishImg);
-
-    return () => document.removeEventListener('click', closeDishImg);
-  }, []);
 
   useEffect(() => {
     const adress = showImage.adress.nodeValue;
@@ -88,8 +60,6 @@ export default function First() {
   }, [showImage.adress]);
 
   useEffect(() => {
-    console.log("ALLLL");
-    console.log(showImage);
     if (!showImage.status) {
       setCurrentImage(() => 1);
       setJPEGcode(() => '');
@@ -202,13 +172,13 @@ export default function First() {
 
   function showLeftArrow() {
     return (
-      <FontAwesomeIcon icon={faAngleLeft} className="fotoAngle fotoAngleLeft" onClick={() => prevImg()} ref={imgLeftArrow} />
+      <FontAwesomeIcon icon={faAngleLeft} className="fotoAngle fotoAngleLeft" onClick={() => prevImg()} />
     );
   }
 
   function showRightArrow() {
     return (
-      <FontAwesomeIcon icon={faAngleRight} className="fotoAngle fotoAngleRight" onClick={() => nextImg()} ref={imgRightArrow} />
+      <FontAwesomeIcon icon={faAngleRight} className="fotoAngle fotoAngleRight" onClick={() => nextImg()} />
     );
   }
 
@@ -217,7 +187,7 @@ export default function First() {
       <div className="showedFoto">
         <div className="showedFotoContainer">
           {currentImage !== 1 ? showLeftArrow() : null }
-          <img ref={imgRef} className="showedFoto" src={`${process.env.PUBLIC_URL}/images/fotos/${JPEGcode}.jpg`} alt="Dish" />
+          <img className="showedFoto" src={`${process.env.PUBLIC_URL}/images/fotos/${JPEGcode}.jpg`} alt="Dish" />
           {currentImage !== 3 ? showRightArrow() : null }
         </div>
       </div>
