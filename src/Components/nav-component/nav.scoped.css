@@ -278,6 +278,64 @@ footer {
 }
 
 
+@keyframes showAndHideImg {
+    from {
+        opacity: 0;
+    }
+  
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+  
+    to {
+        opacity: 0;
+    }
+  }
+
+  .mainPageBackgroundContainer {
+    width: 100%;
+    height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+    background-color: pink;
+  }
+
+  
+  .mainPageBackgroundContainer h2 {
+      width: 100%;
+      height: 100%;
+    text-align: center;
+}
+.mainPageBackgroundContainer p {
+    margin-top: 20px;
+    width: 60%;
+    height: 100%;
+    text-align: center;
+}
+
+.textForBackGroundContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (max-width: 840px) {
+  .textForBackGroundContainer{
+      display: none;
+  }
+}
+
+.imgBackGround {
+    height: calc(100vh - 180px);
+    animation: 4s infinite alternate showAndHideImg;
+}
+
+
 
 
 

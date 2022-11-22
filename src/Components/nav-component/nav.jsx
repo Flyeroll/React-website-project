@@ -5,12 +5,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapLocation, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 import { Outlet, Link } from 'react-router-dom';
-import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
+import {
+  MapContainer, TileLayer, Popup, Marker,
+} from 'react-leaflet';
 
 export default function Nav() {
   const [showMenu, setShowMenu] = useState(false);
   const menuBtnRef = useRef();
   const menuPopUpRef = useRef();
+  const [backGroundImg, setBackGroundImg] = useState(1);
+
+  // use ref for background image to count it
+  const imgCount = useRef(1);
 
   function showOrHideMap() {
     const mapNav = document.querySelectorAll('#xMarkNav');
@@ -63,6 +69,17 @@ export default function Nav() {
     }
   }
 
+  useEffect(() => {
+    setInterval(() => {
+      console.log(imgCount.current);
+      if (imgCount.current < 5) {
+        imgCount.current += 1;
+      } else if (imgCount.current === 5) {
+        imgCount.current = 1;
+      }
+      setBackGroundImg(() => imgCount.current);
+    }, 4000);
+  }, [1]);
 
   return (
     <div>
@@ -83,17 +100,17 @@ export default function Nav() {
             <p className="forStyling">3, Kirochnaya street</p>
             <p>Saint-Petersburg</p>
             <div>
-            <MapContainer id="map" center={[59.94390977732626, 30.350782805398286]} zoom={16} scrollWheelZoom={false}>
-    <TileLayer
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    />
-    <Marker position={[59.94390977732626, 30.350782805398286]}>
-      <Popup>
-        You can find our Restaurant here
-      </Popup>
-    </Marker>
-  </MapContainer>
+              <MapContainer id="map" center={[59.94390977732626, 30.350782805398286]} zoom={16} scrollWheelZoom={false}>
+                <TileLayer
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={[59.94390977732626, 30.350782805398286]}>
+                  <Popup>
+                    You can find our Restaurant here
+                  </Popup>
+                </Marker>
+              </MapContainer>
             </div>
             <p className="navEmail">coffeehouse@gmail.com</p>
             <p className="forStyling">Working hours</p>
@@ -101,6 +118,13 @@ export default function Nav() {
           </div>
           <FontAwesomeIcon icon={faXmark} onClick={() => showOrHideMap()} className="xMarkNav" />
         </div>
+      </div>
+      <div className='mainPageBackgroundContainer'>
+        <div className='textForBackGroundContainer'>
+          <h2>Welcome to Our Website!</h2>
+          <p>Here you can take a look at ours delicious dishes !</p>
+        </div>
+        <img src={`/images/Wallpapers/main${backGroundImg}.jpg`} alt="" className="imgBackGround" />
       </div>
 
       <Outlet />
