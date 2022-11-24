@@ -69,6 +69,18 @@ export default function Nav() {
     }
   }
 
+  function printBackgroundImg() {
+    return (
+      <div className='mainPageBackgroundContainer'>
+        <div className='textForBackGroundContainer'>
+          <h2>Welcome to Our Website!</h2>
+          <p>Here you can take a look at ours delicious dishes !</p>
+        </div>
+        <img src={`/images/Wallpapers/main${backGroundImg}.jpg`} alt="" className="imgBackGround" />
+      </div>
+    );
+  }
+
   useEffect(() => {
     setInterval(() => {
       console.log(imgCount.current);
@@ -119,13 +131,7 @@ export default function Nav() {
           <FontAwesomeIcon icon={faXmark} onClick={() => showOrHideMap()} className="xMarkNav" />
         </div>
       </div>
-      <div className='mainPageBackgroundContainer'>
-        <div className='textForBackGroundContainer'>
-          <h2>Welcome to Our Website!</h2>
-          <p>Here you can take a look at ours delicious dishes !</p>
-        </div>
-        <img src={`/images/Wallpapers/main${backGroundImg}.jpg`} alt="" className="imgBackGround" />
-      </div>
+      {window.location.href === "http://localhost:3000/" ? printBackgroundImg() : null}
 
       <Outlet />
       <footer>© 2022 Coffee Hause</footer>

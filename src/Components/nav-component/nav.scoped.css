@@ -2,6 +2,7 @@
     position: relative;
     background-color: rgb(244, 244, 244);
     height: 100px;
+    z-index: 5;
 }
 
 
@@ -295,6 +296,7 @@ footer {
     }
   }
 
+
   .mainPageBackgroundContainer {
     width: 100%;
     height: calc(100vh - 120px);
@@ -302,38 +304,51 @@ footer {
     flex-direction: row-reverse;
     justify-content: space-around;
     align-items: center;
-    background-color: pink;
   }
 
-  
-  .mainPageBackgroundContainer h2 {
-      width: 100%;
+  .imgBackGround {
+    position: absolute;
+    top: -20px;
+    width: 1920px;
+    height: auto;
+    animation: 4s infinite alternate showAndHideImg;
+    }
+
+    .mainPageBackgroundContainer h2 {
+        font-size: 40px;
+          z-index: 2;
+        width: 100%;
+        height: 100%;
+      text-align: center;
+    }
+    .mainPageBackgroundContainer p {
+        font-size: 30px;
+        z-index: 2;
+      margin-top: 20px;
+      width: 60%;
       height: 100%;
-    text-align: center;
-}
-.mainPageBackgroundContainer p {
-    margin-top: 20px;
-    width: 60%;
-    height: 100%;
-    text-align: center;
-}
+      text-align: center;
+    }
+
+  @media screen and (max-width: 400px) {
+    .imgBackGround {
+        width: 1185px;
+    }
+    .mainPageBackgroundContainer h2 {
+        font-size: 25px;
+    }
+    .mainPageBackgroundContainer p {
+        font-size: 20px;
+    }
+  }
+
 
 .textForBackGroundContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@media screen and (max-width: 840px) {
-  .textForBackGroundContainer{
-      display: none;
-  }
-}
-
-.imgBackGround {
-    height: calc(100vh - 180px);
-    animation: 4s infinite alternate showAndHideImg;
-}
 
 
 
