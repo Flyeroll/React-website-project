@@ -246,6 +246,17 @@
     height: 25px;
 }
 
+.tableSelectorTitle {
+    display: none;
+    top: 430px;
+    position: absolute;
+}
+
+.allComponentTitleSecondPage {
+    margin-top: 20px;
+    font-size: 24px;
+}
+
 @media screen and (max-width: 400px) {
 
     .reserveMainWindow {
@@ -278,6 +289,14 @@
     .tableNumberInput {
         display: block;
         margin-bottom: 45px;
+    }
+
+    .tableSelectorTitle {
+        display: block;
+    }
+
+    .allComponentTitleSecondPage {
+        margin-top: 50px;
     }
 }
 

@@ -64,7 +64,9 @@
 .contactFormSecond h4.redDishPrice {
     color: red;
 }
-
+.allComponentTitleFirstPage {
+    margin-top: 20px;
+}
 @media screen and (max-width: 400px) {
     .contactFormList {
         background-color: white;
@@ -80,4 +82,10 @@
     .contactFormMain {
         height: 80%;
     }
+    .allComponentTitleFirstPage {
+        margin-top: 100px;
+        margin-bottom: 20px;
+    }
 }
+
+

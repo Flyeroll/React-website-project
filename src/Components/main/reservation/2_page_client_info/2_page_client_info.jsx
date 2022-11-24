@@ -411,7 +411,7 @@ export default function secondPageReserv(props) {
             <h2 className="allComponentTitle">Info</h2>
             <div className="columns">
                 <div className="firstColumn">
-                    <h3>Your Contacts</h3>
+                    <h3 className="allComponentTitleSecondPage">Info</h3>
                     <div className="reservationClientDataBox">
                             <div className="nameInputClear">
                                 <input type="text" className={"nameInput " + (pageTwoValidator.name ? "inputGreen" : null)} placeholder="your name" onChange={(elem) => nameValidator(elem)}/>
@@ -430,6 +430,7 @@ export default function secondPageReserv(props) {
                                 <h4 className="titleQuestsNumber">How many guests are coming?</h4>
                                 <input type="number" className={"guestsNumberInput " + (pageTwoValidator.visitorsNumb ? "inputGreen" : null)} max={20} min={1} onChange={(elem) => guestsNumber(elem)}  defaultValue={1}/>
                             </div>
+                            <h4 className="tableSelectorTitle">Choose your table: </h4>
                             <input type="number" className="tableNumberInput" max={10} min={0} onChange={(elem) => tableNumber(elem)}  defaultValue={0}/>
 
                             <div className="dateInputClear">

@@ -130,17 +130,10 @@ export default function firstPageReserv(props) {
                 return !prev
             })
         }, 200);
-        
-
-        
     }
-    
-
-
-
     return (
         <div className="allComponent">
-            <h2 className="allComponentTitle">Your Order</h2>
+            <h2 className="allComponentTitleFirstPage">Your Order</h2>
             <div className="contactFormMain">
                 <div className="contactForm">
                     <div className="contactFormList">
