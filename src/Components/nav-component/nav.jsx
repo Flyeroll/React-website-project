@@ -38,7 +38,6 @@ export default function Nav() {
       <div className="menuBar showMenuTrue" id="menuBtn" ref={menuPopUpRef}>
         <div className="navMenuBtn"><Link to="/dishes" className="linkToHide">Dishes</Link></div>
         <div className="navMenuBtn"><Link to="/about" className="linkToHide">About Us</Link></div>
-        <div className="navMenuBtn"><Link to="/contacts" className="linkToHide">Contacts</Link></div>
       </div>
     );
   }
