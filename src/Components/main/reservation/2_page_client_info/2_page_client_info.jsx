@@ -67,7 +67,7 @@ export default function secondPageReserv(props) {
                         return {...prev, [content]:false}
                     })
                 } else {
-                    console.log("Table is occupied!");
+                    // "Table is occupied!"
                 }
             }
 
@@ -231,7 +231,6 @@ export default function secondPageReserv(props) {
                 if(number.length === 18) {
                     let input = phoneInputRef.current
                     input.classList.add("inputGreen")
-                    console.log(input.classList);
                     setPageTwoValidator((prev) => {
                         return {...prev, phone:true}
                     })
@@ -240,8 +239,6 @@ export default function secondPageReserv(props) {
                     if(input.classList.contains("inputGreen")) {
                         input.classList.remove("inputGreen")
                     }
-
-                    console.log(input.classList);
                     setPageTwoValidator((prev) => {
                         return {...prev, phone:false}
                     })
@@ -291,13 +288,6 @@ export default function secondPageReserv(props) {
             }
             
             useEffect((prev) => {
-                if(pickerData.time !== undefined){
-                    if(pickerData.time.length !== undefined & pickerData.time.length < 1){
-                        console.log("Выберите дату!");
-                    } else if (pickerData.time.length !== undefined & pickerData.time.length > 0) {
-                        console.log("Дата выбрана!");
-                    }
-                }
                 
                 setDateForInputToShow((prev) => {
                     let newTime
@@ -336,9 +326,6 @@ export default function secondPageReserv(props) {
                         }
                     return newValue
                 })
-                console.log("PICKER DATA");
-                console.log(pickerData);
-                props.timeAndDate(pickerData)
             },[pickerData])
             
             useEffect((prev) => {

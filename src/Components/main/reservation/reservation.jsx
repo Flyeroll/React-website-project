@@ -54,7 +54,6 @@ export default function Reservation(props) {
     function moveToFirstStep() {
         let secondBtn = document.querySelector('.reserveSecondBall')
         let reserveLineBlack = document.getElementById('reserveLineBlack')
-        console.log(reserveLineBlack.style.width);
         reserveLineBlack.style = "width:0px;"
         secondBtn.classList.remove('black')
     }
@@ -99,17 +98,12 @@ export default function Reservation(props) {
     }
 
     function checkIt(elem) {
-        console.log(elem.target);
+
     }
 
     function recieveDateAndTimeFromDatePicker(date) {
         setSecondPageDataAndTime((prev) => date)
     }
-
-    useEffect(() => {
-        console.log("DATA INFO FROM RESERVATION");
-        console.log(secondPageDataAndTime);
-    },[secondPageDataAndTime])
 
     return (
         <ThemeContext.Provider value={false}>

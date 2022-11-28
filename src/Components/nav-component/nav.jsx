@@ -62,7 +62,6 @@ export default function Nav() {
 
   function showMap() {
     const mapEl = document.getElementsByClassName('mapImg');
-    console.log(mapEl);
     if (!mapEl[0].classList.contains('mapShowed')) {
       mapEl[0].classList.add('mapShowed');
     }
@@ -82,7 +81,6 @@ export default function Nav() {
 
   useEffect(() => {
     setInterval(() => {
-      console.log(imgCount.current);
       if (imgCount.current < 5) {
         imgCount.current += 1;
       } else if (imgCount.current === 5) {

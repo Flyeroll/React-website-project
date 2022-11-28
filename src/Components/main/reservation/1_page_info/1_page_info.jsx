@@ -103,10 +103,7 @@ export default function firstPageReserv(props) {
     
     
     function printPopUp(dish) {
-
-        console.log(dish);
         let plusOrMinus = dish.target.innerHTML
-        console.log(plusOrMinus);
         setShowPopUp((prev) => {
             return !prev
         })

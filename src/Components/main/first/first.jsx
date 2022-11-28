@@ -19,6 +19,7 @@ export default function First() {
   const [filteredArrayDinner, setFilteredArrayDinner] = useState(Data);
   const [filteredArrayDessert, setFilteredArrayDessert] = useState(Data);
   const [filteredArrayColdDrinks, setFilteredArrayColdDrinks] = useState(Data);
+  const [showWarning, setShowWarning] = useState(false);
   const [showImage, setShowImage] = useState({ status: false, adress: '' });
 
   const [input, setInput] = useState('');
@@ -219,6 +220,21 @@ export default function First() {
     }
   }
 
+  useEffect(() => {
+    if (
+      filteredArrayLunch.length === 0 &&
+      filteredArrayPizza.length === 0 &&
+      filteredArrayDinner.length === 0 &&
+      filteredArrayDessert.length === 0 &&
+      filteredArrayColdDrinks.length === 0 &&
+      filteredArrayBreakfast.length === 0
+    ) {
+      setShowWarning(() => true);
+    } else {
+      setShowWarning(() => false);
+    }
+  },[filteredArrayBreakfast, filteredArrayLunch, filteredArrayPizza, filteredArrayDinner, filteredArrayDessert, filteredArrayColdDrinks]);
+
   return (
     <div className="componentFirst" onClick={(elem) => closeReserveWindow(elem)}>
       {showReserveWindowToggler ? <Reservation className="reservationTable" data2={counter} /> : null}
@@ -228,7 +244,7 @@ export default function First() {
         {showReserve ? printReserveBtn() : null }
       </div>
       {/* all Breakfasts */}
-
+      {showWarning ? <h1 className="warningForInput">Nothing is found!</h1> : null }
       {filteredArrayBreakfast.length !== 0 ? <h1 className="categoryTitle">Breakfast</h1> : null }
       <div className="allDishes">
 
