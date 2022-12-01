@@ -13,24 +13,24 @@ Opened in 1994 by restaurateur Danny Meyer in a historic landmark building just 
                 <div className="staffBox1">
                     <div>
                         <img src="/images/person1.png" alt="" className="staffFoto"/>
-                        <h3>MICHAEL ANTHONY</h3>
+                        <h3 className="staffName">MICHAEL ANTHONY</h3>
                         <h4>Executive Chef</h4>
                     </div>
                     <div>
                         <img src="/images/person2.png" alt="" className="staffFoto"/>
-                        <h3>WILLIAM CARROLL</h3>
+                        <h3 className="staffName">WILLIAM CARROLL</h3>
                         <h4>General Manager</h4>
                     </div>
                 </div>
                 <div className="staffBox2">
                     <div>
                         <img src="/images/person3.png" alt="" className="staffFoto"/>
-                        <h3>MIRO USKOVIC</h3>
+                        <h3 className="staffName">MIRO USKOVIC</h3>
                         <h4>Executive Pastry Chef</h4>
                     </div>
                     <div>
                         <img src="/images/person4.png" alt="" className="staffFoto"/>
-                        <h3>JOE LAM</h3>
+                        <h3 className="staffName">JOE LAM</h3>
                         <h4>Chef de cusine</h4>
                     </div>
                 </div>

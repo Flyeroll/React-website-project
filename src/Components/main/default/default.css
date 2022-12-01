@@ -9,7 +9,6 @@
     height: calc(100vh - 120px);
     width:1500px;
     text-align: center;
-    background-color: aquamarine;
     overflow: hidden;
     overflow-y: scroll;
 }
@@ -52,7 +51,11 @@
     margin-top: 20px;
 }
 
-@media screen and (max-width: 1500px) {
+.staffName {
+    margin-bottom: -16px;
+}
+
+@media screen and (max-width: 1200px) {
     .aboutUsBox {
         width: 1000px;
         margin-left: calc(50vw - 500px);
@@ -62,7 +65,6 @@
     }
     .staffBox {
         width: 900px;
-        background-color: red;
     }
     .aboutUsBox p {
         font-size: 20px;
@@ -72,19 +74,19 @@
     }
 
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
     .aboutUsBox {
+        justify-content: flex-start;
+        padding-top: 25px;
         width: 800px;
         margin-left: calc(50vw - 400px);
-        padding-top: 200px;
-        height: 300px;
+        height: calc(100% - 120px);
     }
     .staffFoto {
         height: 300px;
     }
     .staffBox {
         width: 600px;
-        background-color: red;
         flex-direction: row;
         height: 1000px;
     }
@@ -98,8 +100,14 @@
         padding-bottom: 30px;
     }
 }
-@media screen and (max-height: 680px) {
-    .aboutUsBox p {
-        display: none;
+
+@media screen and (max-width: 400px) {
+    .aboutUsBox {
+        width: 380px;
+        margin-left: calc(50vw - 190px);
+    }
+    .staffBox {
+        flex-direction: column;
+        height: 1600px;
     }
 }
