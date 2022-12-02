@@ -80,11 +80,19 @@
         display: none;
     }
     .contactFormMain {
-        height: 80%;
+        height: calc(80% - 75px);
+        justify-content: flex-start;
     }
     .allComponentTitleFirstPage {
-        margin-top: 100px;
-        margin-bottom: 20px;
+        margin-top: 131px;
+        margin-bottom: 40px;
+    }
+    .contactFormLineAmountBox {
+        justify-content: right;
+    }
+    .contactFormLine {
+        height: auto;
+        margin-bottom: 30px;
     }
 }
 

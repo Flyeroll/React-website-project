@@ -125,7 +125,13 @@
 }
 
 @media screen and (max-width: 400px) {
-    
+    .xMarkReservation {
+        position:fixed ;
+        top: 133px;
+        left: 333px;
+        scale: 2;
+    }
 }
+
 
 
