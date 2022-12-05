@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./style.css"
-
+import uniqid from 'uniqid';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
@@ -248,10 +248,6 @@ useEffect(() => {
 
             return {...prev,year: selectedDay.year, month: selectedDay.month}
         })
-        console.log(selectedDay);
-
-
-
 
         let selectedDayCopy = {...selectedDay}
     },[selectedDay])
@@ -337,7 +333,7 @@ useEffect(() => {
     function printTime() {
         return (
             timeArray.map((elem) => {
-                return <div className="singleTime" onClick={(elem) => changeTimeStatus(elem)}>{elem.time}</div>
+                return <div className="singleTime" onClick={(elem) => changeTimeStatus(elem)} key={uniqid()}>{elem.time}</div>
             })
             )
         }
@@ -400,7 +396,7 @@ useEffect(() => {
             if((monthToday + prev) < 11) {
                 newIndex += 1
             } else if((monthToday + prev) === 11 && yearIndex === 2020){
-                console.log("VOT ONA SU4KA");
+
             } else {
                 newIndex = -10
                 setYearIndex((prev) => {
@@ -469,7 +465,7 @@ useEffect(() => {
                     let newElem
 
                     if(i < firstDayIndex) {
-                        newElem = <div className="tag unActiveDay"></div>
+                        newElem = <div className="tag unActiveDay" key={uniqid()}></div>
                     } 
                     dataArray.push(newElem)
                 }
@@ -477,12 +473,12 @@ useEffect(() => {
                     let newElem
                     if(monthToday === currentYearAndMonth.month){
                         if(i < dayToday){
-                            newElem = <div className="tag unActiveDay">{i}</div>
+                            newElem = <div className="tag unActiveDay" key={uniqid()}>{i}</div>
                         } else if (i === dayToday || i > dayToday) {
-                            newElem = <div className="tag normalTag" onClick={(target) => selectDate(target)}>{i}</div>
+                            newElem = <div className="tag normalTag" onClick={(target) => selectDate(target)} key={uniqid()}>{i}</div>
                         }
                     } else if(monthToday !== currentYearAndMonth.month){
-                        newElem = <div className="tag normalTag" onClick={(target) => selectDate(target)}>{i}</div>
+                        newElem = <div className="tag normalTag" onClick={(target) => selectDate(target)} key={uniqid()}>{i}</div>
                     }
                     
                     dataArray.push(newElem)
@@ -492,7 +488,7 @@ useEffect(() => {
 
                 for(let i=1; i < lastCounter; i++) {
                     let newElem
-                        newElem = <div className="tag unActiveDay">{i}</div>
+                        newElem = <div className="tag unActiveDay" key={uniqid()}>{i}</div>
                     
                     dataArray.push(newElem)
                 }

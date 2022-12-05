@@ -324,6 +324,7 @@ export default function secondPageReserv(props) {
                             newYear = '____'
                             newValue = `Please, set date and time`
                         }
+                        props.timeAndDate(pickerData)
                     return newValue
                 })
             },[pickerData])
@@ -331,6 +332,7 @@ export default function secondPageReserv(props) {
             useEffect((prev) => {
                 
             }, [datePickerStatus])
+
 
             function nameValidator(elem) {
                 if(elem.target.value !== "") {
@@ -371,9 +373,6 @@ export default function secondPageReserv(props) {
                 })
             }
 
-            useEffect(() => {
-                
-            },[pickerData.daySelected])
             
             function openDatePicker() {
                 if(!datePickerStatus) {

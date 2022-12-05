@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import uniqid from 'uniqid';
 import Reservation from '../reservation/reservation';
 import Data from '../../API/api.json';
 
@@ -249,7 +250,7 @@ export default function First() {
       <div className="allDishes">
 
         {filteredArrayBreakfast.map((prev) => (
-          <div className="dishFormMain">
+          <div className="dishFormMain" key={uniqid()}>
             <div key={prev.id} className="dishForm">
               <div key={prev.id} className="dishName">{prev.name}</div>
               <h6 className="dishDescription">{prev.description}</h6>
@@ -275,7 +276,7 @@ export default function First() {
       <div className="allDishes">
 
         {filteredArrayLunch.map((prev) => (
-          <div className="dishFormMain">
+          <div className="dishFormMain" key={uniqid()}>
             <div key={prev.id} className="dishForm">
               <div key={prev.id} className="dishName">{prev.name}</div>
               <h6 className="dishDescription">{prev.description}</h6>
@@ -301,7 +302,7 @@ export default function First() {
       <div className="allDishes">
 
         {filteredArrayDinner.map((prev) => (
-          <div className="dishFormMain">
+          <div className="dishFormMain" key={uniqid()}>
             <div key={prev.id} className="dishForm">
               <div key={prev.id} className="dishName">{prev.name}</div>
               <h6 className="dishDescription">{prev.description}</h6>
@@ -327,7 +328,7 @@ export default function First() {
       <div className="allDishes">
 
         {filteredArrayPizza.map((prev) => (
-          <div className="dishFormMain">
+          <div className="dishFormMain" key={uniqid()}>
             <div key={prev.id} className="dishForm">
               <div key={prev.id} className="dishName">{prev.name}</div>
               <h6 className="dishDescription">{prev.description}</h6>
@@ -353,7 +354,7 @@ export default function First() {
       <div className="allDishes">
 
         {filteredArrayDessert.map((prev) => (
-          <div className="dishFormMain">
+          <div className="dishFormMain" key={uniqid()}>
             <div key={prev.id} className="dishForm">
               <div key={prev.id} className="dishName">{prev.name}</div>
               <h6 className="dishDescription">{prev.description}</h6>
@@ -379,7 +380,7 @@ export default function First() {
       <div className="allDishes">
 
         {filteredArrayColdDrinks.map((prev) => (
-          <div className="dishFormMain">
+          <div className="dishFormMain" key={uniqid()}>
             <div key={prev.id} className="dishForm">
               <div key={prev.id} className="dishName">{prev.name}</div>
               <h6 className="dishDescription">{prev.description}</h6>

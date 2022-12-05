@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./style.css"
+import uniqid from 'uniqid';
 
 export default function firstPageReserv(props) {
 
@@ -136,7 +137,7 @@ export default function firstPageReserv(props) {
                     <div className="contactFormList">
                         {usersListDisplay.map((elem) => {
                             return (
-                                <div className="contactFormLine">
+                                <div className="contactFormLine" key={uniqid()}>
                                     <div className="contactFormLineName">{elem.name}</div>
                                     <div className="contactFormLineAmountBox">
                                         <div className="contactFormLinePlusMinus" onClick={!showPopUp ? (elem) => minusDish(elem): null}>-</div>

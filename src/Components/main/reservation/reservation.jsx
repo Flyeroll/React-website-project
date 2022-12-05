@@ -22,7 +22,7 @@ export const showWindow = createContext()
 export default function Reservation(props) {
     const [statusLine, setStatusLine] = useState(1)
     const [secondPageValidator, setSecondPageValidator] = useState(false);
-    const [secondPageDataAndTime, setSecondPageDataAndTime] = useState("");
+    const [secondPageDataAndTime, setSecondPageDataAndTime] = useState("clear");
 
     useEffect(() => {
         if (statusLine === 1) {
