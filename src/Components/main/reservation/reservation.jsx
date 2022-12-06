@@ -102,7 +102,7 @@ export default function Reservation(props) {
     }
 
     function recieveDateAndTimeFromDatePicker(date) {
-        setSecondPageDataAndTime((prev) => date)
+        setSecondPageDataAndTime((prev) => (date));
     }
 
     return (

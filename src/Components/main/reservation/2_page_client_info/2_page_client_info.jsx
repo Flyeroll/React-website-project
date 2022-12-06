@@ -324,9 +324,9 @@ export default function secondPageReserv(props) {
                             newYear = '____'
                             newValue = `Please, set date and time`
                         }
-                        props.timeAndDate(pickerData)
-                    return newValue
-                })
+                        return newValue
+                    })
+                    props.timeAndDate(pickerData)
             },[pickerData])
             
             useEffect((prev) => {

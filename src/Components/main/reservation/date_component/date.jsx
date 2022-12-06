@@ -316,19 +316,7 @@ useEffect(() => {
         setSelectedDay((prev) => {
             return {...prev, time:currentTimeVariants[0].innerHTML}
         })
-        
-        // let newElem = elem
-        
-        // setTimeArray((prevArr) => {
-        //     let newArr = prevArr.map((hour) => {
-        //         let newHour = hour
-        //         if(newElem.target.innerHTML === hour.time){
-        //             newHour.selected = !newHour.selected
-        //         }
-        //         return newHour
-        //     })
-        //     return newArr
-        // })
+
     }
     function printTime() {
         return (
@@ -485,7 +473,7 @@ useEffect(() => {
                 }
 
                 let lastCounter = 43 - dataArray.length
-
+                //unactive days end part
                 for(let i=1; i < lastCounter; i++) {
                     let newElem
                         newElem = <div className="tag unActiveDay" key={uniqid()}>{i}</div>
