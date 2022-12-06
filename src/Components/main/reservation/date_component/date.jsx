@@ -250,6 +250,7 @@ useEffect(() => {
         })
 
         let selectedDayCopy = {...selectedDay}
+        console.log(selectedDay.day);
     },[selectedDay])
     
     
@@ -463,7 +464,11 @@ useEffect(() => {
                         if(i < dayToday){
                             newElem = <div className="tag unActiveDay" key={uniqid()}>{i}</div>
                         } else if (i === dayToday || i > dayToday) {
-                            newElem = <div className="tag normalTag" onClick={(target) => selectDate(target)} key={uniqid()}>{i}</div>
+                            if(Number(selectedDay.day) === i){
+                                newElem = <div className="tag normalTag dateDaySelected" onClick={(target) => selectDate(target)} key={uniqid()}>{i}</div>
+                            } else if (Number(selectedDay.day) !== i ){
+                                newElem = <div className="tag normalTag" onClick={(target) => selectDate(target)} key={uniqid()}>{i}</div>
+                            }
                         }
                     } else if(monthToday !== currentYearAndMonth.month){
                         newElem = <div className="tag normalTag" onClick={(target) => selectDate(target)} key={uniqid()}>{i}</div>
