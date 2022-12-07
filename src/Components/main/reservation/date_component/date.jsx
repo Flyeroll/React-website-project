@@ -235,29 +235,20 @@ useEffect(() => {
             }
         }
 
-
             setSelectedDay((prev) => {
                 return {...prev, time:newTimeArrayToSave}
         })
     },[timeArray])
     
-    
-    
     useEffect(() => {
         setCurrentYearAndMonth((prev) => {
-
             return {...prev,year: selectedDay.year, month: selectedDay.month}
         })
-
         let selectedDayCopy = {...selectedDay}
-        console.log(selectedDay.day);
     },[selectedDay])
-    
-    
     
     useEffect(() => {
 
-        
         let newMonth 
         if(yearsArrayForPrint !== undefined) {
             newMonth = yearsArrayForPrint.filter(elem => elem.name === currentYearAndMonth.year)[0].monthInfo[currentYearAndMonth.month]
@@ -411,7 +402,6 @@ useEffect(() => {
     
     function prevMonthBtn() {
         if (monthIndex === -10 && yearIndex < 2022) {
-            console.log("PERVII 1");
             setMonthIndex((prev) => {
                 return 1
             })
@@ -421,7 +411,6 @@ useEffect(() => {
                 return newEl
             })
         } else if(monthIndex <= 3 && monthIndex >=-7 && monthIndex !== 0) {
-            console.log("VTOROI 2");
             setMonthIndex((prev) => {
                 let newEl = prev
                 newEl -= 1
