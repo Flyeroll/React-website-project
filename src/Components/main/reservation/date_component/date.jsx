@@ -322,7 +322,11 @@ useEffect(() => {
     function printTime() {
         return (
             timeArray.map((elem) => {
-                return <div className="singleTime" onClick={(elem) => changeTimeStatus(elem)} key={uniqid()}>{elem.time}</div>
+                let newSelectedTime = <div className="singleTime" onClick={(elem) => changeTimeStatus(elem)} key={uniqid()}>{elem.time}</div>
+                if(selectedDay.time === elem.time) {
+                    newSelectedTime = <div className="singleTime selectedSingleTime" onClick={(elem) => changeTimeStatus(elem)} key={uniqid()}>{elem.time}</div>
+                }
+                return newSelectedTime
             })
             )
         }
@@ -406,9 +410,6 @@ useEffect(() => {
 
     
     function prevMonthBtn() {
-        console.log(monthIndex);
-        console.log(yearIndex);
-
         if (monthIndex === -10 && yearIndex < 2022) {
             console.log("PERVII 1");
             setMonthIndex((prev) => {
