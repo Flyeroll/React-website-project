@@ -22,14 +22,12 @@ export default function Nav() {
     const mapNav = document.querySelectorAll('#xMarkNav');
     const mapEl = document.getElementsByClassName('mapImg');
 
-    if (mapNav[0].classList.contains('falseShow')) {
+    if (mapNav[0].classList.contains('falseShow') && mapNav[0] !== undefined) {
       mapNav[0].classList.remove('falseShow');
       mapNav[0].classList.add('trueShow');
-      mapEl[0].classList.add('moveToLeft');
-    } else {
+    } else if (mapNav[0] !== undefined) {
       mapNav[0].classList.add('falseShow');
       mapNav[0].classList.remove('trueShow');
-      mapEl[0].classList.remove('moveToLeft');
     }
   }
 
