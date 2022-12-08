@@ -115,6 +115,15 @@ img {
     position: relative;
 }
 
+.backgroundFilterForDishFoto {
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 @media screen and (max-width: 400px) {
     .categoryTitle {
         font-size: 20px;
@@ -237,6 +246,8 @@ img {
     z-index: 10;
     top: 190px;
     cursor: pointer;
+    color: white;
+    border: none;
 }
 
 .fotoAngleLeft {

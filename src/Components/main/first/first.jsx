@@ -1,3 +1,9 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable import/no-dynamic-require */
+/* eslint-disable global-require */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 // DISHES
 import React, { useEffect, useState } from 'react';
 import './first.css';
@@ -174,13 +180,13 @@ export default function First() {
 
   function showLeftArrow() {
     return (
-      <FontAwesomeIcon icon={faAngleLeft} className="fotoAngle fotoAngleLeft" onClick={() => prevImg()} />
+      <FontAwesomeIcon icon={faAngleLeft} className="fotoAngle fotoAngleLeft fa-border" onClick={() => prevImg()} />
     );
   }
 
   function showRightArrow() {
     return (
-      <FontAwesomeIcon icon={faAngleRight} className="fotoAngle fotoAngleRight" onClick={() => nextImg()} />
+      <FontAwesomeIcon icon={faAngleRight} className="fotoAngle fotoAngleRight fa-border" onClick={() => nextImg()} />
     );
   }
 
@@ -188,21 +194,22 @@ export default function First() {
     return (
       <div className="showedFoto">
         <div className="showedFotoContainer">
-          {currentImage !== 1 ? showLeftArrow() : null }
-          <img className="showedFoto" src={`${process.env.PUBLIC_URL}/images/fotos/${JPEGcode}.jpg`} alt="Dish" />
-          {currentImage !== 3 ? showRightArrow() : null }
+          {currentImage !== 1 ? showLeftArrow() : null}
+          <div className="backgroundFilterForDishFoto" />
+          <img className="showedFoto" src={`${process.env.PUBLIC_URL}/images/fotos/${JPEGcode}.jpg`} />
+          {currentImage !== 3 ? showRightArrow() : null}
         </div>
       </div>
     );
   }
 
   function showReserveWindow() {
-    setShowReserveWindowToggler((prev) => true);
+    setShowReserveWindowToggler(() => true);
   }
 
   function printReserveBtn() {
     return (
-      <div className="inputFieldReserveBtn" onClick={(elem) => showReserveWindow()}>Reserve!</div>
+      <div className="inputFieldReserveBtn" onClick={() => showReserveWindow()}>Reserve!</div>
     );
   }
 
@@ -213,40 +220,48 @@ export default function First() {
       setShowReserveWindowToggler(() => false);
     }
     if (
-      !elem.target.classList.contains('showedFoto') &&
-      !elem.target.classList.contains('fotoAngle') &&
-      showImage.status === true
+      !elem.target.classList.contains('showedFoto')
+      && !elem.target.classList.contains('fotoAngle')
+      && showImage.status === true
     ) {
       setShowImage(() => ({ status: false, adress: '' }));
     }
   }
 
-  useEffect(() => {
-    if (
-      filteredArrayLunch.length === 0 &&
-      filteredArrayPizza.length === 0 &&
-      filteredArrayDinner.length === 0 &&
-      filteredArrayDessert.length === 0 &&
-      filteredArrayColdDrinks.length === 0 &&
-      filteredArrayBreakfast.length === 0
-    ) {
-      setShowWarning(() => true);
-    } else {
-      setShowWarning(() => false);
-    }
-  },[filteredArrayBreakfast, filteredArrayLunch, filteredArrayPizza, filteredArrayDinner, filteredArrayDessert, filteredArrayColdDrinks]);
+  useEffect(
+    () => {
+      if (
+        filteredArrayLunch.length === 0
+        && filteredArrayPizza.length === 0
+        && filteredArrayDinner.length === 0
+        && filteredArrayDessert.length === 0
+        && filteredArrayColdDrinks.length === 0
+        && filteredArrayBreakfast.length === 0
+      ) {
+        setShowWarning(() => true);
+      } else {
+        setShowWarning(() => false);
+      }
+    },
+    [filteredArrayBreakfast,
+      filteredArrayLunch,
+      filteredArrayPizza,
+      filteredArrayDinner,
+      filteredArrayDessert,
+      filteredArrayColdDrinks],
+  );
 
   return (
     <div className="componentFirst" onClick={(elem) => closeReserveWindow(elem)}>
       {showReserveWindowToggler ? <Reservation className="reservationTable" data2={counter} /> : null}
-      {showImage.status ? pictureElement() : null }
+      {showImage.status ? pictureElement() : null}
       <div className="inputField">
         <input type="text" className="firstInput" id="dishesInput" onChange={(element) => filterArray(element)} />
-        {showReserve ? printReserveBtn() : null }
+        {showReserve ? printReserveBtn() : null}
       </div>
       {/* all Breakfasts */}
-      {showWarning ? <h1 className="warningForInput">Nothing is found!</h1> : null }
-      {filteredArrayBreakfast.length !== 0 ? <h1 className="categoryTitle">Breakfast</h1> : null }
+      {showWarning ? <h1 className="warningForInput">Nothing is found!</h1> : null}
+      {filteredArrayBreakfast.length !== 0 ? <h1 className="categoryTitle">Breakfast</h1> : null}
       <div className="allDishes">
 
         {filteredArrayBreakfast.map((prev) => (
@@ -272,7 +287,7 @@ export default function First() {
 
       {/* all Lunchs */}
 
-      {filteredArrayLunch.length !== 0 ? <h1 className="categoryTitle">Lunch</h1> : null }
+      {filteredArrayLunch.length !== 0 ? <h1 className="categoryTitle">Lunch</h1> : null}
       <div className="allDishes">
 
         {filteredArrayLunch.map((prev) => (
@@ -298,7 +313,7 @@ export default function First() {
 
       {/* all Pizzas */}
 
-      {filteredArrayDinner.length !== 0 ? <h1 className="categoryTitle">Dinner</h1> : null }
+      {filteredArrayDinner.length !== 0 ? <h1 className="categoryTitle">Dinner</h1> : null}
       <div className="allDishes">
 
         {filteredArrayDinner.map((prev) => (
@@ -324,7 +339,7 @@ export default function First() {
 
       {/* all Dinners */}
 
-      {filteredArrayPizza.length !== 0 ? <h1 className="categoryTitle">Pizza</h1> : null }
+      {filteredArrayPizza.length !== 0 ? <h1 className="categoryTitle">Pizza</h1> : null}
       <div className="allDishes">
 
         {filteredArrayPizza.map((prev) => (
@@ -350,7 +365,7 @@ export default function First() {
 
       {/* all Desserts */}
 
-      {filteredArrayDessert.length !== 0 ? <h1 className="categoryTitle">Desserts</h1> : null }
+      {filteredArrayDessert.length !== 0 ? <h1 className="categoryTitle">Desserts</h1> : null}
       <div className="allDishes">
 
         {filteredArrayDessert.map((prev) => (
@@ -376,7 +391,7 @@ export default function First() {
 
       {/* all ColdDrinkss */}
 
-      {filteredArrayColdDrinks.length !== 0 ? <h1 className="categoryTitle">Cold Drinks</h1> : null }
+      {filteredArrayColdDrinks.length !== 0 ? <h1 className="categoryTitle">Cold Drinks</h1> : null}
       <div className="allDishes">
 
         {filteredArrayColdDrinks.map((prev) => (
