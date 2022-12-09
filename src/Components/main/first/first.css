@@ -24,6 +24,7 @@
     column-gap: 15px;
     justify-items: center;
     padding-bottom: -100px;
+    margin-bottom: 40px;
 }
 
 img {
@@ -108,6 +109,18 @@ img {
     z-index: 5;
     user-select: none;
     transition: 1s all ease-in-out;
+    animation-duration: 500ms;
+    animation-name: showContacts;
+    animation-direction: alternate;
+}
+@keyframes showContacts {
+    from {
+        opacity: 0;
+    }
+  
+    to {
+        opacity: 1;
+    }
 }
 
 .showedFotoContainer {
@@ -133,7 +146,7 @@ img {
     .allDishes{
         grid-template-columns: 1fr 1fr;
         padding-bottom: 30px;
-
+        margin-bottom: 20px;
     }
     .dishFormMain{
         position: relative;

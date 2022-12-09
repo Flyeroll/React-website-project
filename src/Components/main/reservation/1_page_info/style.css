@@ -25,7 +25,21 @@
     overflow: hidden;
     overflow-y: scroll;
     user-select: none;
+    animation-duration: 1s;
+    animation-name: showContacts;
+    animation-direction: alternate;
 }
+
+
+@keyframes showContacts {
+    from {
+        opacity: 0;
+    }
+  
+    to {
+        opacity: 1;
+    }
+  }
 
 .contactFormLinePlusMinus {
     cursor: pointer;
@@ -46,15 +60,24 @@
 
 .contactFormSecond h3 {
     margin-bottom: 50px;
+    animation-duration: 1s;
+    animation-name: showContacts;
+    animation-direction: alternate;
 }
 .contactFormSecond h5 {
     margin-bottom: 70px;
     font-size: 20px;
+    animation-duration: 1s;
+    animation-name: showContacts;
+    animation-direction: alternate;
 }
 
 .contactFormSecond h4 {
     position: absolute;
     top: 100px;
+    animation-duration: 1s;
+    animation-name: showContacts;
+    animation-direction: alternate;
 }
 
 .contactFormSecond h4.greenDishPrice {
