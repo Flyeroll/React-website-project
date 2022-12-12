@@ -8,15 +8,21 @@ import { Outlet, Link } from 'react-router-dom';
 import {
   MapContainer, TileLayer, Popup, Marker,
 } from 'react-leaflet';
+import Reservation from '../main/reservation/reservation';
 
 export default function Nav() {
   const [showMenu, setShowMenu] = useState(false);
   const menuBtnRef = useRef();
   const menuPopUpRef = useRef();
   const [backGroundImg, setBackGroundImg] = useState(1);
+  // For showing reserve btn
+  const [showReserve, setShowReserve] = useState(false);
 
   // use ref for background image to count it
   const imgCount = useRef(1);
+
+  // data of selected by user dishes from child component (first.jsx)
+  const [selectedDishes, setSelectedDishes] = useState('');
 
   function showOrHideMap() {
     const mapNav = document.querySelectorAll('#xMarkNav');
@@ -68,12 +74,18 @@ export default function Nav() {
   function printBackgroundImg() {
     return (
       <div className='mainPageBackgroundContainer'>
+        <Reservation className="reservationTable" data2={counter} />
         <div className='textForBackGroundContainer'>
           <h2>Welcome to Our Website!</h2>
           <p>Here you can take a look at ours delicious dishes !</p>
         </div>
         <img src={`/images/Wallpapers/main${backGroundImg}.jpg`} alt="" className="imgBackGround" />
       </div>
+    );
+  }
+  function printReserveBtn() {
+    return (
+      <div className="inputFieldReserveBtn" >Reserve!</div>
     );
   }
 
@@ -88,8 +100,13 @@ export default function Nav() {
     }, 4000);
   }, [1]);
 
+  function getSelectedDishesDataFromChild(data) {
+    setSelectedDishes(() => data);
+  }
+
   return (
     <div>
+      
 
       <div className="nav">
         <img src="/images/logo.png" alt="" className="navLogo" />
@@ -97,7 +114,8 @@ export default function Nav() {
           <button ref={menuBtnRef} className="menuBtn navBtn" onClick={() => openMenu()}>
             Menu
             {showMenu ? printMenu() : null }
-          </button>
+            </button>
+          {showReserve ? printReserveBtn() : null}
         </div>
         <FontAwesomeIcon icon={faMapLocation} className="navIcon" onClick={() => showOrHideMap()} />
         <div className="navMap falseShow" id="xMarkNav">
@@ -128,7 +146,7 @@ export default function Nav() {
       </div>
       {window.location.href === "http://localhost:3000/" ? printBackgroundImg() : null}
 
-      <Outlet />
+      <Outlet context={123} />
       <footer>© 2022 Coffee Hause</footer>
     </div>
   );

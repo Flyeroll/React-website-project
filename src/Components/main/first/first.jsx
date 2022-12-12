@@ -8,6 +8,7 @@
 import React, { useEffect, useState } from 'react';
 import './first.css';
 import { Outlet } from 'react-router-dom';
+import { useOutletContext } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
@@ -16,6 +17,7 @@ import Reservation from '../reservation/reservation';
 import Data from '../../API/api.json';
 
 export default function First() {
+  console.log(useOutletContext());
   const [initialArray, setinitialArray] = useState(Data);
   const [filteredArray, setFilteredArray] = useState(Data);
 
@@ -250,6 +252,9 @@ export default function First() {
       filteredArrayDessert,
       filteredArrayColdDrinks],
   );
+
+  console.log("counter");
+  console.log(counter);
 
   return (
     <div className="componentFirst" onClick={(elem) => closeReserveWindow(elem)}>

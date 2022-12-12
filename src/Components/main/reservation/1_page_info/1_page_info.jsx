@@ -1,136 +1,98 @@
-import React, { useEffect, useState } from "react";
-import "./style.css"
+import React, { useEffect, useState } from 'react';
+import './style.css';
 import uniqid from 'uniqid';
 
 export default function firstPageReserv(props) {
+  const [usersList, setUsersList]= useState(props.data3);
+  const [usersListDisplay, setUsersListDisplay] = useState(props.data3);
+  const [orderSumm, setOrderSumm] = useState(400);
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [selectedDish, setSelectedDish] = useState("");
+  const [btnPopUpStatus, setBtnPopUpStatus] = useState(true);
 
-    const[usersList, setUsersList]= useState(props.data3)
-    const[usersListDisplay, setUsersListDisplay] = useState(props.data3)
-    const[orderSumm, setOrderSumm] = useState(400)
-    const[showPopUp, setShowPopUp] = useState(false)
-    const[selectedDish, setSelectedDish] = useState("")
-    const[btnPopUpStatus, setBtnPopUpStatus] = useState(true)
+  useEffect(() => {
+    let newArr = [];
+    for (let i = 0; i < 36; i + 1) {
+      if (usersList[i].counter !== 0) {
+        newArr.push(usersList[i]);
+      }
+    }
 
+    setUsersListDisplay(() => newArr);
+  }, [usersList]);
 
-    useEffect(() => {
-        let newArr = []
-        for(let i = 0; i < 36; i++){
-            if(usersList[i].counter !== 0){
-                newArr.push(usersList[i])
-            }
+  useEffect(() => {
+    let orderSumm = 0;
+    for (let i = 0; i < usersListDisplay.length; i + 1) {
+      let currentDishSumm = usersListDisplay[i].counter * usersListDisplay[i].price;
+      orderSumm += currentDishSumm;
+    }
+    setOrderSumm(() => orderSumm);
+  }, [usersListDisplay]);
+
+  //  MINUS DISH
+  function minusDish(elem) {
+    let nameOfDish = elem.target.parentElement.parentElement.childNodes[0].textContent;
+    setUsersListDisplay((prev) => {
+      let newArr = prev.map((dish) => {
+        let newEl;
+        if (dish.counter !== 0 & nameOfDish === dish.name) {
+          newEl = dish.counter - 1;
+          printPopUp(elem);
+          setSelectedDish(() => `- ${dish.price}$`);
+        } else if (dish.counter === 0 & nameOfDish === dish.name) {
+          newEl = 0;
+        } else {
+          newEl = dish.counter;
         }
+        return { ...dish, counter: newEl };
+      });
+      return newArr;
+    });
+  }
 
-        setUsersListDisplay((prev) => {
-            return newArr
-        })
-
-    },[usersList])
-
-    useEffect(() => {
-        let orderSumm = 0
-        for(let i = 0; i < usersListDisplay.length; i++) {
-            let currentDishSumm = usersListDisplay[i].counter * usersListDisplay[i].price
-            orderSumm += currentDishSumm
-            
+  // PLUS DISH
+  function plusDish(elem) {
+    let nameOfDish = elem.target.parentElement.parentElement.childNodes[0].textContent;
+    setUsersListDisplay((prev) => {
+      let newArr = prev.map((dish) => {
+        let newEl;
+        if (dish.counter !== 0 & nameOfDish === dish.name) {
+          newEl = dish.counter + 1;
+          printPopUp(elem);
+          setSelectedDish(() => `+ ${dish.price}$`);
+        } else if (dish.counter === 0 & nameOfDish === dish.name) {
+          newEl = dish.counter + 1;
+          printPopUp(elem);
+          setSelectedDish(() => `+ ${dish.price}$`);
+        } else {
+          newEl = dish.counter;
         }
-        setOrderSumm((prev) => {
-            return orderSumm
-        })
-    },[usersListDisplay])
+        return { ...dish, counter:newEl };
+      });
+      return newArr;
+    });
+  }
 
+  function printPopUp(dish) {
+    let plusOrMinus = dish.target.innerHTML;
+    setShowPopUp((prev) => !prev);
 
+    setTimeout(() => {
+      let elToColorise = document.querySelector('.DishPriceColor');
+      if (plusOrMinus === '+') {
+        elToColorise.classList.add('greenDishPrice');
+      } else if (plusOrMinus === '-') {
+        elToColorise.classList.add('redDishPrice');
+      }
+    }, 0);
 
-    //MINUS DISH
-    function minusDish(elem) {
-        let nameOfDish = elem.target.parentElement.parentElement.childNodes[0].textContent
-
-        
-        setUsersListDisplay((prev) => {
-            
-            let newArr = prev.map((dish) => {
-                let newEl
-                if(dish.counter !== 0 & nameOfDish === dish.name) {
-                    newEl = dish.counter - 1
-                    printPopUp(elem)
-                    setSelectedDish((prev) => {
-                        return `- ${dish.price}$`
-                    })
-                } else if(dish.counter === 0 & nameOfDish === dish.name){
-                    newEl = 0
-                } else {
-                    newEl = dish.counter
-                }
-                return {...dish, counter:newEl}
-            })
-            return newArr
-        })
-        
-    }
-    
-    
-    
-    // PLUS DISH
-    function plusDish(elem) {
-        let nameOfDish = elem.target.parentElement.parentElement.childNodes[0].textContent
-        
-
-        
-        setUsersListDisplay((prev) => {
-            
-            let newArr = prev.map((dish) => {
-                let newEl
-                if(dish.counter !== 0 & nameOfDish === dish.name) {
-                    newEl = dish.counter + 1
-                    printPopUp(elem)
-                                        setSelectedDish((prev) => {
-                        return `+ ${dish.price}$`
-                    })
-                } else if(dish.counter === 0 & nameOfDish === dish.name){
-                    newEl = dish.counter + 1
-                    printPopUp(elem)
-                                        setSelectedDish((prev) => {
-                        return `+ ${dish.price}$`
-                    })
-                } else {
-                    newEl = dish.counter
-                    
-                }
-                return {...dish, counter:newEl}
-            })
-            return newArr
-        })
-    }
-    
-    
-    
-    function printPopUp(dish) {
-        let plusOrMinus = dish.target.innerHTML
-        setShowPopUp((prev) => {
-            return !prev
-        })
-        
-        
-        
-        
-        
-        setTimeout(() => {
-            let elToColorise = document.querySelector(".DishPriceColor")
-            if(plusOrMinus === "+"){
-                elToColorise.classList.add('greenDishPrice')
-            } else if (plusOrMinus === "-") {
-                elToColorise.classList.add('redDishPrice')
-            }
-        }, 0);
-        
-        
-        setTimeout(() => {
-            setShowPopUp((prev) => {
-                return !prev
-            })
-        }, 200);
-    }
-    return (
-        <div className="allComponent">
+    setTimeout(() => {
+      setShowPopUp((prev) => !prev);
+    }, 200);
+  }
+  return (
+          <div className="allComponent">
             <h2 className="allComponentTitleFirstPage">Your Order</h2>
             <div className="contactFormMain">
                 <div className="contactForm">
@@ -145,7 +107,7 @@ export default function firstPageReserv(props) {
                                         <div className="contactFormLinePlusMinus" onClick={!showPopUp ? (elem) => plusDish(elem): null}>+</div>
                                     </div>
                                 </div>
-                            )
+                            );
                         })}
                     </div>
                 </div>
@@ -158,7 +120,7 @@ export default function firstPageReserv(props) {
 
             </div>
         </div>
-    )
+    );
 }
 
 

@@ -269,6 +269,26 @@
     .contentNav > p {
         padding-top: 37px;
     }
+    .nav {
+        justify-content: center;
+    }
+    .navIcon {
+        position: fixed;
+        right: 0px;
+    }
+    .navLogo {
+        display: none;
+    }
+    .inputFieldReserveBtn {
+        position: fixed;
+        top: 25px;
+        left: -12px;
+        font-size: 20px;
+    }
+    .menuBtn {
+        top: 0px;
+        right: 0px;
+    }
 }
 
 footer {
