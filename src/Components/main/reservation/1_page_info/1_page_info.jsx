@@ -12,7 +12,7 @@ export default function firstPageReserv(props) {
 
   useEffect(() => {
     let newArr = [];
-    for (let i = 0; i < 36; i + 1) {
+    for (let i = 0; i < 36; i++) {
       if (usersList[i].counter !== 0) {
         newArr.push(usersList[i]);
       }
@@ -23,7 +23,7 @@ export default function firstPageReserv(props) {
 
   useEffect(() => {
     let orderSumm = 0;
-    for (let i = 0; i < usersListDisplay.length; i + 1) {
+    for (let i = 0; i < usersListDisplay.length; i++) {
       let currentDishSumm = usersListDisplay[i].counter * usersListDisplay[i].price;
       orderSumm += currentDishSumm;
     }
@@ -58,11 +58,11 @@ export default function firstPageReserv(props) {
       let newArr = prev.map((dish) => {
         let newEl;
         if (dish.counter !== 0 & nameOfDish === dish.name) {
-          newEl = dish.counter + 1;
+          newEl = dish.counter++;
           printPopUp(elem);
           setSelectedDish(() => `+ ${dish.price}$`);
         } else if (dish.counter === 0 & nameOfDish === dish.name) {
-          newEl = dish.counter + 1;
+          newEl = dish.counter++;
           printPopUp(elem);
           setSelectedDish(() => `+ ${dish.price}$`);
         } else {
