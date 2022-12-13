@@ -15,8 +15,6 @@ export default function Nav() {
   const menuBtnRef = useRef();
   const menuPopUpRef = useRef();
   const [backGroundImg, setBackGroundImg] = useState(1);
-  // For showing reserve btn
-  const [showReserve, setShowReserve] = useState(false);
 
   // use ref for background image to count it
   const imgCount = useRef(1);
@@ -74,7 +72,6 @@ export default function Nav() {
   function printBackgroundImg() {
     return (
       <div className='mainPageBackgroundContainer'>
-        <Reservation className="reservationTable" data2={counter} />
         <div className='textForBackGroundContainer'>
           <h2>Welcome to Our Website!</h2>
           <p>Here you can take a look at ours delicious dishes !</p>
@@ -100,10 +97,6 @@ export default function Nav() {
     }, 4000);
   }, [1]);
 
-  function getSelectedDishesDataFromChild(data) {
-    setSelectedDishes(() => data);
-  }
-
   return (
     <div>
       
@@ -115,7 +108,6 @@ export default function Nav() {
             Menu
             {showMenu ? printMenu() : null }
             </button>
-          {showReserve ? printReserveBtn() : null}
         </div>
         <FontAwesomeIcon icon={faMapLocation} className="navIcon" onClick={() => showOrHideMap()} />
         <div className="navMap falseShow" id="xMarkNav">
@@ -146,7 +138,7 @@ export default function Nav() {
       </div>
       {window.location.href === "http://localhost:3000/" ? printBackgroundImg() : null}
 
-      <Outlet context={123} />
+      <Outlet />
       <footer>© 2022 Coffee Hause</footer>
     </div>
   );

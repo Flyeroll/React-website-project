@@ -202,6 +202,7 @@ img {
 
 .inputField {
     display: flex;
+    position: relative;
     align-items: center;
     margin-top: 20px;
 }
@@ -272,6 +273,10 @@ img {
 } 
 
 .inputFieldReserveBtn {
+    position: absolute;
+    top: -90px;
+    left: -90px;
+    z-index: 10;
     transition: 0.2s all ease-in-out;
     user-select: none;
     cursor: pointer;
@@ -279,6 +284,18 @@ img {
     padding: 10px;
     border-radius: 20px;
 }
+
+@media screen and (max-width: 600px) {
+    .inputFieldReserveBtn {
+        left: -50px;
+    }
+  }
+
+@media screen and (max-width: 400px) {
+    .inputFieldReserveBtn {
+        left: -80px;
+    }
+  }
 
 @keyframes navMapAnimation {
     0% {transform: scale(0.97)}

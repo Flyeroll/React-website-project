@@ -17,7 +17,6 @@ import Reservation from '../reservation/reservation';
 import Data from '../../API/api.json';
 
 export default function First() {
-  console.log(useOutletContext());
   const [initialArray, setinitialArray] = useState(Data);
   const [filteredArray, setFilteredArray] = useState(Data);
 
@@ -252,9 +251,6 @@ export default function First() {
       filteredArrayDessert,
       filteredArrayColdDrinks],
   );
-
-  console.log("counter");
-  console.log(counter);
 
   return (
     <div className="componentFirst" onClick={(elem) => closeReserveWindow(elem)}>
