@@ -128,6 +128,7 @@
     flex-direction: column;
     align-items: center;
     padding: 15px;
+    z-index: 12;
 }
 
 .contentNav > p {
@@ -284,6 +285,10 @@
         top: 25px;
         left: -12px;
         font-size: 20px;
+    }
+    .inputFieldReserveBtn.hideReserve {
+        opacity: 0;
+        cursor: default;
     }
     .menuBtn {
         top: 0px;
