@@ -3,15 +3,15 @@ import './style.css';
 import uniqid from 'uniqid';
 
 export default function firstPageReserv(props) {
-  const [usersList, setUsersList]= useState(props.data3);
+  const [usersList, setUsersList] = useState(props.data3);
   const [usersListDisplay, setUsersListDisplay] = useState(props.data3);
   const [orderSumm, setOrderSumm] = useState(400);
   const [showPopUp, setShowPopUp] = useState(false);
-  const [selectedDish, setSelectedDish] = useState("");
+  const [selectedDish, setSelectedDish] = useState('');
   const [btnPopUpStatus, setBtnPopUpStatus] = useState(true);
 
   useEffect(() => {
-    let newArr = [];
+    const newArr = [];
     for (let i = 0; i < 36; i++) {
       if (usersList[i].counter !== 0) {
         newArr.push(usersList[i]);
@@ -24,7 +24,7 @@ export default function firstPageReserv(props) {
   useEffect(() => {
     let orderSumm = 0;
     for (let i = 0; i < usersListDisplay.length; i++) {
-      let currentDishSumm = usersListDisplay[i].counter * usersListDisplay[i].price;
+      const currentDishSumm = usersListDisplay[i].counter * usersListDisplay[i].price;
       orderSumm += currentDishSumm;
     }
     setOrderSumm(() => orderSumm);
@@ -32,9 +32,9 @@ export default function firstPageReserv(props) {
 
   //  MINUS DISH
   function minusDish(elem) {
-    let nameOfDish = elem.target.parentElement.parentElement.childNodes[0].textContent;
+    const nameOfDish = elem.target.parentElement.parentElement.childNodes[0].textContent;
     setUsersListDisplay((prev) => {
-      let newArr = prev.map((dish) => {
+      const newArr = prev.map((dish) => {
         let newEl;
         if (dish.counter !== 0 & nameOfDish === dish.name) {
           newEl = dish.counter - 1;
@@ -51,11 +51,29 @@ export default function firstPageReserv(props) {
     });
   }
 
+  function printPopUp(dish) {
+    const plusOrMinus = dish.target.innerHTML;
+    setShowPopUp((prev) => !prev);
+
+    setTimeout(() => {
+      const elToColorise = document.querySelector('.DishPriceColor');
+      if (plusOrMinus === '+') {
+        elToColorise.classList.add('greenDishPrice');
+      } else if (plusOrMinus === '-') {
+        elToColorise.classList.add('redDishPrice');
+      }
+    }, 0);
+
+    setTimeout(() => {
+      setShowPopUp((prev) => !prev);
+    }, 200);
+  }
+
   // PLUS DISH
   function plusDish(elem) {
-    let nameOfDish = elem.target.parentElement.parentElement.childNodes[0].textContent;
+    const nameOfDish = elem.target.parentElement.parentElement.childNodes[0].textContent;
     setUsersListDisplay((prev) => {
-      let newArr = prev.map((dish) => {
+      const newArr = prev.map((dish) => {
         let newEl;
         if (dish.counter !== 0 & nameOfDish === dish.name) {
           newEl = dish.counter++;
@@ -68,61 +86,41 @@ export default function firstPageReserv(props) {
         } else {
           newEl = dish.counter;
         }
-        return { ...dish, counter:newEl };
+        return { ...dish, counter: newEl };
       });
       return newArr;
     });
   }
 
-  function printPopUp(dish) {
-    let plusOrMinus = dish.target.innerHTML;
-    setShowPopUp((prev) => !prev);
-
-    setTimeout(() => {
-      let elToColorise = document.querySelector('.DishPriceColor');
-      if (plusOrMinus === '+') {
-        elToColorise.classList.add('greenDishPrice');
-      } else if (plusOrMinus === '-') {
-        elToColorise.classList.add('redDishPrice');
-      }
-    }, 0);
-
-    setTimeout(() => {
-      setShowPopUp((prev) => !prev);
-    }, 200);
-  }
   return (
-          <div className="allComponent">
-            <h2 className="allComponentTitleFirstPage">Your Order</h2>
-            <div className="contactFormMain">
-                <div className="contactForm">
-                    <div className="contactFormList">
-                        {usersListDisplay.map((elem) => {
-                            return (
-                                <div className="contactFormLine" key={uniqid()}>
-                                    <div className="contactFormLineName">{elem.name}</div>
-                                    <div className="contactFormLineAmountBox">
-                                        <div className="contactFormLinePlusMinus" onClick={!showPopUp ? (elem) => minusDish(elem): null}>-</div>
-                                        <div className="contactFormLineAmount">{elem.counter}</div>
-                                        <div className="contactFormLinePlusMinus" onClick={!showPopUp ? (elem) => plusDish(elem): null}>+</div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
+    <div className="allComponent">
+      <h2 className="allComponentTitleFirstPage">Your Order</h2>
+      <div className="contactFormMain">
+        <div className="contactForm">
+          <div className="contactFormList">
+            {usersListDisplay.map((elem) => (
+              <div className="contactFormLine" key={uniqid()}>
+                <div className="contactFormLineName">{elem.name}</div>
+                <div className="contactFormLineAmountBox">
+                  <div className="contactFormLinePlusMinus" onClick={!showPopUp ? (elem) => minusDish(elem) : null}>-</div>
+                  <div className="contactFormLineAmount">{elem.counter}</div>
+                  <div className="contactFormLinePlusMinus" onClick={!showPopUp ? (elem) => plusDish(elem) : null}>+</div>
                 </div>
-                <div className="contactFormSecond">
-                    <h3>Your Total Check</h3>
-                    <h5>{orderSumm}$</h5>
-                    {showPopUp ? <h4 className="DishPriceColor">{selectedDish}</h4> : null}
-                    <h3>If your Order is correct please proceed</h3>
-                </div>
-
-            </div>
+              </div>
+            ))}
+          </div>
         </div>
-    );
+        <div className="contactFormSecond">
+          <h3>Your Total Check</h3>
+          <h5>
+            {orderSumm}
+            $
+          </h5>
+          {showPopUp ? <h4 className="DishPriceColor">{selectedDish}</h4> : null}
+          <h3>If your Order is correct please proceed</h3>
+        </div>
+
+      </div>
+    </div>
+  );
 }
-
-
-
-

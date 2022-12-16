@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Monte Cristo Sandwich",
+    "name": "MONTE CRISTO SANDWICH",
     "foto": {
       "1": "/1.1.jpg",
       "2": "/1.2.jpg",
@@ -15,7 +15,7 @@
   },
   {
     "id": 2,
-    "name": "Pasteles De Guayaba",
+    "name": "PASTELES DE GUAYABA",
     "foto": {
       "1": "/2.1.jpg",
       "2": "/2.2.jpg",
@@ -28,7 +28,7 @@
   },
   {
     "id": 3,
-    "name": "Italian Breakfast Wraps",
+    "name": "ITALIAN BREAKFAST WRAPS",
     "foto": {
       "1": "/3.1.jpg",
       "2": "/3.2.jpg",
@@ -42,7 +42,7 @@
   },
   {
     "id": 4,
-    "name": "Irish Breakfast",
+    "name": "IRISH BREAKFAST",
     "foto": {
       "1": "/4.1.jpg",
       "2": "/4.2.jpg",

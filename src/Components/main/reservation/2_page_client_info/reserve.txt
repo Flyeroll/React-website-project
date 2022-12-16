@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import React, { useEffect, useRef, useState } from 'react';
 
 import './style.css';
@@ -79,7 +80,7 @@ export default function secondPageReserv(props) {
 
     elem.target.value = newChar;
 
-    setPhoneNumber((prev) => newChar);
+    setPhoneNumber(() => newChar);
   }
 
   useEffect(() => {
@@ -96,7 +97,7 @@ export default function secondPageReserv(props) {
   }, [reservedTables]);
 
   function format(element) {
-    setNumber((prev) => element.target.value);
+    setNumber(() => element.target.value);
   }
 
   function showInputPhone(elem) {
@@ -194,7 +195,7 @@ export default function secondPageReserv(props) {
   }, [phoneNumber]);
 
   useEffect(() => {
-    setNumber((prev) => {
+    setNumber(() => {
       const finalResult = `${numberParts['1']} ${numberParts['2']} ${numberParts['3']} ${numberParts['4']}`;
       return finalResult;
     });
@@ -204,27 +205,27 @@ export default function secondPageReserv(props) {
     if (number.length === 18) {
       const input = phoneInputRef.current;
       input.classList.add('inputGreen');
-      setPageTwoValidator((prev) => ({ ...prev, phone: true }));
+      setPageTwoValidator(() => ({ ...prev, phone: true }));
     } else if (number.length !== 18) {
       const input = phoneInputRef.current;
       if (input.classList.contains('inputGreen')) {
         input.classList.remove('inputGreen');
       }
-      setPageTwoValidator((prev) => ({ ...prev, phone: false }));
+      setPageTwoValidator(() => ({ ...prev, phone: false }));
     }
   }, [number]);
 
   useEffect(() => {
     if (
       pageTwoValidator.dateAndTime === true
-                    & pageTwoValidator.name === true
-                    & pageTwoValidator.phone === true
-                    & pageTwoValidator.table === true
-                    & pageTwoValidator.visitorsNumb === true
+                    && pageTwoValidator.name === true
+                    && pageTwoValidator.phone === true
+                    && pageTwoValidator.table === true
+                    && pageTwoValidator.visitorsNumb === true
     ) {
-      setPageTwoValidatorFinal((prev) => true);
+      setPageTwoValidatorFinal(() => true);
     } else {
-      setPageTwoValidatorFinal((prev) => false);
+      setPageTwoValidatorFinal(() => false);
     }
   }, [pageTwoValidator]);
 
@@ -247,7 +248,7 @@ export default function secondPageReserv(props) {
   }
 
   useEffect((prev) => {
-    setDateForInputToShow((prev) => {
+    setDateForInputToShow(() => {
       let newTime;
       let newDay;
       let newMonth;
@@ -255,17 +256,17 @@ export default function secondPageReserv(props) {
       let newValue;
       if (
         pickerData.day !== undefined
-                        & pickerData.month !== undefined
-                        & pickerData.year !== undefined
+                        && pickerData.month !== undefined
+                        && pickerData.year !== undefined
       ) {
         if (pickerData.time.length > 0) {
-          setPageTwoValidator((prev) => ({ ...prev, dateAndTime: true }));
+          setPageTwoValidator(() => ({ ...prev, dateAndTime: true }));
           newDay = pickerData.day;
           newMonth = pickerData.month;
           newYear = pickerData.year;
           newValue = `${newDay}.${newMonth + 1}.${newYear}     ${pickerData.time} `;
         } else {
-          setPageTwoValidator((prev) => ({ ...prev, dateAndTime: false }));
+          setPageTwoValidator(() => ({ ...prev, dateAndTime: false }));
           newDay = '__';
           newMonth = '__';
           newYear = '____';
@@ -282,7 +283,7 @@ export default function secondPageReserv(props) {
     props.timeAndDate(pickerData);
   }, [pickerData]);
 
-  useEffect((prev) => {
+  useEffect(() => {
 
   }, [datePickerStatus]);
 
@@ -296,23 +297,23 @@ export default function secondPageReserv(props) {
 
   function showClicked(elem) {
     if (elem.target.classList.contains('btnCross')) {
-      setDatePickerStatus((prev) => false);
+      setDatePickerStatus(() => false);
     }
   }
 
   function changeStatusForParent(e) {
     e.preventDefault();
-    setDatePickerStatus((prev) => false);
+    setDatePickerStatus(() => false);
   }
 
   function recieveDataFromPicker(data) {
-    setPickerData((prev) => data);
-    setDatePickerStatus((prev) => false);
+    setPickerData(() => data);
+    setDatePickerStatus(() => false);
   }
 
   function openDatePicker() {
     if (!datePickerStatus) {
-      setDatePickerStatus((prev) => true);
+      setDatePickerStatus(() => true);
     }
   }
 
