@@ -79,7 +79,7 @@ export default function secondPageReserv(props) {
 
     elem.target.value = newChar;
 
-    setPhoneNumber((prev) => newChar);
+    setPhoneNumber(() => newChar);
   }
 
   useEffect(() => {
@@ -92,11 +92,11 @@ export default function secondPageReserv(props) {
       }
     }
 
-    setClearReservedTables((prev) => newClearArrayTables);
+    setClearReservedTables(() => newClearArrayTables);
   }, [reservedTables]);
 
   function format(element) {
-    setNumber((prev) => element.target.value);
+    setNumber(() => element.target.value);
   }
 
   function showInputPhone(elem) {
@@ -194,13 +194,13 @@ export default function secondPageReserv(props) {
   }, [phoneNumber]);
 
   useEffect(() => {
-    setNumber((prev) => {
+    setNumber(() => {
       const finalResult = `${numberParts['1']} ${numberParts['2']} ${numberParts['3']} ${numberParts['4']}`;
       return finalResult;
     });
   }, [numberParts]);
 
-  useEffect((prev) => {
+  useEffect(() => {
     if (number.length === 18) {
       const input = phoneInputRef.current;
       input.classList.add('inputGreen');
@@ -222,9 +222,9 @@ export default function secondPageReserv(props) {
                     & pageTwoValidator.table === true
                     & pageTwoValidator.visitorsNumb === true
     ) {
-      setPageTwoValidatorFinal((prev) => true);
+      setPageTwoValidatorFinal(() => true);
     } else {
-      setPageTwoValidatorFinal((prev) => false);
+      setPageTwoValidatorFinal(() => false);
     }
   }, [pageTwoValidator]);
 
@@ -246,8 +246,8 @@ export default function secondPageReserv(props) {
     }
   }
 
-  useEffect((prev) => {
-    setDateForInputToShow((prev) => {
+  useEffect(() => {
+    setDateForInputToShow(() => {
       let newTime;
       let newDay;
       let newMonth;
@@ -282,7 +282,7 @@ export default function secondPageReserv(props) {
     props.timeAndDate(pickerData);
   }, [pickerData]);
 
-  useEffect((prev) => {
+  useEffect(() => {
 
   }, [datePickerStatus]);
 
@@ -296,23 +296,23 @@ export default function secondPageReserv(props) {
 
   function showClicked(elem) {
     if (elem.target.classList.contains('btnCross')) {
-      setDatePickerStatus((prev) => false);
+      setDatePickerStatus(() => false);
     }
   }
 
   function changeStatusForParent(e) {
     e.preventDefault();
-    setDatePickerStatus((prev) => false);
+    setDatePickerStatus(() => false);
   }
 
   function recieveDataFromPicker(data) {
-    setPickerData((prev) => data);
-    setDatePickerStatus((prev) => false);
+    setPickerData(() => data);
+    setDatePickerStatus(() => false);
   }
 
   function openDatePicker() {
     if (!datePickerStatus) {
-      setDatePickerStatus((prev) => true);
+      setDatePickerStatus(() => true);
     }
   }
 

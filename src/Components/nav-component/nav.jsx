@@ -50,7 +50,7 @@ export default function Nav() {
   }
 
   function openMenu() {
-    setShowMenu((prev) => true);
+    setShowMenu(() => true);
   }
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function Nav() {
         e.target !== menuBtnRef.current
         && e.target !== menuPopUpRef.current
       ) {
-        setShowMenu((prev) => false);
+        setShowMenu(() => false);
       }
     };
 
@@ -87,7 +87,7 @@ export default function Nav() {
   }
   function printReserveBtn() {
     return (
-      <div className="inputFieldReserveBtn" >Reserve!</div>
+      <div className="inputFieldReserveBtn">Reserve!</div>
     );
   }
 
