@@ -76,11 +76,11 @@ export default function firstPageReserv(props) {
       const newArr = prev.map((dish) => {
         let newEl;
         if (dish.counter !== 0 & nameOfDish === dish.name) {
-          newEl = dish.counter++;
+          newEl = dish.counter + 1;
           printPopUp(elem);
           setSelectedDish(() => `+ ${dish.price}$`);
         } else if (dish.counter === 0 & nameOfDish === dish.name) {
-          newEl = dish.counter++;
+          newEl = dish.counter + 1;
           printPopUp(elem);
           setSelectedDish(() => `+ ${dish.price}$`);
         } else {
