@@ -82,10 +82,12 @@
 
 .contactFormSecond h4.greenDishPrice {
     color: green;
+    animation-name: none;
 }
 
 .contactFormSecond h4.redDishPrice {
     color: red;
+    animation-name: none;
 }
 .allComponentTitleFirstPage {
     margin-top: 20px;
