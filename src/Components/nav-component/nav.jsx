@@ -27,16 +27,18 @@ export default function Nav() {
     const mapEl = document.getElementsByClassName('mapImg');
     let reserveBtn = document.querySelector('.inputFieldReserveBtn');
 
-    console.log(reserveBtn);
-
     if (mapNav[0].classList.contains('falseShow') && mapNav[0] !== undefined) {
       mapNav[0].classList.remove('falseShow');
       mapNav[0].classList.add('trueShow');
-      reserveBtn.classList.add('hideReserve');
+      if(reserveBtn !== null){
+        reserveBtn.classList.add('hideReserve');
+      }
     } else if (mapNav[0] !== undefined) {
       mapNav[0].classList.add('falseShow');
       mapNav[0].classList.remove('trueShow');
-      reserveBtn.classList.remove('hideReserve');
+      if(reserveBtn !== null) {
+        reserveBtn.classList.remove('hideReserve');
+      }
     }
   }
 
@@ -104,8 +106,6 @@ export default function Nav() {
 
   return (
     <div>
-      
-
       <div className="nav">
         <img src="/images/logo.png" alt="" className="navLogo" />
         <div className="buttons">

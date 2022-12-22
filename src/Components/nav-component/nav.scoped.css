@@ -338,7 +338,7 @@ footer {
     top: -20px;
     width: 2500px;
     height: auto;
-    animation: 4s infinite alternate showAndHideImg;
+    /* animation: 4000ms infinite showAndHideImg; */
     }
 
     .mainPageBackgroundContainer h2 {
