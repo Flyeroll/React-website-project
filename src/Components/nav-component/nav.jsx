@@ -30,7 +30,7 @@ export default function Nav() {
     if (mapNav[0].classList.contains('falseShow') && mapNav[0] !== undefined) {
       mapNav[0].classList.remove('falseShow');
       mapNav[0].classList.add('trueShow');
-      if(reserveBtn !== null){
+      if (reserveBtn !== null) {
         reserveBtn.classList.add('hideReserve');
       }
     } else if (mapNav[0] !== undefined) {
@@ -80,8 +80,8 @@ export default function Nav() {
     return (
       <div className='mainPageBackgroundContainer'>
         <div className='textForBackGroundContainer'>
-          <h2>Welcome to Our Website!</h2>
-          <p>Here you can take a look at ours delicious dishes !</p>
+          <h2 className='welcomeTag'>Welcome to Our Website!</h2>
+          <p className='hereTag'>Here you can take a look at ours delicious dishes !</p>
         </div>
         <img src={`/images/Wallpapers/main${backGroundImg}.jpg`} alt="" className="imgBackGround" />
       </div>
@@ -92,17 +92,33 @@ export default function Nav() {
       <div className="inputFieldReserveBtn">Reserve!</div>
     );
   }
-
   useEffect(() => {
+    let welcomeTag = document.querySelector('.welcomeTag');
+    let hereTag = document.querySelector('.hereTag');
+    if (welcomeTag !== null || hereTag !== null) {
+      welcomeTag.style.right = '0%';
+      hereTag.style.left = '20%';
+    }
     setInterval(() => {
+      let imgBackground = document.querySelector('.imgBackGround');
+      setTimeout(() => {
+        if (imgBackground !== null) {
+          imgBackground.style.opacity = 1; // видимо
+        };
+      }, 0);
       if (imgCount.current < 5) {
         imgCount.current += 1;
       } else if (imgCount.current === 5) {
         imgCount.current = 1;
       }
       setBackGroundImg(() => imgCount.current);
-    }, 4000);
-  }, [1]);
+      setTimeout(() => {
+        if (imgBackground !== null) {
+        imgBackground.style.opacity = 0; // невидимо
+        }
+      }, 2500);
+    }, 3000);
+  }, [0]);
 
   return (
     <div>
