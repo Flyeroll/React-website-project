@@ -353,9 +353,10 @@ export default function secondPageReserv(props) {
               <h4 className="titleQuestsNumber">How many guests are coming?</h4>
               <input type="number" className={`guestsNumberInput ${pageTwoValidator.visitorsNumb ? 'inputGreen' : null}`} max={20} min={1} onChange={(elem) => guestsNumber(elem)} defaultValue={1} />
             </div>
-            <h4 className="tableSelectorTitle">Choose your table: </h4>
-            <input type="number" className="tableNumberInput" max={10} min={0} onChange={(elem) => tableNumber(elem)} defaultValue={0} />
-
+            <div className="tableNumberBox">
+              <h4 className="tableSelectorTitle">Choose your table: </h4>
+              <input type="number" className="tableNumberInput" max={10} min={0} onChange={(elem) => tableNumber(elem)} defaultValue={0} />
+            </div>
             <div className="dateInputClear">
               <h4>Pick date bellow</h4>
               <input ref={inputDateRef} className={`dateInput ${pageTwoValidator.dateAndTime ? 'inputGreen' : null}`} readOnly onClick={() => openDatePicker()} value={dateForInputToShow} />

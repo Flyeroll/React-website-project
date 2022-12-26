@@ -54,7 +54,7 @@ export default function Reservation(props) {
     const reserveLineBlack = document.getElementById('reserveLineBlack');
     const currentWindowWidth = window.innerWidth;
     if (currentWindowWidth < 400) {
-      reserveLineBlack.style = 'width:80px;';
+      reserveLineBlack.style = 'width:70px;';
     } else {
       reserveLineBlack.style = 'width:160px;';
     }
@@ -67,7 +67,7 @@ export default function Reservation(props) {
     const reserveLineBlack = document.getElementById('reserveLineBlack');
     const currentWindowWidth = window.innerWidth;
     if (currentWindowWidth < 400) {
-      reserveLineBlack.style = 'width:145px;';
+      reserveLineBlack.style = 'width:120px;';
     } else {
       reserveLineBlack.style = 'width:310px;';
     }
