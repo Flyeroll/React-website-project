@@ -358,6 +358,9 @@ useEffect(() => {
     
     
     function nextMonthBtn() {
+        setSelectedDay((prev) => {
+            return {...prev, day: "" }
+        })
         setMonthIndex((prev) => {
             let newIndex = prev
             if((monthToday + prev) < 11) {
@@ -382,6 +385,9 @@ useEffect(() => {
     }
 
     function prevMonthBtn() {
+        setSelectedDay((prev) => {
+            return {...prev, day: "" }
+        })
         if (monthIndex === -10 && yearIndex < 2022) {
             setMonthIndex((prev) => {
                 return 0
@@ -442,7 +448,12 @@ useEffect(() => {
                             }
                         }
                     } else if(monthToday !== currentYearAndMonth.month){
-                        newElem = <div className="tag normalTag" onClick={(target) => selectDate(target)} key={uniqid()}>{i}</div>
+                        if(Number(selectedDay.day) !== i) {
+                            newElem = <div className="tag normalTag" onClick={(target) => selectDate(target)} key={uniqid()}>{i}</div>
+                        } else {
+                            newElem = <div className="tag normalTag dateDaySelected" onClick={(target) => selectDate(target)} key={uniqid()}>{i}</div>
+                        }
+
                     } 
                     
                     dataArray.push(newElem)
