@@ -253,6 +253,8 @@
         height: 100vh;
         cursor: default;
         z-index: 1;
+        overflow: scroll;
+        padding: 0px;
     }
     .mapBox.mapShowed {
         transition: 1s all ease-in-out;

@@ -5,9 +5,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    margin-left: calc(50vw - 750px);
     height: calc(100vh - 120px);
-    width:1500px;
+    width:100vw;
     text-align: center;
     overflow: hidden;
     overflow-y: scroll;
@@ -56,10 +55,6 @@
 }
 
 @media screen and (max-width: 1200px) {
-    .aboutUsBox {
-        width: 1000px;
-        margin-left: calc(50vw - 500px);
-    }
     .staffFoto {
         height: 200px;
     }
@@ -78,8 +73,6 @@
     .aboutUsBox {
         justify-content: flex-start;
         padding-top: 25px;
-        width: 800px;
-        margin-left: calc(50vw - 400px);
         height: calc(100% - 120px);
     }
     .staffFoto {
@@ -102,10 +95,6 @@
 }
 
 @media screen and (max-width: 400px) {
-    .aboutUsBox {
-        width: 380px;
-        margin-left: calc(50vw - 190px);
-    }
     .staffBox {
         flex-direction: column;
         height: 1600px;

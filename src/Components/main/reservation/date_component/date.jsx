@@ -261,8 +261,6 @@ useEffect(() => {
         })
     }, [currentYearAndMonth])
 
-
-
     useEffect((element) => {
     
     },[finalCurrent])
@@ -398,12 +396,10 @@ useEffect(() => {
 
     }
 
-
-    
     function prevMonthBtn() {
         if (monthIndex === -10 && yearIndex < 2022) {
             setMonthIndex((prev) => {
-                return 1
+                return 0
             })
             setYearIndex((prev) => {
                 let newEl = prev
