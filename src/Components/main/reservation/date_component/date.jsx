@@ -21,9 +21,6 @@ export default function DateWindow(props){
     let monthToday = d.getMonth(); //возвращает месяц  '0-11'
     
     let yearToday = d.getFullYear(); // ГОД СЕГОДНЯ "2022"
-    
-
-// TEST PART TO IMPLEMENT
 
 const [weeksDayArray, setWeeksDayArray] = useState(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"])
 
@@ -77,13 +74,9 @@ const [yearsArray, setYearsArray] = useState([
             ]},
 ])
 
-
-
-
 useEffect(() => {
     setYearsArray((prev) => {
         prev.map((year) => {
-
             //Функция переходных значений для дней недели (аргументы: текущий индекс + необходимая величина изменения)
             function refreshWeeksDay(index, increment) {
                 let newWeekdDay = index
@@ -134,13 +127,10 @@ useEffect(() => {
                         newYear.monthInfo[i].firstDay = weeksDayArray[refreshWeeksDay(weeksDayArray.indexOf(year.monthInfo[i - 1].lastDay), 1)]
                         newYear.monthInfo[i].lastDay = weeksDayArray[refreshWeeksDay(weeksDayArray.indexOf(year.monthInfo[i].firstDay), 2)]
                     }
-        
                     //calc last day for current month
-        
                 }
             }
             
-        
             return newYear
         })
     })
@@ -155,9 +145,6 @@ const [finalCurrent, setFinalCurrent] = useState({year: yearToday, month: monthT
 useEffect(() => {
     
 }, [yearsArrayForPrint])
-
-
-
 
     const [timeArray, setTimeArray] = useState([
         {time:'10:00', selected:false},
@@ -209,8 +196,6 @@ useEffect(() => {
 
     },[currentMonthLength])
 
-
-
     useEffect(() => {
     setSelectedDay((prev) => {
         return {...prev, month:monthToday + monthIndex, year:selectedYear[yearToday - yearIndex]}
@@ -219,7 +204,6 @@ useEffect(() => {
 }, [monthIndex])
 
     useEffect(() => {
-
         setSelectedDay((prev) => {
             return {...prev, month:monthToday + monthIndex, year:selectedYear[yearToday - yearIndex]}
         })
@@ -244,6 +228,7 @@ useEffect(() => {
         setCurrentYearAndMonth((prev) => {
             return {...prev,year: selectedDay.year, month: selectedDay.month}
         })
+        console.log(selectedDay);
         let selectedDayCopy = {...selectedDay}
     },[selectedDay])
     
@@ -458,7 +443,7 @@ useEffect(() => {
                         }
                     } else if(monthToday !== currentYearAndMonth.month){
                         newElem = <div className="tag normalTag" onClick={(target) => selectDate(target)} key={uniqid()}>{i}</div>
-                    }
+                    } 
                     
                     dataArray.push(newElem)
                 }
