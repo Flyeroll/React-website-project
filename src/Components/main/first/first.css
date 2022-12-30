@@ -136,6 +136,16 @@ img {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.dishBtn{
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+}
+.dishFormCount {
+    font-size: 30px;
+}
+
+
 @media screen and (max-width: 400px) {
     .categoryTitle {
         font-size: 20px;
@@ -150,17 +160,17 @@ img {
     .dishFormMain{
         position: relative;
         flex-direction: column;
-        width: 170px;
-        height: 150px;
+        width: 151px;
+        height: 198px;
         border-radius: 10px;
     }
     .dishFormMain > * {
         position: absolute;
     }
     .dishImg{
-        top: 32px;
-        height: 100px;
-        width: 160px;
+        top: 63px;
+        height: 97px;
+        width: 146px;
     }
     .dishName{
         width: 150px;
@@ -171,13 +181,13 @@ img {
         font-size: x-small;
     }
     .dishBtnForm{
-        left: -160px;
-        bottom: -7px;
+        left: -174px;
+        bottom: 0px;
     }
     .dishBtn{
-        width: 14px;
-        height: 14px;
-        background-color: rgb(224, 224, 224);
+        font-size: 30px;
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
         text-align: center;
     }
@@ -296,7 +306,7 @@ img {
         cursor: default;
     }
     .dishName {
-        font-size: 11px;
+        font-size: 16px;
     }
   }
 
