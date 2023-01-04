@@ -200,14 +200,14 @@ useEffect(() => {
     setSelectedDay((prev) => {
         return {...prev, month:monthToday + monthIndex, year:selectedYear[yearToday - yearIndex]}
     })
-
+    console.log(monthIndex);
 }, [monthIndex])
 
-    useEffect(() => {
-        setSelectedDay((prev) => {
-            return {...prev, month:monthToday + monthIndex, year:selectedYear[yearToday - yearIndex]}
-        })
-
+useEffect(() => {
+    setSelectedDay((prev) => {
+        return {...prev, month:monthToday + monthIndex, year:selectedYear[yearToday - yearIndex]}
+    })
+    console.log(yearIndex);
     }, [yearIndex])
 
     useEffect(() => {
@@ -368,7 +368,7 @@ useEffect(() => {
             } else if((monthToday + prev) === 11 && yearIndex === 2020){
 
             } else {
-                newIndex = -10
+                newIndex = 0
                 setYearIndex((prev) => {
                     let newIndex = prev
                     if(prev > 2020) {
