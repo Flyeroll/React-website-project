@@ -73,7 +73,6 @@ const [yearsArray, setYearsArray] = useState([
                 {monthName:"December", firstDay:"", lastDay:'', amountOfDays:31},
             ]},
 ])
-
 useEffect(() => {
     setYearsArray((prev) => {
         prev.map((year) => {
@@ -367,7 +366,9 @@ useEffect(() => {
                 newIndex += 1
             } else if((monthToday + prev) === 11 && yearIndex === 2020){
 
-            } else {
+            } else if(monthIndex === 11 && yearIndex === yearToday - 2) {
+                console.log("3 path ignoring");
+            }else {
                 newIndex = 0
                 setYearIndex((prev) => {
                     let newIndex = prev
@@ -385,27 +386,33 @@ useEffect(() => {
     }
 
     function prevMonthBtn() {
+        console.log(`year today ${yearToday} BTN`);
+        console.log(`month today ${monthIndex} BTN`);
         setSelectedDay((prev) => {
             return {...prev, day: "" }
         })
-        if (monthIndex === -10 && yearIndex < 2022) {
+        if (monthIndex === 0 && yearIndex < 2022) {
+            console.log("1 path");
             setMonthIndex((prev) => {
-                return 0
+                return 11
             })
             setYearIndex((prev) => {
                 let newEl = prev
                 newEl += 1
                 return newEl
             })
-        } else if(monthIndex <= 3 && monthIndex >=-7 && monthIndex !== 0) {
+        } else if(monthIndex !== 0) {
+            console.log("2 path");
             setMonthIndex((prev) => {
                 let newEl = prev
                 newEl -= 1
                 return newEl
             })
-        } else if(monthIndex === 0 && yearIndex === yearToday) {
+        } else if(monthIndex === monthToday && yearIndex === yearToday - 1) {
+            console.log("3 path ignoring");
             //for ignoring
-        } else {
+        }else {
+            console.log("4 path");
             setMonthIndex((prev) => {
                 let newEl = prev
                 newEl -= 1
@@ -471,6 +478,21 @@ useEffect(() => {
         }
         return dataArray
     }
+
+    useEffect(() => {
+    console.log(`year today ${yearToday}`);
+}, [yearToday])
+
+useEffect(() => {
+    console.log(`year index ${yearIndex}`);
+}, [yearIndex])
+
+useEffect(() => {
+    console.log(`month index ${monthIndex}`);
+}, [monthIndex])
+useEffect(() => {
+    console.log(`monthToday ${monthToday}`);
+}, [monthToday])
 
     return (
         <div className="allObject">
