@@ -53,11 +53,7 @@ export default function Reservation(props) {
     const secondBtn = document.querySelector('.reserveSecondBall');
     const reserveLineBlack = document.getElementById('reserveLineBlack');
     const currentWindowWidth = window.innerWidth;
-    if (currentWindowWidth < 400) {
-      reserveLineBlack.style = 'width:70px;';
-    } else {
-      reserveLineBlack.style = 'width:160px;';
-    }
+    reserveLineBlack.style = 'width:160px;';
     setTimeout(() => {
       secondBtn.classList.add('black');
     }, 550);
@@ -66,11 +62,7 @@ export default function Reservation(props) {
     const thirdBtn = document.querySelector('.reserveThirdBall');
     const reserveLineBlack = document.getElementById('reserveLineBlack');
     const currentWindowWidth = window.innerWidth;
-    if (currentWindowWidth < 400) {
-      reserveLineBlack.style = 'width:120px;';
-    } else {
-      reserveLineBlack.style = 'width:310px;';
-    }
+    reserveLineBlack.style = 'width:310px;';
     setTimeout(() => {
       thirdBtn.classList.add('black');
     }, 475);
