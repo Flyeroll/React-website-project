@@ -19,14 +19,16 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
     "eslint": "^8.26.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-react": "^7.31.10"
+    "eslint-plugin-only-warn": "^1.1.0",
+    "eslint-plugin-react": "^7.31.10",
+    "lint": "eslint --max-warnings=0 ..."
   },
   "browserslist": {
     "production": [

@@ -15,6 +15,7 @@ module.exports = {
   },
   plugins: [
     'react',
+    'only-warn',
   ],
   rules: {
   },
