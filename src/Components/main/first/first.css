@@ -293,7 +293,83 @@ img {
     padding: 10px;
     border-radius: 20px;
 }
+@media screen and (max-width: 700px) {
+    .dishFormMain{
+        width: 395px;
+    }
+    .dishImg{
+        height: 97px;
+    }
+    .dishBtnForm {
+        padding-left: 58px;
+    }
+    .dishName {
+        padding-bottom: 15px;
+    }
+}
 
+@media screen and (max-width: 460px) {
+    .categoryTitle {
+        font-size: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .allDishes{
+        grid-template-columns: 1fr 1fr;
+        padding-bottom: 30px;
+        margin-bottom: 20px;
+    }
+    .dishFormMain{
+        position: relative;
+        flex-direction: column;
+        width: 185px;
+        height: 198px;
+        border-radius: 10px;
+    }
+    .dishFormMain > * {
+        position: absolute;
+    }
+    .dishImg{
+        top: 63px;
+        height: 97px;
+        width: 173px;
+    }
+    .dishName{
+        width: 150px;
+        margin: 0;
+        padding: 0;
+        top: 4px;
+        left: -75px;
+        font-size: 16px;
+    }
+    .dishBtnForm{
+        left: -174px;
+        bottom: -5px;
+        padding-left: 130px;
+    }
+    .dishBtn{
+        font-size: 30px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        text-align: center;
+    }
+    .dishPrice{
+        display: none;
+    }
+    .dishDescription{
+        display: none;
+    }
+    .dishForm{
+        position: relative;
+    }
+    .dishForm > * {
+        position: absolute;
+    }
+    .showedFoto{
+        display: none;
+    }
+}
   
 
 @media screen and (max-width: 400px) {
@@ -330,7 +406,6 @@ img {
 .warningForInput {
     padding-top: calc(33vh);
 }
-
 
 
 

@@ -273,7 +273,7 @@ export default function First() {
               <div className="dishBtnForm">
                 <div className="dishBtnMinus dishBtn" onClick={(element) => minusDish(element)}>-</div>
                 <div className="dishFormCount">{printCountPlus(prev)}</div>
-                <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
+                {showReserveWindowToggler ? <div className="dishBtnPlus dishBtn" style={{ zIndex: '0' }} onClick={(element) => plusDish(element)}>+</div> : <div className="dishBtnPlus dishBtn" style={{ zIndex: '1' }} onClick={(element) => plusDish(element)}>+</div> }
               </div>
               <div className="dishPrice">
                 {prev.price}
@@ -299,7 +299,7 @@ export default function First() {
               <div className="dishBtnForm">
                 <div className="dishBtnMinus dishBtn" onClick={(element) => minusDish(element)}>-</div>
                 <div className="dishFormCount">{printCountPlus(prev)}</div>
-                <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
+                {showReserveWindowToggler ? <div className="dishBtnPlus dishBtn" style={{ zIndex: '0' }} onClick={(element) => plusDish(element)}>+</div> : <div className="dishBtnPlus dishBtn" style={{ zIndex: '1' }} onClick={(element) => plusDish(element)}>+</div> }
               </div>
               <div className="dishPrice">
                 {prev.price}
@@ -325,7 +325,7 @@ export default function First() {
               <div className="dishBtnForm">
                 <div className="dishBtnMinus dishBtn" onClick={(element) => minusDish(element)}>-</div>
                 <div className="dishFormCount">{printCountPlus(prev)}</div>
-                <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
+                {showReserveWindowToggler ? <div className="dishBtnPlus dishBtn" style={{ zIndex: '0' }} onClick={(element) => plusDish(element)}>+</div> : <div className="dishBtnPlus dishBtn" style={{ zIndex: '1' }} onClick={(element) => plusDish(element)}>+</div> }
               </div>
               <div className="dishPrice">
                 {prev.price}
@@ -351,7 +351,7 @@ export default function First() {
               <div className="dishBtnForm">
                 <div className="dishBtnMinus dishBtn" onClick={(element) => minusDish(element)}>-</div>
                 <div className="dishFormCount">{printCountPlus(prev)}</div>
-                <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
+                {showReserveWindowToggler ? <div className="dishBtnPlus dishBtn" style={{ zIndex: '0' }} onClick={(element) => plusDish(element)}>+</div> : <div className="dishBtnPlus dishBtn" style={{ zIndex: '1' }} onClick={(element) => plusDish(element)}>+</div> }
               </div>
               <div className="dishPrice">
                 {prev.price}
@@ -377,7 +377,7 @@ export default function First() {
               <div className="dishBtnForm">
                 <div className="dishBtnMinus dishBtn" onClick={(element) => minusDish(element)}>-</div>
                 <div className="dishFormCount">{printCountPlus(prev)}</div>
-                <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
+                {showReserveWindowToggler ? <div className="dishBtnPlus dishBtn" style={{ zIndex: '0' }} onClick={(element) => plusDish(element)}>+</div> : <div className="dishBtnPlus dishBtn" style={{ zIndex: '1' }} onClick={(element) => plusDish(element)}>+</div> }
               </div>
               <div className="dishPrice">
                 {prev.price}
@@ -403,7 +403,7 @@ export default function First() {
               <div className="dishBtnForm">
                 <div className="dishBtnMinus dishBtn" onClick={(element) => minusDish(element)}>-</div>
                 <div className="dishFormCount">{printCountPlus(prev)}</div>
-                <div className="dishBtnPlus dishBtn" onClick={(element) => plusDish(element)}>+</div>
+                {showReserveWindowToggler ? <div className="dishBtnPlus dishBtn" style={{ zIndex: '0' }} onClick={(element) => plusDish(element)}>+</div> : <div className="dishBtnPlus dishBtn" style={{ zIndex: '1' }} onClick={(element) => plusDish(element)}>+</div> }
               </div>
               <div className="dishPrice">
                 {prev.price}

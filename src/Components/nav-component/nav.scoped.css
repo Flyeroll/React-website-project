@@ -242,6 +242,11 @@
 .inputFieldReserveBtn {
     position: fixed;
 }
+@media screen and (max-width: 580px) {
+    .navLogo {
+        opacity: 0;
+    }
+}
 
 @media screen and (max-width: 400px) {
     .navMap {
@@ -281,9 +286,6 @@
         position: fixed;
         right: 0px;
     }
-    .navLogo {
-        display: none;
-    }
     .inputFieldReserveBtn {
         position: fixed;
         top: 25px;
@@ -297,6 +299,9 @@
     .menuBtn {
         top: 0px;
         right: 0px;
+    }
+    .navLogo {
+        display: none;
     }
 }
 

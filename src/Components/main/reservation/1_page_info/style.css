@@ -9,6 +9,7 @@
     justify-content: space-between;
     font-size: 20px;
     height: 40px;
+    padding-left: 15px;
 }
 
 .contactFormLineAmountBox {
@@ -119,6 +120,22 @@
         height: auto;
         margin-bottom: 30px;
     }
+}
+
+@media screen and (max-width: 760px) {
+    .contactFormSecond {
+        display: none;
+    }
+    .contactForm {
+        width: 100%;
+    }
+    .contactFormMain {
+        width: 100%;
+    }
+    .contactFormList {
+        width: 100%;
+    }
+
 }
 
 
