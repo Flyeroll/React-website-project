@@ -334,21 +334,20 @@ footer {
 
 
   .mainPageBackgroundContainer {
+    position: fixed;
+    top: calc(40vh);
     width: 100%;
     height: calc(100vh - 120px);
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-around;
-    align-items: center;
   }
 
   .imgBackGround {
     opacity: 0;
     transition: 500ms all ease-in-out;
     position: absolute;
-    top: -20px;
-    width: 2500px;
-    height: auto;
+    bottom: 50px;
     /* animation: 4000ms infinite showAndHideImg; */
     }
 
@@ -380,7 +379,7 @@ footer {
 
     @media screen and (max-width: 2216px) {
         .imgBackGround {
-            width: 2500px;
+            position: fixed;
         }
     }
 
@@ -413,15 +412,25 @@ footer {
         }
     }
 
-  @media screen and (max-width: 400px) {
+    /* mainPageBackgroundContainer */
+    /* textForBackGroundContainer */
+    /* welcomeTag */
+    /* hereTag */
+    /* imgBackGround */
+  @media screen and (max-width: 450px) {
     .imgBackGround {
-        width: 1185px;
+        width: 90%;
+        bottom: calc(25vh);
+    }
+    .mainPageBackgroundContainer {
+        position: fixed;
+        top: 200px;
     }
     .mainPageBackgroundContainer h2 {
-        font-size: 25px;
+        font-size: 35px;
     }
     .mainPageBackgroundContainer p {
-        font-size: 20px;
+        font-size: 30px;
         margin-top: 75px;
     }
   }
@@ -430,7 +439,6 @@ footer {
 .textForBackGroundContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 
