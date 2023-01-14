@@ -47,6 +47,7 @@ img {
     position: relative;
 }
 .dishName {
+    padding-left: 10px;
     padding-top: 7px;
 }
 .dishBtnForm {
@@ -54,7 +55,7 @@ img {
     flex-direction: row;
     bottom: 5px;
     left: 130px;
-    padding-left: 130px;
+    padding-left: 35%;
     padding-bottom: 5px;
     padding-top: 15px;
     user-select: none;
@@ -69,7 +70,7 @@ img {
     margin-right: 3px;
 }
 
-@media screen and (max-width: 2000px) {
+@media screen and (max-width: 2200px) {
     .categoryTitle {
         font-size: 40px;
         padding-top: 30px;
@@ -93,7 +94,7 @@ img {
 
 
 .dishFormMain{
-    width: 640px;
+    width: 700px;
     background-color: rgb(244, 244, 244);
     border-radius: 20px;
     display: flex;
@@ -292,6 +293,10 @@ img {
     background-color: rgb(75, 162, 255);
     padding: 10px;
     border-radius: 20px;
+}
+
+.dishBtnForm {
+    padding-left: 120px;
 }
 @media screen and (max-width: 700px) {
     .dishFormMain{

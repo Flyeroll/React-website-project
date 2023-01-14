@@ -38,7 +38,7 @@ to {
     line-height: 50px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
     .thirdPage h1 {
         width: 100%;
         font-size: 35px;

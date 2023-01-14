@@ -233,3 +233,16 @@
         margin-right: 2px;
     }
 }
+
+@media screen and (max-width: 450px) {
+    .allObject {
+        position: fixed;
+        scale: 0.6;
+    }
+    .bottomPart {
+        right: -22px;
+    }
+    .dateRight {
+        margin-right: 2px;
+    }
+}
