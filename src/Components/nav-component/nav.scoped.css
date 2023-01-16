@@ -353,7 +353,6 @@ footer {
         top: 100px;
         width: 100vw;
         height: calc(100vh - 120px);
-        background-color: red;
     }
 
     .textForBackGroundContainer {

@@ -94,7 +94,7 @@
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
     .staffBox {
         flex-direction: column;
         height: 1600px;
