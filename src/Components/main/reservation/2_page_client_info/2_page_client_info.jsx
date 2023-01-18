@@ -331,22 +331,9 @@ export default function secondPageReserv(props) {
       <h2 className="allComponentTitle">Info</h2>
       <div className="columns">
         <div className="firstColumn">
-          <h3 className="allComponentTitleSecondPage">Info</h3>
           <div className="reservationClientDataBox">
             <div className="nameInputClear">
               <input type="text" className={`nameInput ${pageTwoValidator.name ? 'inputGreen' : null}`} placeholder="your name" onChange={(elem) => nameValidator(elem)} />
-            </div>
-
-            <div className="phoneInputClear">
-              <h4>Please give your phone number</h4>
-              <div className="phoneBox">
-                <FontAwesomeIcon icon={faPhone} className="phoneIcon opened" />
-                <input type="text" className="inputPhoneNumber opened" placeholder="your phone" maxLength={18} onChange={(elem) => phoneFilter(elem)} onClick={(elem) => showInputPhone(elem)} />
-                <h2 ref={phoneInputRef} className="numberBall opened">
-&nbsp;&nbsp;
-                  {`${number}`}
-                </h2>
-              </div>
             </div>
 
             <div className="guestInputClear">
@@ -362,6 +349,17 @@ export default function secondPageReserv(props) {
               <input ref={inputDateRef} className={`dateInput ${pageTwoValidator.dateAndTime ? 'inputGreen' : null}`} readOnly onClick={() => openDatePicker()} value={dateForInputToShow} />
               <div className="datePickerComponento">
                 {datePickerStatus ? <DatePicker className="datePickerComponent" statusForParent={changeStatusForParent} sendData={recieveDataFromPicker} /> : null}
+              </div>
+            </div>
+            <div className="phoneInputClear">
+              <h4>Please give your phone number</h4>
+              <div className="phoneBox">
+                <FontAwesomeIcon icon={faPhone} className="phoneIcon opened" />
+                <input type="text" className="inputPhoneNumber opened" placeholder="your phone" maxLength={18} onChange={(elem) => phoneFilter(elem)} onClick={(elem) => showInputPhone(elem)} />
+                <h2 ref={phoneInputRef} className="numberBall opened">
+&nbsp;&nbsp;
+                  {`${number}`}
+                </h2>
               </div>
             </div>
 

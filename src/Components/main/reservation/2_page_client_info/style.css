@@ -80,18 +80,19 @@
 }
 
 .allComponentTitle {
-    margin-top: 20px;
+    margin-top: 110px;
 }
 
 .columns {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: start;
     width: 100%;
     height: 100%;
 }
 
 .firstColumn {
+    display: flex;
     padding-left: 20px;
     width: 300px;
     background-color: rgb(255, 255, 255);
@@ -120,6 +121,7 @@
     height: 50px;
     font-size: 35px;
 }
+
 /* 1 */
 .phoneBox {
     position: relative;
@@ -154,15 +156,10 @@
 }
 
 /* 2 */
-.inputPhoneNumber{
+.inputPhoneNumber {
     position: absolute;
     color: rgb(0, 31, 134);
     opacity: 0;
-    z-index: 10;
-    width: 25px;
-    height: 25px;
-    border-radius: 100%;
-    cursor: pointer;
 }
 
 .inputPhoneNumber.opened {
@@ -190,15 +187,16 @@
 }
 
 .nameInput {
-    font-size: -5px;
     cursor: default;
     border: 2px solid black;
     width: 240px;
     height: 25px;
-    margin-bottom: 20px;
     transition: 0.3s all ease-in-out;
 }
 
+.guestInputClear {
+    margin-top: 0px;
+}
 .guestsNumberInput{
     font-size: 20px;
     border: 2px solid black;
@@ -224,18 +222,16 @@
     scale: 1.4;
 }
 
-
-.reservationClientDataBox > * {
-    margin-bottom: 80px;
-    margin-top: -22px;
+.reservationClientDataBox {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    justify-content: space-between;
+    gap: 0px;
 }
 
 .phoneInputClearBox {
     height: 50px;
-    margin-bottom: 20px;
-}
-.phoneInputClear {
-    top: 10px;
 }
 
 .dateInput {
@@ -294,19 +290,19 @@
         display: none;
     }
     .reservationClientDataBox {
-        height: 433px;
+        height: 61vh;
         overflow: scroll;
+        justify-content: center;
+        gap: 3vh;
     }
     .reservationClientDataBox > * {
-        margin-top: -9px;
     }
     .nameInput {
         margin-top: 10px;
-        margin-bottom: -10px;
+        margin-bottom: 0px;
     }
     .tableNumberInput {
         display: block;
-        margin-bottom: 30px;
     }
     
     .allComponentTitleSecondPage {
@@ -317,7 +313,6 @@
         margin-bottom: 7px;
     }
     .reservationClientDataBox > * {
-        margin-bottom: 70px;
     }
 }
 
