@@ -11,7 +11,7 @@ The purpose of my project is to demonstrate my competencies in the field of Fron
 The project was created using the popular React library.
 
 ## Link to the project on the Internet:
-http://blablabla.com
+https://github.com/Flyeroll/react-website-project.git
 
 ## How to start the project.
 To start this project you need to:
