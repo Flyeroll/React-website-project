@@ -232,24 +232,15 @@ useEffect(() => {
     },[selectedDay])
     
     useEffect(() => {
-
         let newMonth 
         if(yearsArrayForPrint !== undefined) {
             newMonth = yearsArrayForPrint.filter(elem => elem.name === currentYearAndMonth.year)[0].monthInfo[currentYearAndMonth.month]
         }
   
-
-
         setFinalCurrent((prev) => {
             return {...currentYearAndMonth, currentMonthData:newMonth}
         })
     }, [currentYearAndMonth])
-
-    useEffect((element) => {
-    
-    },[finalCurrent])
-    
-    
     
     function selectDate(elem) {
         if(!selectedDay.daySelected) {
@@ -357,16 +348,21 @@ useEffect(() => {
     
     
     function nextMonthBtn() {
+        setSelectedDay((prev) => {
+            return {...prev, day: "" }
+        })
+        console.log('---------------');
+        console.log(currentYearAndMonth.month);
+        console.log(currentYearAndMonth.year);
+        console.log('---------------');
         if (currentYearAndMonth.month !== 11 || currentYearAndMonth.year !== 2024){
-            setSelectedDay((prev) => {
-                return {...prev, day: "" }
-            })
+            console.log('1 PATH');
             setMonthIndex((prev) => {
                 let newIndex = prev
                 if((monthToday + prev) < 11) {
                     newIndex += 1
                 } else {
-                    newIndex = 0
+                    newIndex = -2
                     setYearIndex((prev) => {
                         let newIndex = prev
                         if(prev > 2020) {
@@ -379,6 +375,9 @@ useEffect(() => {
                 }
                 return newIndex
             })
+        } else if (currentYearAndMonth.month === 11) {
+            console.log('2 PATH');
+            console.log('Ignoring');
         }
 
     }
@@ -392,14 +391,14 @@ useEffect(() => {
         if (monthIndex === 0 && yearIndex < 2022) {
             console.log("1 path");
             setMonthIndex((prev) => {
-                return 10
+                return 9
             })
             setYearIndex((prev) => {
                 let newEl = prev
                 newEl += 1
                 return newEl
             })
-        } else if(monthIndex === monthToday - 1 && yearIndex === yearToday - 1) {
+        } else if(monthIndex === monthToday - 2 && yearIndex === yearToday - 1) {
             console.log("3 path ignoring");
         } else if(monthIndex !== 0) {
             console.log("2 path");
