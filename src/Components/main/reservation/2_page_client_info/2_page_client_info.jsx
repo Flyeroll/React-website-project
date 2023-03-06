@@ -345,7 +345,7 @@ export default function secondPageReserv(props) {
               <input type="number" className="tableNumberInput" max={10} min={0} onChange={(elem) => tableNumber(elem)} defaultValue={0} />
             </div>
             <div className="dateInputClear">
-              <h4>Pick date bellow</h4>
+              <h4>Pick date and time bellow</h4>
               <input ref={inputDateRef} className={`dateInput ${pageTwoValidator.dateAndTime ? 'inputGreen' : null}`} readOnly onClick={() => openDatePicker()} value={dateForInputToShow} />
               <div className="datePickerComponento">
                 {datePickerStatus ? <DatePicker className="datePickerComponent" statusForParent={changeStatusForParent} sendData={recieveDataFromPicker} /> : null}

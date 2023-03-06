@@ -199,14 +199,12 @@ useEffect(() => {
     setSelectedDay((prev) => {
         return {...prev, month:monthToday + monthIndex, year:selectedYear[yearToday - yearIndex]}
     })
-    console.log(monthIndex);
 }, [monthIndex])
 
 useEffect(() => {
     setSelectedDay((prev) => {
         return {...prev, month:monthToday + monthIndex, year:selectedYear[yearToday - yearIndex]}
     })
-    console.log(yearIndex);
     }, [yearIndex])
 
     useEffect(() => {
@@ -227,7 +225,6 @@ useEffect(() => {
         setCurrentYearAndMonth((prev) => {
             return {...prev,year: selectedDay.year, month: selectedDay.month}
         })
-        console.log(selectedDay);
         let selectedDayCopy = {...selectedDay}
     },[selectedDay])
     
@@ -351,12 +348,8 @@ useEffect(() => {
         setSelectedDay((prev) => {
             return {...prev, day: "" }
         })
-        console.log('---------------');
-        console.log(currentYearAndMonth.month);
-        console.log(currentYearAndMonth.year);
-        console.log('---------------');
         if (currentYearAndMonth.month !== 11 || currentYearAndMonth.year !== 2024){
-            console.log('1 PATH');
+            // 1 PATH
             setMonthIndex((prev) => {
                 let newIndex = prev
                 if((monthToday + prev) < 11) {
@@ -376,20 +369,16 @@ useEffect(() => {
                 return newIndex
             })
         } else if (currentYearAndMonth.month === 11) {
-            console.log('2 PATH');
-            console.log('Ignoring');
+            // Ignoring
         }
-
     }
 
     function prevMonthBtn() {
-        console.log(`year today ${yearToday} BTN`);
-        console.log(`month today ${monthIndex} BTN`);
         setSelectedDay((prev) => {
             return {...prev, day: "" }
         })
         if (monthIndex === 0 && yearIndex < 2022) {
-            console.log("1 path");
+            // 1 PATH
             setMonthIndex((prev) => {
                 return 9
             })
@@ -399,16 +388,16 @@ useEffect(() => {
                 return newEl
             })
         } else if(monthIndex === monthToday - 2 && yearIndex === yearToday - 1) {
-            console.log("3 path ignoring");
+            // 3 PATH
         } else if(monthIndex !== 0) {
-            console.log("2 path");
+            // 2 PATH
             setMonthIndex((prev) => {
                 let newEl = prev
                 newEl -= 1
                 return newEl
             })
         }else {
-            console.log("4 path");
+            // 4 PATH
             setMonthIndex((prev) => {
                 let newEl = prev
                 newEl -= 1
@@ -467,28 +456,12 @@ useEffect(() => {
                 for(let i=1; i < lastCounter; i++) {
                     let newElem
                         newElem = <div className="tag unActiveDay" key={uniqid()}>{i}</div>
-                    
                     dataArray.push(newElem)
                 }
             }
         }
         return dataArray
     }
-
-    useEffect(() => {
-    console.log(`year today ${yearToday}`);
-}, [yearToday])
-
-useEffect(() => {
-    console.log(`year index ${yearIndex}`);
-}, [yearIndex])
-
-useEffect(() => {
-    console.log(`month index ${monthIndex}`);
-}, [monthIndex])
-useEffect(() => {
-    console.log(`monthToday ${monthToday}`);
-}, [monthToday])
 
     return (
         <div className="allObject">
